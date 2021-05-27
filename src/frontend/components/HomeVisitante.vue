@@ -1,6 +1,8 @@
 <template>
   <button class="btn btn-login" @click="login">Iniciar Sesión</button>
   <button class="btn btn-register" @click="register">Registrarse</button>
+  <button @click="home">Inicio</button>
+  <button @click="buyCard">Comprar</button>
   <div class="collections__container">
       <!-- <Collections /> -->
   </div>
@@ -23,10 +25,17 @@ export default {
         const register = () => {
             route.push('/register')
         }
-
+        const home = () => {
+            route.push('/home')
+        }
+        const buyCard = () => {
+            route.push('/buyCard')
+        }
         return {
             login,
-            register
+            register,
+            home,
+            buyCard
         }
     }
 }
