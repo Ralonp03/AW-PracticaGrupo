@@ -1,8 +1,12 @@
-# Indicaciones para correr el proyecto
+# Estructura del proyecto
+## Carpeta client
+- Carpeta con el contenido que se ejecuta en el cliente.
+- Todos los archivos .vue van incluidos en esta carpeta.
+- Para desplegar el proyecto de frontend:
+    `npm run serve`
 
-1. Para instalar las dependencias situadas en el package.json ejecutar `npm i` en la raiz del proyecto.
-2. Para leventar el servidor:
-    - `npm run dev`
-3. Para observar los cambios y obtener el bundle final:
-    - `npm run webpack`
+## Carpeta server
+- Carpeta con el contenido del servidor.
+- Para desplegar el servidor:
+    `npm start`
 
