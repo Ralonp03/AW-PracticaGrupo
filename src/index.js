@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 //Routes
-app.use(require('./routes/routes'))
+app.use('/api',require('./routes/routes'))
 
 //Static files
 app.use(express.static(path.join(__dirname, 'public')))

@@ -5,9 +5,8 @@ const User = require('../models/User')
 
 
 
-
-router.get('/perfil', (req, res) => {
-    res.send('Página de perfil del usuario')
+router.get('/', (req, res) => {
+   res.send('Pagina principal')
 })
 
 

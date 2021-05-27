@@ -1,13 +1,18 @@
 <template>
-  <h1 class="title">Hola desde Vue</h1>
+  <router-link to="/"></router-link>
+  <router-link to="/login"></router-link>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
 
+  setup() {
+   
+  }
 }
 </script>
 
-<style scoped lang="css">
-    
+<style>
+
 </style>
