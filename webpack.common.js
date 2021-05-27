@@ -1,5 +1,5 @@
 const { VueLoaderPlugin } = require("vue-loader");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/frontend/index.js",
   output: {
@@ -18,25 +18,18 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        options: {
-          hotReload: true,
-        },
+        
       },
       {
         test: /\.css$/,
-        use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: ["style-loader","vue-style-loader", "css-loader"],
       },
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "styles.css",
-    }),
+    new HtmlWebpackPlugin({
+      template: './src/public/index.html',
+    })
   ],
 };
