@@ -1,12 +1,10 @@
 <template>
+<div>
   <button class="btn btn-login" @click="login">Iniciar Sesión</button>
   <button class="btn btn-register" @click="register">Registrarse</button>
   <button @click="home">Inicio</button>
   <button @click="buyCard">Comprar</button>
-  <div class="collections__container">
-      <!-- <Collections /> -->
-  </div>
-
+</div>
 </template>
 
 <script>
