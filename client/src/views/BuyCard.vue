@@ -1,20 +1,37 @@
 
+
 <template>
-<div>
+
+<div class="app">
+
   <TaskBar/>
-  <div class="Background">
-    <div class="row">
-      <div class="column" style="background-color:#aaa;">
-        <div class="card" style="background-color:blue;"></div>
-      </div>
-      <div class="column" style="background-color:#aaa;">
-        <span class="think"> <b>Precio:</b> </span ><span class="datas">{{ priceCard }}</span><br>
-        <span class="think"><b>Mis puntos:</b> </span><span class="datas">{{ myPoints}}</span><hr>
-        <button v-on:click.prevent="decrement">-</button><p>{{ count }}</p>
-        <button  v-on:click.prevent="increment">+</button><br>
-        <button v-on:click.prevent="buy">Comprar</button>
-      </div>
-    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css" integrity="sha384-3fdgwJw17Bi87e1QQ4fsLn4rUFqWw//KU0g8TvV6quvahISRewev6/EocKNuJmEw" crossorigin="anonymous">  <div class="Background">
+
+    <div class="container">
+      <div class="flexContainer">
+        <div class="card mt-4">
+          
+            <div class="card-body" >
+                <h4 class="card-title" style="text-align:center">Carta</h4>
+                    <img v-bind:src="require('../assets/Coches/c5.png')" alt="">
+            </div>
+        </div>
+        <div class="card mt-4" >
+            <div class="card-body">
+                <h4 class="card-title">Precio: </h4><span class="datas">{{ priceCard }}</span><br>
+                <h4 class="card-title">Mis puntos: </h4><span class="datas">{{ myPoints }}</span><br>
+                <div class="card-text mb-2">
+            </div>
+        <button v-on:click.prevent="decrement"  class="btn btn-success" style="margin:20px;">-</button><span>{{ count }}</span>
+        <button v-on:click.prevent="increment"  class="btn btn-success"  style="margin:20px">+</button><br>
+        <div class="col text-center">
+        <button v-on:click.prevent="buy"  class="btn btn-success"  style="text-align:center">Comprar</button>
+               </div>
+               </div>
+           </div>
+         </div>
+   </div>
+
   </div>
 </div>
 </template>
@@ -52,25 +69,32 @@ export default {
 </script>
 
 <style>
-.row {
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.flexContainer {
+  height: 100%;  
   display: flex;
+  flex-direction: row;
 }
-.column {
-  flex: 50%;
-  padding: 10px;
-  height: 300px;
+
+  .flexContainer > div {
+  background-color: #f1f1f1;
+  margin: 150px;
+  max-height: 100%;
+  padding: 20px;
+  font-size: 30px;
 }
-.card {
-  height: 200px;
-  width: 110px;
-  margin-left : 300px;
-}
-.think{
-margin-right : 40px;
-}
-.Background {
-    margin-left:15%;
-    background-color:gray;
-    border: 1px solid black;
-}
+
 </style>
