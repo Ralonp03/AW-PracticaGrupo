@@ -1,7 +1,10 @@
 <template>
 <div>
   <button class="bg-blue-400 text-black font-bold my-2 mx-5 py-2 px-4 rounded" @click="login">Iniciar Sesión</button>
-  <button class="btn btn-register" @click="register">Registrarse</button>
+  <button class="bg-green-400 text-black font-bold my-2 py-2 px-4 rounded" @click="register">Registrarse</button>
+
+  <CarCollection title="Car Brand Collection" class="font-bold"/>
+  <PokemonCollection title="Pokemon Collection" class="font-bold"/>
   <button @click="home">Inicio</button>
   <button @click="buyCard">Comprar</button>
 </div>
@@ -9,12 +12,14 @@
 
 <script>
 import { useRouter } from 'vue-router'
-// import Collections from './Collections.vue'
+import CarCollection from './Car-collection.vue'
+import PokemonCollection from './Pokemon-collection.vue'
 export default {
     name: 'HomeVisitante',
-    // components: {
-    //     Collections,
-    // },
+    components: {
+        CarCollection,
+        PokemonCollection
+    },
     setup(){
         const route = useRouter()
         const login = () => {
@@ -33,7 +38,7 @@ export default {
             login,
             register,
             home,
-            buyCard
+            buyCard,
         }
     }
 }
