@@ -1,0 +1,7 @@
+POST http://localhost:8081/api/partners/register
+Content-Type: application/json
+
+{
+    "name": "test",
+    "password": "123"
+}
