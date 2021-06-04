@@ -18,9 +18,9 @@ El grupo seleccionará una tecnología de gestor de bases de datos para gestiona
    El número de copias de cada cromo es limitado y controlado por el kiosco []
 
 4. Cada cromo de cada colección puede tener distintos atributos, pero al menos deberá tener:
-  a. Un nombre del cromo [OK]
-  b. Una imagen asociada []
-  c. Un precio en puntos [OK]
+   a. Un nombre del cromo [OK]
+   b. Una imagen asociada []
+   c. Un precio en puntos [OK]
 
 5. El kiosco admitirá socios que serán usuarios identificados unívocamente [OK]
 
