@@ -111,10 +111,13 @@ export default {
       const username = usernameForm.value;
       const passwd = passwdForm.value;
 
-      const status = await loginUser(username,passwd)
+      const response = await loginUser(username,passwd)
 
-      if(status === 200)
-        router.push('/Home')
+      //Vista socio
+      if(response.status === 200){
+        response.data.role === "socio" && router.push('/Home')
+        // response.data.role === "admin" && router.push('/AdminHome')
+      }
 
     };
 
