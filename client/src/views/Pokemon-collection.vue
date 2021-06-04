@@ -2,12 +2,19 @@
   <div class="container ml-10 my-16">
     <h2 class="w-full">{{ title }}</h2>
     <div class="p-4 grid gap-4 grid-flow-col auto-cols-max border-gray-800">
-      <img v-bind:src="require('../assets/LoG.png')" alt="" />
-      <img v-bind:src="require('../assets/Coches/c1.png')" alt="" />
-      <img v-bind:src="require('../assets/Coches/c2.png')" alt="" />
-      <img v-bind:src="require('../assets/Coches/c3.png')" alt="" />
-      <img v-bind:src="require('../assets/Coches/c4.png')" alt="" />
-      <img v-bind:src="require('../assets/Coches/c5.png')" alt="" />
+      <img v-bind:src="require('../assets/LogoPokemon.jpg')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon1.png')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon2.png')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon3.png')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon4.png')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon5.png')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon6.jpg')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon7.jpg')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon8.jpg')" alt="" />
+      <img v-bind:src="require('../assets/Pokemons/Pokemon9.jpg')" alt="" />
+    </div>
+    <div class="p-4 grid gap-4 grid-flow-col auto-cols-max border-gray-800">
+      <img v-bind:src="require('../assets/Pokemons/Pokemon10.jpg')" alt="" />
     </div>
   </div>
 </template>

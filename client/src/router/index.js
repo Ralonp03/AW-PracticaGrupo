@@ -4,7 +4,7 @@ import HomeVisitante from "../views/HomeVisitante.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import BuyCard from "../views/BuyCard.vue";
-import Information from "../views/Information.vue";
+import Collections from "../views/Collections.vue";
 const routes = [
   {
     path: "/",
@@ -31,15 +31,10 @@ const routes = [
     name: "BuyCard",
     component: BuyCard,
   },
-  // {
-  //   path: "/collections",
-  //   name: "Collections",
-  //   component: Collections,
-  // },
   {
-    path: "/information",
-    name: "Information",
-    component: Information,
+    path: "/collections",
+    name: "Collections",
+    component: Collections,
   }
 ];
 
