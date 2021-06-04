@@ -20,7 +20,8 @@ loginRouter.post("/", async (req, res) => {
     }
 
     res.send({
-        name: userFound.name
+        name: userFound.name,
+        role: userFound.role
     })
 });
 
