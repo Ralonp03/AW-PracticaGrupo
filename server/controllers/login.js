@@ -17,12 +17,14 @@ loginRouter.post("/", async (req, res) => {
 
     if(!passwordCorrect){
         res.status(401).json({error: 'Invalid user or password'})
+    }else{
+      res.send({
+          name: userFound.name,
+          role: userFound.role
+      })
+
     }
 
-    res.send({
-        name: userFound.name,
-        role: userFound.role
-    })
 });
 
 module.exports = loginRouter;

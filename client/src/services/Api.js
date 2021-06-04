@@ -7,7 +7,7 @@ const loginUser = async (name, password) => {
         password
     }
 
-    const response = await axios.post('http://localhost:8081/api/login/', params)
+    const response = await axios.post('http://localhost:8081/api/login', params)
     return response
 }
 
