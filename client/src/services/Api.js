@@ -1,7 +1,27 @@
-import axios from 'axios'
+//Conexion a los endpoints del backend
+const axios = require('axios');
 
-export default() => {
-  return axios.create({
-    baseURL: `http://localhost:8081`
-  })
+const loginUser = async (name, password) => {
+    const params = {
+        name,
+        password
+    }
+
+    const response = await axios.post('http://localhost:8081/api/login/', params)
+    return response
 }
+
+const registerUser = async(name, password) => {
+    const params = {
+        name,
+        password
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/partners/register', params)
+    return response
+}
+
+
+
+module.exports = { loginUser, registerUser }

@@ -1,13 +1,36 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const { Schema } = mongoose
+const { model, Schema } = mongoose;
 
-const User = new Schema({
-    name: String,
-    password: String,
-    collections: [],
-    cards: []
-})
+const userSchema = new Schema({
+  name: String,
+  password: String,
+  points: Number,
+  role: String,
+  collections: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Collection",
+    },
+  ],
+  cards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Card",
+    },
+  ],
+});
 
-module.exports = mongoose.model('User', User)
+//Se eliminan aquellos campos que no queremos representar
+userSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    delete returnedObject.password;
+  },
+});
 
+const User = model("user", userSchema);
+
+module.exports = User;
