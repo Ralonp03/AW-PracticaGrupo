@@ -6,7 +6,6 @@
       <h2 class="mb-10 text-center">INICIE SESIÓN</h2>
       <form
         @submit.prevent="login"
-        action=""
         class="w-100 flex flex-col justify-center content-center"
       >
         <div
@@ -32,9 +31,9 @@
               class="ml-auto mr-auto mb-10"
               type="text"
               name="username"
-              placeholder="Usuario o email"
+              placeholder="Nombre de usuario"
               autocomplete="false"
-               v-model="username"
+               v-model="usernameForm"
               required
             />
         </div>
@@ -62,7 +61,7 @@
             type="password"
             placeholder="Contraseña"
             autocomplete="false"
-            v-model="passwd"
+            v-model="passwdForm"
             required
           />
         </div>
@@ -102,23 +101,28 @@ export default {
   setup() {
 
     const router = useRouter();
-    const username = ref("")
-    const passwd = ref("")
+    const usernameForm = ref("")
+    const passwdForm = ref("")
     const register = () => {
       router.push("/register");
     };
 
-    const login = () => {
-      const username = username.value;
-      const passwd = passwd.value;
-      loginUser(username,passwd)
+    const login = async () => {
+      const username = usernameForm.value;
+      const passwd = passwdForm.value;
+
+      const status = await loginUser(username,passwd)
+
+      if(status === 200)
+        router.push('/Home')
+
     };
 
     return {
       register,
       login,
-      username,
-      passwd
+      usernameForm,
+      passwdForm
 
     };
   },

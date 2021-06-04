@@ -1,8 +1,14 @@
 //Conexion a los endpoints del backend
 const axios = require('axios');
 
-const loginUser = (username, passwd) => {
+const loginUser = async (name, password) => {
+    const params = {
+        name,
+        password
+    }
 
+    const response = await axios.post('http://localhost:8081/api/login/', params)
+    return response.status
 }
 
 
