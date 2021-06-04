@@ -4,6 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const partnersRouter = require('./controllers/partner.js')
+const loginRouter = require('./controllers/login.js')
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors());
 
 //Partner routes
 app.use('/api/partners', partnersRouter)
+app.use('/api/login', loginRouter)
 
 //Server running
 app.listen(app.get("port"), () => {
