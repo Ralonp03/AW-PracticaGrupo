@@ -32,19 +32,20 @@ El grupo seleccionará una tecnología de gestor de bases de datos para gestiona
     a. Cada socio podrá estar realizando una o más colecciones de cromos []
   
     b. Cada colección de cada usuario podrá estar en los siguientes estados: 
-      1. no iniciada []
-      2. completada parcialmente []
-      3. finalizada []
+    
+         1. no iniciada []
+         2. completada parcialmente []
+         3. finalizada []
   
     c. Cada socio tendrá una cuenta de puntos con un saldo en cada momento [OK]
   
     d. Cada socio tendrá su página personal en el que podrá realizar:
   
-      I. Ver el estado de todas sus colecciones mediante la visualización del álbum correspondiente []
+         I. Ver el estado de todas sus colecciones mediante la visualización del álbum correspondiente []
     
-      II. Ver el estado de su cuenta de puntos []
+         II. Ver el estado de su cuenta de puntos []
     
-      III. Adquirir cromos si tiene un saldo suficiente para adquirir los cromos []
+         III. Adquirir cromos si tiene un saldo suficiente para adquirir los cromos []
     
       IV. La compra supone que una copia del cromo que tiene el kiosco pasa al álbum correspondiente del usuario y se visualizará en él []
     
