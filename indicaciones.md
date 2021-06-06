@@ -72,7 +72,6 @@ El grupo seleccionará una tecnología de gestor de bases de datos para gestiona
 3. Cuando el usuario compre un cromo, el kiosco codificará un identificador único asociado a esa copia del cromo usando la clave pública del usuario correspondiente y se lo entregara al usuario. 
 
 4. Cuando se quiera comprobar que un álbum ha sido completado de forma correcta por un usuario, este deberá adjuntar todas los identificadores asociados a las copias de los  cromos de su álbum descodificados mediante su clave privada.  
-Instrucciones para la composición del grupo
 
 ## Requisitos de entrega
 
