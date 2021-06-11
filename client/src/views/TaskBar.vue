@@ -1,20 +1,20 @@
 <template>
-    <div>
+    <div class="font-bold">
         <ul>
             <h2 style="margin-left: 60px">KioskoROC</h2>
-            <img style="margin-left: 90px" v-bind:src="require('../assets/Avatar.png')" alt="">
             <li><a>Mis puntos:</a></li>
             <li><a href="/collections">Colecciones</a></li>
-            <li><a href="/information">Informacion</a></li>
             <li><a href="/buyCard">Comprar</a></li>
             <li><a href="/home">Inicio</a></li>
+            <li><a href="/adminHome">Vista Administrador</a></li>
         </ul>
     </div>
 </template>
 
+
 <script>
 export default {
-
+  
 }
 </script>
 
@@ -23,7 +23,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 15%;
+  width: 12%;
   height:100%;
   background-color: #04AA6D;;
   position: fixed;
