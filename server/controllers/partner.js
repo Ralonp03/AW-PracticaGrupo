@@ -17,7 +17,7 @@ partnersRouter.post('/register', async (req, res) => {
         const user = new User({
             name,
             password: passwdHash,
-            points: 0,
+            points: 300,
             role: 'socio'
         })
     
