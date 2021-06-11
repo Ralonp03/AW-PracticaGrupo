@@ -9,6 +9,7 @@ const adminRouter = require('./controllers/admin.js')
 const comprasRouter = require('./controllers/buyControl.js')
 const comprasRouter2 = require('./controllers/ComprarUnidades.js')
 const recopilarRouter = require('./controllers/RecopilarDatos.js')
+const getCardRouter = require('./controllers/GetCards.js')
 
 
 const app = express();
@@ -29,6 +30,8 @@ app.use('/api/login', loginRouter)
 app.use('/api/compras', comprasRouter)
 app.use('/api/compras2', comprasRouter2)
 app.use('/api/recopilar', recopilarRouter)
+app.use('/api/getCard', getCardRouter)
+
 
 //Server running
 app.listen(app.get("port"), () => {

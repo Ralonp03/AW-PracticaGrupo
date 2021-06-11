@@ -21,7 +21,8 @@ loginRouter.post("/", async (req, res) => {
       res.send({
           name: userFound.name,
           role: userFound.role,
-          points: userFound.points
+          points: userFound.points,
+          cards:userFound.cards
       })
 
     }

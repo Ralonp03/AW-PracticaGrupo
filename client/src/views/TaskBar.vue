@@ -6,6 +6,7 @@
             <li><a href="/collections">Colecciones</a></li>
             <li><a href="/buyCard">Comprar</a></li>
             <li><a href="/home">Inicio</a></li>
+            <li><a href="/mycollections">Mis Coleciones</a></li>
             <li><a href="/adminHome">Vista Administrador</a></li>
         </ul>
     </div>

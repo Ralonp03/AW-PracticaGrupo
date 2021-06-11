@@ -221,13 +221,14 @@ export default {
     return {
       units: 0,
       count: 0,
-      selected:"Coche 1",
-      priceCard: 200,
-      myPoints: 300,
+      selected:"Coche1",
+      priceCard: 0,
+      myPoints: 0,
     }
   },
   beforeMount(){
-    this.login()
+    this.login(),
+    this.recopilar()
  },
  
 

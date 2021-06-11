@@ -6,6 +6,7 @@ import Register from "../views/Register.vue";
 import BuyCard from "../views/BuyCard.vue";
 import Collections from "../views/Collections.vue";
 import AdminHome from "../views/AdminHome.vue";
+import MyCollections from "../views/MyCollections.vue";
 const routes = [
   {
     path: "/",
@@ -41,6 +42,11 @@ const routes = [
     path: "/collections",
     name: "Collections",
     component: Collections,
+  },
+  {
+    path: "/mycollections",
+    name: "MyCollections",
+    component: MyCollections,
   }
 ];
 

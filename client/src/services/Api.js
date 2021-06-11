@@ -62,7 +62,16 @@ const registerUser = async(name, password) => {
     const response = await axios.post('http://localhost:8081/api/partners/register', params)
     return response
 }
+const getCard = async(name) => {
+    const params = {
+        name
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/getCard', params)
+    return response
+}
 
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar}
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard}
