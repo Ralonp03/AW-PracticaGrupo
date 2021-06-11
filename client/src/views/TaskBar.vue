@@ -6,13 +6,15 @@
             <li><a href="/collections">Colecciones</a></li>
             <li><a href="/buyCard">Comprar</a></li>
             <li><a href="/home">Inicio</a></li>
+            <li><a href="/adminHome">Vista Administrador</a></li>
         </ul>
     </div>
 </template>
 
+
 <script>
 export default {
-
+  
 }
 </script>
 

@@ -5,11 +5,17 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import BuyCard from "../views/BuyCard.vue";
 import Collections from "../views/Collections.vue";
+import AdminHome from "../views/AdminHome.vue";
 const routes = [
   {
     path: "/",
     name: "HomeVisitante",
     component: HomeVisitante,
+  },
+  {
+    path: "/adminHome",
+    name: "AdminHome",
+    component: AdminHome,
   },
   {
     path: "/login",

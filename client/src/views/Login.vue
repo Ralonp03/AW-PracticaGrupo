@@ -116,7 +116,7 @@ export default {
       //Vista socio
       if(response.status === 200){
         response.data.role === "socio" && router.push('/Home')
-        // response.data.role === "admin" && router.push('/AdminHome')
+        response.data.role === "admin" && router.push('/AdminHome')
       }
 
     };
