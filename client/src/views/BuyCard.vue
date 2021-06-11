@@ -168,12 +168,12 @@ export default {
     },
     
     async buy() {
-      if (this.myPoints >= this.priceCard * this.count) {
+      if (this.units >= this.count && this.myPoints >= this.priceCard * this.count) {
           this.myPoints = this.myPoints - this.count * this.priceCard;
           if(this.units >= this.count){
               this.units = this.units - this.count;
           }
-      }
+      
       var nameUsuario = "cr7";
       var userPoints = this.myPoints;
       var cardName = this.selected;
@@ -184,7 +184,7 @@ export default {
       {
         //Bien realizado la compra
       }
-      const response2 = await deleteUnitsOfCard(cardName, cardUnits)
+      const response2 = await deleteUnitsOfCard(cardName, this.units)
       if(response2.status === 200){
         //Bien realizada la actualizacion de unidades
       }
@@ -196,7 +196,9 @@ export default {
         cardName,
         cardUnits
       }
+      }
     },
+    
 
     async login(){
       const username = "cr7";
