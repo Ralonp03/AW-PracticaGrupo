@@ -5,6 +5,11 @@ const morgan = require("morgan");
 const cors = require("cors");
 const partnersRouter = require('./controllers/partner.js')
 const loginRouter = require('./controllers/login.js')
+const adminRouter = require('./controllers/admin.js')
+const comprasRouter = require('./controllers/buyControl.js')
+const comprasRouter2 = require('./controllers/ComprarUnidades.js')
+const recopilarRouter = require('./controllers/RecopilarDatos.js')
+
 
 const app = express();
 
@@ -18,8 +23,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 //Partner routes
+app.use('/api/admin', adminRouter)
 app.use('/api/partners', partnersRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/compras', comprasRouter)
+app.use('/api/compras2', comprasRouter2)
+app.use('/api/recopilar', recopilarRouter)
 
 //Server running
 app.listen(app.get("port"), () => {
