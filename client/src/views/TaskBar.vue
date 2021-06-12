@@ -3,7 +3,7 @@
     <h2>KioskoROC</h2>
    
     <p class="text-center">
-      {{ username }} <span>{{ userPoints }} </span> puntos
+      {{ username }} <span> {{ userPoints }} </span> puntos
     </p>
 
     <ul class="mt-10 w-full flex flex-col items-center text-center list-none">
@@ -35,8 +35,22 @@
 </template>
 
 <script>
-
+import { onMounted } from '@vue/runtime-core';
+import { useStore } from 'vuex'
+import { ref } from 'vue'
 export default {
-  
+  setup(){
+    const store = useStore()
+    const username = ref("")
+    const userPoints = ref("")
+
+
+    onMounted(() => {
+      username.value = store.getters.getUserName
+      userPoints.value = store.getters.getUserPoints
+    })
+
+    return { username, userPoints }
+  }
 };
 </script>

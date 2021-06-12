@@ -27,15 +27,15 @@
               ></path>
             </svg>
           </span>
-            <input
-              class="ml-auto mr-auto mb-10"
-              type="text"
-              name="username"
-              placeholder="Nombre de usuario"
-              autocomplete="false"
-               v-model="usernameForm"
-              required
-            />
+          <input
+            class="ml-auto mr-auto mb-10"
+            type="text"
+            name="username"
+            placeholder="Nombre de usuario"
+            autocomplete="false"
+            v-model="usernameForm"
+            required
+          />
         </div>
         <div
           class="mt -4 form__field text-center h-100  flex items-stretch ml-auto mr-auto"
@@ -94,39 +94,42 @@
 
 <script>
 import { useRouter } from "vue-router";
-import { ref } from 'vue';
-import { loginUser } from '../services/Api'
+import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
   name: "Login",
   setup() {
-
     const router = useRouter();
-    const usernameForm = ref("")
-    const passwdForm = ref("")
+    const usernameForm = ref("");
+    const passwdForm = ref("");
+    const store = useStore();
+
     const register = () => {
       router.push("/register");
     };
 
     const login = async () => {
-      const username = usernameForm.value;
-      const passwd = passwdForm.value;
-
-      const response = await loginUser(username,passwd)
-
-      //Vista socio
-      if(response.status === 200){
-        response.data.role === "socio" && router.push('/Home')
-        response.data.role === "admin" && router.push('/AdminHome')
+      const data = {
+        form: {
+          name: usernameForm.value,
+          password: passwdForm.value
+        }
       }
 
+      const response = await store.dispatch("login", data.form)
+
+      //   //Vista socio
+        if(response.status === 200){
+          response.data.role === "socio" && router.push('/Home')
+          response.data.role === "admin" && router.push('/AdminHome')
+        }
     };
 
     return {
       register,
       login,
       usernameForm,
-      passwdForm
-
+      passwdForm,
     };
   },
 };

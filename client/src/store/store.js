@@ -1,11 +1,12 @@
 import { createStore } from "vuex";
+import  createPersistedState  from  'vuex-persistedstate'
 const axios = require("axios");
 
 export default createStore({
   state: {
     //estados de la aplicacion
     user: {
-      name: null,
+      name: '',
       collections: [],
       cards: [],
       role: "",
@@ -17,24 +18,22 @@ export default createStore({
     // Actualizan los estados
     setUser(state, payload) {
       state.user.name = payload.name;
+      state.user.points = payload.points;
       state.auth = Boolean(payload);
     },
   },
   actions: {
     //Invocan mutations => Peticiones y commit a mutation
-    async login({ commit }, credentials) {
+    async login({ dispatch }, credentials) {
       const response = await axios.post(
         "http://localhost:8081/api/login",
         credentials
       );
 
-      console.log("RESPONSE: ", response.data);
-      commit("setUser", response.data);
-
+      dispatch('setUser', response.data)
       return response;
     },
     setUser(context, username){
-      console.log(username)
       context.commit('setUser', username)
     }
   },
@@ -47,4 +46,5 @@ export default createStore({
       return state.user.points;
     },
   },
+  plugins: [createPersistedState()]
 });
