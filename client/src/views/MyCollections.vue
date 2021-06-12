@@ -81,8 +81,19 @@ export default {
             this.cartasUser.push(responseId.data.name.toString())
             if(responseId.data.name.toString().search("Coche")){
                 this.cartas1++;
+                if(this.cartas1 > 0 && this.cartas1 < 10){
+        this.estateCollection1 = "Incompleta"
+      }else if(this.cartas1 == 10){
+        this.estateCollection1 = "Completada"
+      }
+     
             }else{
                 this.cartas2++;
+                 if(this.cartas2 > 0 && this.cartas2 < 10){
+        this.estateCollection2 = "Incompleta"
+      }else if(this.cartas2 == 10){
+        this.estateCollection2 = "Completada"
+      }
             }
         }
         i++;
@@ -97,21 +108,7 @@ export default {
         
 
     },
-    prepararCartas(){
-      console.log(this.cartasUser)
-      if(this.cartas1 > 0 && this.cartas1 < 10){
-        this.estateCollection1 = "Incompleta"
-      }else if(this.cartas1 == 10){
-        this.estateCollection1 = "Completada"
-      }
-      if(this.cartas2 > 0 && this.cartas2 < 10){
-        this.estateCollection2 = "Incompleta"
-      }else if(this.cartas2 == 10){
-        this.estateCollection2 = "Completada"
-      }
-      
-
-  },
+    
   },
   
   components: {
@@ -128,9 +125,8 @@ export default {
         }
   },
   beforeMount(){
-    this.login(),
-    this.prepararCartas()
- },
+    this.login()
+     },
  
 
     

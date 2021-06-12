@@ -11,7 +11,7 @@
 
     <ul class="mt-4 w-full flex flex-col items-center text-center list-none">
       <li class="w-full mt-4 hover:bg-green-300 rounded-full">
-        <router-link class="text-black block w-full" to="/collections"
+        <router-link class="text-black block w-full" to="/mycollections"
           >Mis Colecciones</router-link
         >
       </li>
@@ -25,6 +25,7 @@
           >Inicio</router-link
         >
       </li>
+      
     </ul>
     <router-view></router-view>
   </div>
