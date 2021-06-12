@@ -6,8 +6,8 @@
           <div class="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
                 <span>Bienvenido a tu tablero</span> <br>
-                <span style="font-size:60%" class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">Cartas Pokemon: {{cartas1}}/10 </span><br>
-                <span style="font-size:60%" class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">Cartas Coches: {{cartas2}}/10</span>
+                <span style="font-size:60%" class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">Cartas Pokemon: {{cartas1}}/10 ({{estateCollection1}}) </span><br>
+                <span style="font-size:60%" class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">Cartas Coches: {{cartas2}}/10 ({{estateCollection2}})</span>
 
             </h1>
           </div>
@@ -56,7 +56,7 @@ import { getCard } from '../services/Api';
 import { loginUser } from '../services/Api';
 
 export default {
-  name: "Gallery",
+  name: "MyCollections",
   methods: {
 
    
@@ -64,7 +64,7 @@ export default {
     
 
     async login(){
-    const username = "cr7";//cambiar
+        const username = "cr7";//cambiar
         const passwd = "1234";//cambiar
 
         const response = await loginUser(username,passwd)
@@ -99,9 +99,18 @@ export default {
     },
     prepararCartas(){
       console.log(this.cartasUser)
-      this.cartasUser.forEach(element => {
-          console.log(element)
-      });
+      if(this.cartas1 > 0 && this.cartas1 < 10){
+        this.estateCollection1 = "Incompleta"
+      }else if(this.cartas1 == 10){
+        this.estateCollection1 = "Completada"
+      }
+      if(this.cartas2 > 0 && this.cartas2 < 10){
+        this.estateCollection2 = "Incompleta"
+      }else if(this.cartas2 == 10){
+        this.estateCollection2 = "Completada"
+      }
+      
+
   },
   },
   
@@ -111,14 +120,11 @@ export default {
   },
   data: () => {
     return {
-      units: 0,
-      count: 0,
-      selected:"Coche 1",
-      priceCard: 200,
-      myPoints: 300,
       cartasUser :[],
       cartas1: 0,
-      cartas2: 0
+      cartas2: 0,
+      estateCollection1: "No iniciada",
+      estateCollection2: "No iniciada"
         }
   },
   beforeMount(){
