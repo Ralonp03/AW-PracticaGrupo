@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <TaskBar/>
-    <div class="Background">
-      <div class="Collections">
-          <h1 class="font-bold">COLECCIONES</h1>
-          <CarCollection title="Car Brand Collection" class="font-bold"/>
-          <PokemonCollection title="Pokemon Collection" class="font-bold"/>
+  <div class="flex">
+    <TaskBar />
+    <div class="container">
+      <div class="collections w-96">
+        <PokemonCollection />
+        <CarCollection />
       </div>
       <div class="Events">
-        <h1 class="font-bold">EVENTOS</h1>
+        <h1 class="Title">EVENTOS [*] Terminar de estilizar vista</h1>
         <p>Responde esta pregunta y gana puntos!</p>
         <p>¿De que elemento es el pokemon Pikachu?</p>
-        <input type="text" name="respuestaPregunta">
+        <img v-bind:src="require('../assets/Pokemons/Pokemon1.png')" alt="" />
+        <input type="text" name="respuestaPregunta" />
         <p>Resuelve este sencillo Captcha semanal!</p>
         <p><a href="https:/google.com/">Captcha</a></p>
       </div>
@@ -20,27 +20,19 @@
 </template>
 
 <script>
-import TaskBar from "../views/TaskBar.vue"
-import CarCollection from './Car-collection.vue'
-import PokemonCollection from './Pokemon-collection.vue'
-  export default {
-    name: 'Home',
-    components: {
-      TaskBar,
-      CarCollection,
-      PokemonCollection
+import TaskBar from "./TaskBar.vue";
+import PokemonCollection from "./PokemonCollection.vue";
+import CarCollection from "./CarCollection.vue";
+ 
+export default {
+  components: {
+    TaskBar,
+    PokemonCollection,
+    CarCollection,
+  },
+  setup(){
   }
-}
+};
 </script>
 
-<style>
-    .Background {
-      margin-left:10%;
-    }
-    .Collections {
-        text-align:center;
-    }
-    .Events {
-        text-align:center;
-    }
-</style>
+<style></style>
