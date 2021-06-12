@@ -34,7 +34,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/buyCard",
+    path: "/comprar",
     name: "BuyCard",
     component: BuyCard,
   },

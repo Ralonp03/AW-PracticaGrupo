@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-4 bg-blue-600 font-bold h-screen w-64 flex flex-col items-center"
+    class="p-4 bg-blue-600 font-bold h-screen w-64 flex flex-col items-center border-r-2 border-black"
   >
     <h2 class="font-serif">KioskoROC</h2>
     <img src="../assets/male.png" class="mt-4 h-16 w-16" />
@@ -16,7 +16,7 @@
         >
       </li>
       <li class="w-full mt-4 hover:bg-green-300 rounded-full">
-        <router-link class="text-black block w-full" to="/buyCard"
+        <router-link class="text-black block w-full" to="/comprar"
           >Comprar</router-link
         >
       </li>
