@@ -5,15 +5,13 @@
 
   <CarCollection title="Car Brand Collection" class="font-bold"/>
   <PokemonCollection title="Pokemon Collection" class="font-bold"/>
-  <button @click="home">Inicio</button>
-  <button @click="buyCard">Comprar</button>
 </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
-import CarCollection from './Car-collection.vue'
-import PokemonCollection from './Pokemon-collection.vue'
+import CarCollection from './CarCollection.vue'
+import PokemonCollection from './PokemonCollection.vue'
 export default {
     name: 'HomeVisitante',
     components: {

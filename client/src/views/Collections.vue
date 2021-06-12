@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import CarCollection from './Car-collection.vue'
-import PokemonCollection from './Pokemon-collection.vue'
+import CarCollection from './CarCollection.vue'
+import PokemonCollection from './PokemonCollection.vue'
 import TaskBar from './TaskBar.vue'
 export default {
     name: 'HomeVisitante',
