@@ -1,7 +1,7 @@
 <template>
   <div class="container w-2/5 h-96 mt-56 ml-auto mr-auto flex shadow-2xl">
     <div
-      class="form-section w-3/4 bg-white-500 rounded-l-lg flex flex-col justify-center content-center"
+      class="form-section w-3/4 bg-white-500 rounded-b-lg flex flex-col justify-center content-center bg-white shadow-2xl" 
     >
       <h2 class="mb-10 text-center">INICIE SESIÓN</h2>
       <form
@@ -82,7 +82,7 @@
           Introduzca sus datos personales y comience a coleccionar con nosotros
         </p>
         <button
-          class="h-12 w-48 bg-green-400 rounded-full text-white ml-auto mr-auto border-white-900"
+          class="h-12 w-48 bg-green-400 rounded-full text-white ml-auto mr-auto border-2 border-white-900"
           @click="register"
         >
           Registrarse

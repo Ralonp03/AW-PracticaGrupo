@@ -8,7 +8,7 @@
         <p class="break-words mb-10">
           Para acceder a su información inicie sesion con sus datos personales
         </p>
-        <button class="h-12 w-48 bg-green-400 rounded-full text-white ml-auto mr-auto hover:border-white-500" @click='singUp'>
+        <button class="h-12 w-48 bg-green-400 rounded-full text-white ml-auto mr-auto border-2 border-white-900" @click='singUp'>
           Iniciar sesión
         </button>
       </div>
