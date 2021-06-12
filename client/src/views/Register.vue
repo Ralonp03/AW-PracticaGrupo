@@ -57,20 +57,24 @@
 <script>
 import { useRouter } from "vue-router";
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 
-import { registerUser } from '../services/Api'
 export default {
   name: "Login",
   setup() {
     const router = useRouter();
+    const store = useStore()
     const usernameForm = ref("")
     const passwordForm = ref("")
 
     const register = async () => {
-      const username = usernameForm.value
-      const password = passwordForm.value
-
-      const response = await registerUser(username, password)
+      const data = {
+        form: {
+          name: usernameForm.value,
+          password : passwordForm.value
+        }
+      }
+      const response = await store.dispatch('register', data.form)
 
       response.status === 200 && router.push('/Home')
     };

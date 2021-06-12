@@ -3,8 +3,8 @@ require("./database/connection");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const partnersRouter = require('./controllers/partner.js')
-const loginRouter = require('./controllers/login.js')
+const registerRouter = require('./controllers/register.controller')
+const loginRouter = require('./controllers/login.controller.js')
 const adminRouter = require('./controllers/admin.js')
 const comprasRouter = require('./controllers/buyControl.js')
 const comprasRouter2 = require('./controllers/ComprarUnidades.js')
@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 //Partner routes
-app.use('/api/admin', adminRouter)
-app.use('/api/partners', partnersRouter)
+app.use('/api/register', registerRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/admin', adminRouter)
 app.use('/api/compras', comprasRouter)
 app.use('/api/compras2', comprasRouter2)
 app.use('/api/recopilar', recopilarRouter)

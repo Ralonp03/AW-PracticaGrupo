@@ -24,6 +24,12 @@ export default createStore({
   },
   actions: {
     //Invocan mutations => Peticiones y commit a mutation
+    async register({dispatch} , credentials) {
+      const response = await axios.post( "http://localhost:8081/api/register",
+      credentials)
+      dispatch('setUser', response.data)
+      return response
+    },
     async login({ dispatch }, credentials) {
       const response = await axios.post(
         "http://localhost:8081/api/login",
