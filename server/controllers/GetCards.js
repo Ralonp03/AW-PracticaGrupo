@@ -19,3 +19,33 @@ getCardRouter.post("/", async (req, res) => {
 });
 
 module.exports = getCardRouter;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
