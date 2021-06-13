@@ -6,7 +6,7 @@
     <img src="../assets/male.png" class="mt-4 h-16 w-16" />
     <p class="text-center">
       {{ username }}
-      <span class="text-green-400 font-bold"> {{ userPoints }} </span> puntos
+      <span class="text-green-400 font-bold"> {{ points }} </span> puntos
     </p>
 
     <ul class="mt-4 w-full flex flex-col items-center text-center list-none">

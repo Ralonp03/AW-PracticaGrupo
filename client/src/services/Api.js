@@ -2,18 +2,13 @@
 const axios = require('axios');
 
 const getInfoUser = async ( name ) => { //Funcion que obtiene los datos de un usuario
-    const response = await axios.post(`http://localhost:8081/api/users/${name}`, name)
-    
+    const response = await axios.get(`http://localhost:8081/api/users/${name}`)
     const { points } = response.data
     return points
 }
 
-const recopilarInfo = async (name) => { //Funcion que recopila informacion de una carta
-    const params = {
-        name
-    }
-
-    const response = await axios.post('http://localhost:8081/api/recopilar', params)
+const getInfoCard = async (name) => { //Funcion que recopila informacion de una carta
+    const response = await axios.get(`http://localhost:8081/api/cards/${name}`)
     return response
 }
 
@@ -72,4 +67,4 @@ const loginON = async(name) => {
 
 
 
-module.exports = { getInfoUser, updateDatas, compraCarta, deleteUnitsOfCard, recopilarInfo , getCard, loginON}
+module.exports = { getInfoUser, getInfoCard, updateDatas, compraCarta, deleteUnitsOfCard, getCard, loginON}

@@ -2,7 +2,7 @@ const usersRouter = require("express").Router();
 const User = require("../models/User");
 
 
-usersRouter.post("/:name", async (req, res) => {
+usersRouter.get("/:name", async (req, res) => {
 
     const { params } = req;
     const { name } = params

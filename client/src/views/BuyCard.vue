@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <TaskBar />
+    <TaskBar :points="myPoints"/>
     <div class="container">
       <div class="cajaGlobal h-full flex justify-center items-center">
         <div
@@ -217,7 +217,7 @@ import { useStore } from "vuex";
 import TaskBar from "../views/TaskBar.vue";
 import {
   getInfoUser,
-  recopilarInfo,
+  getInfoCard,
   compraCarta,
   deleteUnitsOfCard,
 } from "../services/Api";
@@ -249,7 +249,7 @@ export default {
     };
 
     const recopilar = async () => {
-      const response = await recopilarInfo(selected.value);
+      const response = await getInfoCard(selected.value);
       if (response.status === 200) {
         priceCard.value = response.data.price;
         units.value = response.data.units;
