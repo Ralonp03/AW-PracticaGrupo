@@ -197,7 +197,7 @@
             </button>
           </div>
           <div class="mt-8 w-full">
-            <button
+            <button id="botn"
               v-on:click.prevent="buy"
               class="h-12 bg-blue-500 rounded-full font-bold text-white w-full hover:bg-blue-600"
             >
@@ -250,8 +250,16 @@ export default {
     const recopilar = async () => {
       const response = await getInfoCard(selected.value);
       if (response.status === 200) {
+          if(response.data.state == "active"){
+        document.getElementById("botn").style.visibility  = "visible";
         priceCard.value = response.data.price;
         units.value = response.data.units;
+          }else{
+            alert("Carta no disponible")
+         priceCard.value = response.data.price;
+        units.value = response.data.units;
+            document.getElementById("botn").style.visibility  = "hidden";
+          }
       }
     };
 
