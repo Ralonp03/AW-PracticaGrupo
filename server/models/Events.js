@@ -4,8 +4,8 @@ const { model, Schema } = mongoose;
 
 const eventSchema = new Schema({
   question: String,
-  pointsWin: String,
-  answer: Number,
+  pointsWin: Number,
+  answer: String,
 });
 
 //Se eliminan aquellos campos que no queremos representar
