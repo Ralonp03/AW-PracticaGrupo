@@ -103,7 +103,7 @@ export default {
             //Error al actualizar los datos
         }
         return {
-            compruebaEvento, 
+            comprobarEvento, 
             question,
             answer
         }
