@@ -6,7 +6,7 @@
     <img src="../assets/male.png" class="mt-4 h-16 w-16" />
     <p class="text-center">
       {{ username }}
-      <span class="text-green-400 font-bold"> {{ points }} </span> puntos
+      <span class="text-green-400 font-bold"> {{ userPoints }} </span> puntos
     </p>
 
     <ul class="mt-4 w-full flex flex-col items-center text-center list-none">
@@ -18,6 +18,11 @@
       <li class="w-full mt-4 hover:bg-green-300 rounded-full">
         <router-link class="text-black block w-full" to="/comprar"
           >Comprar</router-link
+        >
+      </li>
+      <li class="w-full mt-4 hover:bg-green-300 rounded-full">
+        <router-link class="text-black block w-full" to="/event"
+          >Eventos</router-link
         >
       </li>
       <li class="w-full mt-4 hover:bg-green-300 rounded-full">
@@ -37,20 +42,16 @@ import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import { useRouter } from 'vue-router'
 import { ref } from "vue";
-import { getInfoUser } from '../services/Api'
 export default {
-  props: {
-    points: Number
-  },
   setup() {
     const store = useStore();
     const router = useRouter()
     const username = ref("");
     const userPoints = ref("");
 
-    onMounted(async () => {
+    onMounted(() => {
       username.value = store.getters.getUserName;
-      userPoints.value = await getInfoUser(username.value)
+      userPoints.value = store.getters.getUserPoints;
     });
 
     const logout = () => {
