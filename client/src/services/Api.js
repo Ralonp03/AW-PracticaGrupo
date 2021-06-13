@@ -83,4 +83,4 @@ const loginON = async(name) => {
 
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard,loginON}
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON}
