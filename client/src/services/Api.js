@@ -1,17 +1,23 @@
 //Conexion a los endpoints del backend
 const axios = require('axios');
 
-const loginUser = async (name, password) => {
+const getInfoUser = async ( name ) => { //Funcion que obtiene los datos de un usuario
+    const response = await axios.post(`http://localhost:8081/api/users/${name}`, name)
+    
+    const { points } = response.data
+    return points
+}
+
+const recopilarInfo = async (name) => { //Funcion que recopila informacion de una carta
     const params = {
-        name,
-        password
+        name
     }
 
-    const response = await axios.post('http://localhost:8081/api/login', params)
+    const response = await axios.post('http://localhost:8081/api/recopilar', params)
     return response
 }
 
-const consultaPrueba = async (nameUsuario, userPoints, name) => {
+const compraCarta = async (nameUsuario, userPoints, name) => {
     const params = {
         nameUsuario,
         userPoints,
@@ -32,14 +38,6 @@ const deleteUnitsOfCard = async (cardName,cardUnits) => {
     return response
 }
 
-const recopilar = async (name) => {
-    const params = {
-        name
-    }
-
-    const response = await axios.post('http://localhost:8081/api/recopilar', params)
-    return response
-}
 
 const updateDatas = async (cardUnits, cardPrice, cardName) => {
     const params = {
@@ -52,16 +50,7 @@ const updateDatas = async (cardUnits, cardPrice, cardName) => {
     return response
 }
 
-const registerUser = async(name, password) => {
-    const params = {
-        name,
-        password
-    }
 
-
-    const response = await axios.post('http://localhost:8081/api/partners/register', params)
-    return response
-}
 const getCard = async(name) => {
     const params = {
         name
@@ -83,4 +72,4 @@ const loginON = async(name) => {
 
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON}
+module.exports = { getInfoUser, updateDatas, compraCarta, deleteUnitsOfCard, recopilarInfo , getCard, loginON}
