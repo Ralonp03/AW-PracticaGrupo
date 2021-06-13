@@ -11,7 +11,7 @@ const comprasRouter2 = require('./controllers/ComprarUnidades.js')
 const recopilarRouter = require('./controllers/RecopilarDatos.js')
 const getCardRouter = require('./controllers/GetCards.js')
 const loginON = require('./controllers/loginON.js')
-
+const compruebaPregunta = require('./controllers/ControlPregunta.js')
 
 
 const app = express();
@@ -34,6 +34,7 @@ app.use('/api/compras2', comprasRouter2)
 app.use('/api/recopilar', recopilarRouter)
 app.use('/api/getCard', getCardRouter)
 app.use('/api/loginON', loginON)
+app.use('/api/compruebaPregunta', compruebaPregunta)
 
 
 
