@@ -181,10 +181,11 @@
 
 <script>
 import TaskBar from "../views/TaskBar.vue";
-import { loginUser } from "../services/Api";
 import { consultaPrueba } from "../services/Api";
 import { deleteUnitsOfCard } from "../services/Api";
 import { recopilar } from "../services/Api";
+import { useStore } from "vuex";
+
 
 export default {
   name: "Gallery",
@@ -217,7 +218,7 @@ export default {
           this.units = this.units - this.count;
         }
 
-        var nameUsuario = "cr7";
+        var nameUsuario = this.myUser;
         var userPoints = this.myPoints;
         var cardName = this.selected;
         var name = this.selected;
@@ -242,16 +243,11 @@ export default {
     },
 
     async login() {
-      const username = "cr7";
-      const passwd = "1234";
+      const store = useStore();
+      this.myPoints  = store.getters.getUserPoints;
+      this.myUser  =  store.getters.getUserName;
 
-      const response = await loginUser(username, passwd);
 
-      //Vista socio
-      if (response.status === 200) {
-        this.myPoints = response.data.points;
-        // response.data.role === "admin" && router.push('/AdminHome')
-      }
     },
   },
   components: {
@@ -264,10 +260,12 @@ export default {
       selected: "Coche1",
       priceCard: 0,
       myPoints: 0,
+      myUser:''
     };
   },
   beforeMount() {
-    this.login(), this.recopilar();
+    this.login(),
+     this.recopilar();
   },
 };
 </script>
