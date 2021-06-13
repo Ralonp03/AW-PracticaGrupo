@@ -11,11 +11,16 @@ getCardRouter.post("/", async (req, res) => {
     const { name } = body;
     var o_id = new ObjectId(name);
     const cardFound = await Card.findOne({_id :  o_id })
-    res.send({
-        name: cardFound.name,
-        price: cardFound.price,
-        units: cardFound.units
-    })
+    if(cardFound === null){
+
+    } else {
+        res.send({
+            name: cardFound.name,
+            price: cardFound.price,
+            units: cardFound.units
+        })
+    }
+    
 });
 
 module.exports = getCardRouter;
