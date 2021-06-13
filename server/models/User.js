@@ -19,6 +19,7 @@ const userSchema = new Schema({
       ref: "Card",
     },
   ],
+  collectionState: String
 });
 
 //Se eliminan aquellos campos que no queremos representar

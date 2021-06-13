@@ -9,8 +9,16 @@ const cardSchema = new Schema({
   name: String,
   price: Number,
   units: Number,
-  state: String
+  state: String,
+  belongs_to: String
   
+});
+
+//Se eliminan aquellos campos que no queremos representar
+cardSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    delete returnedObject.__v;
+  },
 });
 
 const Card = model("card", cardSchema);
