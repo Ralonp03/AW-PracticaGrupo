@@ -81,7 +81,7 @@ const loginON = async(name) => {
     return response
 }
 
-const compruebaEvento = async(question,answer) => {
+const comprobarEvento = async(question,answer) => {
     console.log("paso1");
     const params = {
         question,
@@ -95,4 +95,4 @@ const compruebaEvento = async(question,answer) => {
 
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, compruebaEvento}
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento}
