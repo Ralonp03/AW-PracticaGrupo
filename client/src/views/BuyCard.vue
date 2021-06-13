@@ -185,6 +185,7 @@ import { consultaPrueba } from "../services/Api";
 import { deleteUnitsOfCard } from "../services/Api";
 import { recopilar } from "../services/Api";
 import { useStore } from "vuex";
+import { loginON } from '../services/Api';
 
 
 export default {
@@ -244,9 +245,12 @@ export default {
 
     async login() {
       const store = useStore();
-      this.myPoints  = store.getters.getUserPoints;
+      const response = await loginON(store.getters.getUserName)
       this.myUser  =  store.getters.getUserName;
 
+        if(response.status === 200){
+            this.myPoints  = response.data.points;
+        }
 
     },
   },
@@ -265,7 +269,7 @@ export default {
   },
   beforeMount() {
     this.login(),
-     this.recopilar();
+    this.recopilar();
   },
 };
 </script>
