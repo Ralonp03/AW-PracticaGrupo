@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <template>
   <div class="flex">
     <TaskBar :points="myPoints"/>
@@ -299,4 +297,3 @@ img.card {
   border: 4px solid rgba(0, 128, 0, 0.452);
 }
 </style>
->>>>>>> parent of 722861e (carta inactiva/activa implementado)
