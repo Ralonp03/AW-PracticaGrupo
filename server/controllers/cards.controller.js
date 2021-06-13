@@ -9,8 +9,7 @@ cardsRouter.get("/:name", async (req, res) => {
     res.send({
         name: cardFound.name,
         price: cardFound.price,
-        units: cardFound.units,
-        state: cardFound.state
+        units: cardFound.units
     })
 });
 
