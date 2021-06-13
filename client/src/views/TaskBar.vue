@@ -25,6 +25,11 @@
           >Inicio</router-link
         >
       </li>
+      <li class="w-full mt-4 hover:bg-green-300 rounded-full">
+        <router-link class="text-black block w-full" to="/event"
+          >Eventos</router-link
+        >
+      </li>
       
     </ul>
     <button @click="logout" class="w-64 text-center bg-gray-200 absolute bottom-4 border-4 border-red-600 rounded-full">Cerrar sesión</button>
