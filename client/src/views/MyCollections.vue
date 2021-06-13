@@ -1,9 +1,10 @@
 <template>
 <div>
+    <div class="flex">
+
     <TaskBar/>
     <div class="Background">
       <div class="Collections">
-          <div class="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
                 <span>Bienvenido a tu tablero</span> <br>
                 <span style="font-size:60%" class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">Cartas Pokemon: {{cartas1}}/10 ({{estateCollection1}}) </span><br>
@@ -44,16 +45,19 @@
 
       </div>
     </div>
-          </div>
 </div>
 
 </div>
+</div>
+
 </template>
 
 <script>
 import TaskBar from "../views/TaskBar.vue";
 import { getCard } from '../services/Api';
-import { loginUser } from '../services/Api';
+import { loginON } from '../services/Api';
+import { useStore } from "vuex";
+
 
 export default {
   name: "MyCollections",
@@ -64,10 +68,11 @@ export default {
     
 
     async login(){
-        const username = "cr7";//cambiar
-        const passwd = "1234";//cambiar
+    const store = useStore();
 
-        const response = await loginUser(username,passwd)
+        let username = store.getters.getUserName;
+
+        const response = await loginON(username)
 
         if(response.status === 200){
         let error = false;
@@ -135,16 +140,9 @@ export default {
 </script>
 
 <style>
-    .Background {
-      margin-left:10%;
-    }
-    .Collections {
-        text-align:center;
-    }
-    .Events {
-        text-align:center;
-    }
-    .img{
-        display:inline;
-    }
+.Background{
+  width: 100%;
+  margin-left: 0px;
+}
+    
 </style>

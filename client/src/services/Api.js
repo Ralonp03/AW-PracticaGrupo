@@ -71,7 +71,16 @@ const getCard = async(name) => {
     const response = await axios.post('http://localhost:8081/api/getCard', params)
     return response
 }
+const loginON = async(name) => {
+    const params = {
+        name
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/loginON', params)
+    return response
+}
 
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard}
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard,loginON}
