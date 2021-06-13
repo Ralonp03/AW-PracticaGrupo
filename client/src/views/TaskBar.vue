@@ -6,7 +6,7 @@
     <img src="../assets/male.png" class="mt-4 h-16 w-16" />
     <p class="text-center">
       {{ username }}
-      <span class="text-green-400 font-bold"> {{ userPoints }} </span> puntos
+      <span class="text-green-400 font-bold"> {{ points }} </span> puntos
     </p>
 
     <ul class="mt-4 w-full flex flex-col items-center text-center list-none">
@@ -37,16 +37,20 @@ import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import { useRouter } from 'vue-router'
 import { ref } from "vue";
+import { getInfoUser } from '../services/Api'
 export default {
+  props: {
+    points: Number
+  },
   setup() {
     const store = useStore();
     const router = useRouter()
     const username = ref("");
     const userPoints = ref("");
 
-    onMounted(() => {
+    onMounted(async () => {
       username.value = store.getters.getUserName;
-      userPoints.value = store.getters.getUserPoints;
+      userPoints.value = await getInfoUser(username.value)
     });
 
     const logout = () => {
