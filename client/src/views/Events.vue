@@ -67,7 +67,7 @@ import TaskBar from "./TaskBar.vue";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import { ref } from "vue";
-import { compruebaEvento } from '../services/Api';
+import { comprobarEvento } from '../services/Api';
 export default {
   name: "Events",
   components: {
@@ -94,7 +94,7 @@ export default {
         const answer = "prueba";
         console.log(question);
         console.log(answer);
-        const response = await compruebaEvento(question,answer)
+        const response = await comprobarEvento(question,answer)
 
         if(response.status === 200){
             //Datos actualizados

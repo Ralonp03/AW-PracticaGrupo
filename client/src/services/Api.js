@@ -81,6 +81,16 @@ const loginON = async(name) => {
     return response
 }
 
+const comprobarEvento = async(question,answer) => {
+    console.log("paso1");
+    const params = {
+        question,
+        answer
+    }
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON}
+    const response = await axios.post('http://localhost:8081/api/compruebaPregunta', params)
+    return response
+}
+
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, comprobarEvento, loginON}
