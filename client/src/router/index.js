@@ -7,7 +7,6 @@ import BuyCard from "../views/BuyCard.vue";
 import Collections from "../views/Collections.vue";
 import AdminHome from "../views/AdminHome.vue";
 import MyCollections from "../views/MyCollections.vue";
-import event from "../views/Events.vue";
 const routes = [
   {
     path: "/",
@@ -48,11 +47,6 @@ const routes = [
     path: "/mycollections",
     name: "MyCollections",
     component: MyCollections,
-  },
-  {
-    path: "/event",
-    name: "Event",
-    component: event,
   }
 ];
 
