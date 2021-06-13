@@ -4,8 +4,8 @@ const { model, Schema } = mongoose;
 
 const eventSchema = new Schema({
   question: String,
-  pointsWin: String,
-  answer: Number,
+  pointsWin: Number,
+  answer: String,
 });
 
 //Se eliminan aquellos campos que no queremos representar
@@ -20,3 +20,4 @@ eventSchema.set("toJSON", {
 const Event = model("event", eventSchema);
 
 module.exports = Event;
+
