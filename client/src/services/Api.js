@@ -1,72 +1,88 @@
 //Conexion a los endpoints del backend
-const axios = require('axios');
+const axios = require("axios");
 
-const getInfoUser = async ( name ) => { //Funcion que obtiene los datos de un usuario
-    const response = await axios.get(`http://localhost:8081/api/users/${name}`)
-    const { points } = response.data
-    return points
-}
+const getInfoUser = async (name) => {
+  //Funcion que obtiene los datos de un usuario
+  const response = await axios.get(`http://localhost:8081/api/users/${name}`);
+  const { points } = response.data;
+  return points;
+};
 
-const getInfoCard = async (name) => { //Funcion que recopila informacion de una carta
-    const response = await axios.get(`http://localhost:8081/api/cards/${name}`)
-    return response
-}
+const getInfoCard = async (name) => {
+  //Funcion que recopila informacion de una carta
+  const response = await axios.get(`http://localhost:8081/api/cards/${name}`);
+  return response;
+};
 
 const compraCarta = async (nameUsuario, userPoints, name) => {
-    const params = {
-        nameUsuario,
-        userPoints,
-        name
-    }
+  const params = {
+    nameUsuario,
+    userPoints,
+    name,
+  };
 
-    const response = await axios.post('http://localhost:8081/api/compras', params)
-    return response
-}
+  const response = await axios.post(
+    "http://localhost:8081/api/compras",
+    params
+  );
+  return response;
+};
 
-const deleteUnitsOfCard = async (cardName,cardUnits) => {
-    const params = {
-        cardName,
-        cardUnits,
-    }
+const deleteUnitsOfCard = async (cardName, cardUnits) => {
+  const params = {
+    cardName,
+    cardUnits,
+  };
 
-    console.log(params)
+  console.log(params);
 
-    const response = await axios.put(`http://localhost:8081/api/cards/deleteCard/${cardName}`, params)
-    return response
-}
-
+  const response = await axios.put(
+    `http://localhost:8081/api/cards/deleteCard/${cardName}`,
+    params
+  );
+  return response;
+};
 
 const updateDatas = async (cardUnits, cardPrice, cardName) => {
-    const params = {
-        cardUnits,
-        cardPrice,
-        cardName
-    }
+  const params = {
+    cardUnits,
+    cardPrice,
+    cardName,
+  };
 
-    const response = await axios.post('http://localhost:8081/api/admin', params)
-    return response
-}
+  const response = await axios.post("http://localhost:8081/api/admin", params);
+  return response;
+};
 
+const getCard = async (name) => {
+  const params = {
+    name,
+  };
 
-const getCard = async(name) => {
-    const params = {
-        name
-    }
+  const response = await axios.post(
+    "http://localhost:8081/api/getCard",
+    params
+  );
+  return response;
+};
+const loginON = async (name) => {
+  const params = {
+    name,
+  };
 
+  const response = await axios.post(
+    "http://localhost:8081/api/loginON",
+    params
+  );
+  return response;
+};
 
-    const response = await axios.post('http://localhost:8081/api/getCard', params)
-    return response
-}
-const loginON = async(name) => {
-    const params = {
-        name
-    }
-
-
-    const response = await axios.post('http://localhost:8081/api/loginON', params)
-    return response
-}
-
-
-
-module.exports = { getInfoUser, getInfoCard, updateDatas, compraCarta, deleteUnitsOfCard, getCard, loginON}
+module.exports = {
+  getInfoUser,
+  getInfoCard,
+  updateDatas,
+  compraCarta,
+  deleteUnitsOfCard,
+  getCard,
+  loginON,
+};

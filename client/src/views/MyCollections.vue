@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex">
-      <TaskBar :points="pointsUser"/>
+      <TaskBar :points="pointsUser" />
       <div class="w-full">
         <div class="Collections">
           <h1
@@ -192,9 +192,9 @@ import TaskBar from "../views/TaskBar.vue";
 // import { getCard } from "../services/Api";
 // import { useStore } from "vuex";
 import { ref } from "vue";
-import { useStore } from 'vuex'
+import { useStore } from "vuex";
 import { onMounted } from "@vue/runtime-core";
-import { getInfoUser } from '../services/Api'
+import { getInfoUser } from "../services/Api";
 
 export default {
   name: "MyCollections",
@@ -202,53 +202,55 @@ export default {
     TaskBar,
   },
   setup() {
-    const pointsUser = ref(0)
+    const pointsUser = ref(0);
     const cartasUser = ref([]);
     const cartas1 = ref(0);
     const cartas2 = ref(0);
     const estateCollection1 = ref("No iniciada");
     const estateCollection2 = ref("No iniciada");
-    const store = useStore()
+    const store = useStore();
 
-    onMounted(async ()=>{
-      pointsUser.value = await getInfoUser(store.getters.getUserName); 
-    })
+    onMounted(async () => {
+      pointsUser.value = await getInfoUser(store.getters.getUserName);
+    });
     // let error = false;
-    // let i = 0;
-
-    return {pointsUser,cartasUser,cartas1,cartas2,estateCollection1,estateCollection2 };
-    //     while(error == false){
-    //         try{
-    //     let elementoCard = response.data.cards[i]
-    //     let responseId = await getCard(elementoCard)
-
-    //     if(responseId.status === 200){
-    //         this.cartasUser.push(responseId.data.name.toString())
-    //         if(responseId.data.name.toString().search("Coche")){
-    //             this.cartas1++;
-    //             if(this.cartas1 > 0 && this.cartas1 < 10){
-    //     this.estateCollection1 = "Incompleta"
-    //   }else if(this.cartas1 == 10){
-    //     this.estateCollection1 = "Completada"
+    // // let i = 0;
+    // while (error == false) {
+    //   try{
+    //   //     let elementoCard = response.data.cards[i]
+    //   //     let responseId = await getCard(elementoCard)
+    //   //     if(responseId.status === 200){
+    //   //         this.cartasUser.push(responseId.data.name.toString())
+    //   //         if(responseId.data.name.toString().search("Coche")){
+    //   //             this.cartas1++;
+    //   //             if(this.cartas1 > 0 && this.cartas1 < 10){
+    //   //     this.estateCollection1 = "Incompleta"
+    //   //   }else if(this.cartas1 == 10){
+    //   //     this.estateCollection1 = "Completada"
+    //   //   }
+    //   //         }else{
+    //   //             this.cartas2++;
+    //   //              if(this.cartas2 > 0 && this.cartas2 < 10){
+    //   //     this.estateCollection2 = "Incompleta"
+    //   //   }else if(this.cartas2 == 10){
+    //   //     this.estateCollection2 = "Completada"
+    //   //   }
+    //   //         }
+    //   //     }
+    //   //     i++;
+    //   }catch(e){
+    //     error = true
     //   }
+    // }
 
-    //         }else{
-    //             this.cartas2++;
-    //              if(this.cartas2 > 0 && this.cartas2 < 10){
-    //     this.estateCollection2 = "Incompleta"
-    //   }else if(this.cartas2 == 10){
-    //     this.estateCollection2 = "Completada"
-    //   }
-    //         }
-    //     }
-    //     i++;
-    //         }catch(e){
-    //             error = true
-
-    //         }
-
-    //     }
-    
+    return {
+      pointsUser,
+      cartasUser,
+      cartas1,
+      cartas2,
+      estateCollection1,
+      estateCollection2,
+    };
   },
 };
 </script>

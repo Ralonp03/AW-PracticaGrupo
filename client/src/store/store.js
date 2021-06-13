@@ -46,7 +46,7 @@ export default createStore({
   modules: {},
   getters: {
     getUserName: (state) => {
-      return state.user.name;
+      return state.username;
     },
   },
   plugins: [createPersistedState()]
