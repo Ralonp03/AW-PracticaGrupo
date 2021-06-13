@@ -22,13 +22,24 @@ import TaskBar from "./TaskBar.vue";
 import PokemonCollection from "./PokemonCollection.vue";
 import CarCollection from "./CarCollection.vue";
 
+import{ useStore } from 'vuex'
+import { useRouter } from "vue-router";
+import { onMounted } from "@vue/runtime-core";
+
 export default {
   components: {
     TaskBar,
     PokemonCollection,
     CarCollection,
   },
-  setup() {},
+  setup() {
+    const router = useRouter()
+    const store = useStore()
+
+    onMounted(() => {
+      !store.state.auth && router.push('/login')
+    })
+  },
 };
 </script>
 

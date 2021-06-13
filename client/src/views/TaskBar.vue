@@ -27,6 +27,7 @@
       </li>
       
     </ul>
+    <button @click="logout" class="w-64 text-center bg-gray-200 absolute bottom-4 border-4 border-red-600 rounded-full">Cerrar sesión</button>
     <router-view></router-view>
   </div>
 </template>
@@ -34,10 +35,12 @@
 <script>
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
+import { useRouter } from 'vue-router'
 import { ref } from "vue";
 export default {
   setup() {
     const store = useStore();
+    const router = useRouter()
     const username = ref("");
     const userPoints = ref("");
 
@@ -46,7 +49,13 @@ export default {
       userPoints.value = store.getters.getUserPoints;
     });
 
-    return { username, userPoints };
+    const logout = () => {
+      store.dispatch('logout')
+      router.replace('/')
+    }
+
+
+    return { username, userPoints, logout };
   },
 };
 </script>

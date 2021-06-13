@@ -26,17 +26,10 @@ export default {
         const register = () => {
             route.push('/register')
         }
-        const home = () => {
-            route.push('/home')
-        }
-        const buyCard = () => {
-            route.push('/buyCard')
-        }
+
         return {
             login,
             register,
-            home,
-            buyCard,
         }
     }
 }

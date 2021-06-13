@@ -21,6 +21,10 @@ export default createStore({
       state.user.points = payload.points;
       state.auth = Boolean(payload);
     },
+    logout(state){
+      state.auth = false //Persistir durante 30'
+      //Borrar token de localStorage
+    }
   },
   actions: {
     //Invocan mutations => Peticiones y commit a mutation
@@ -38,6 +42,9 @@ export default createStore({
 
       dispatch('setUser', response.data)
       return response;
+    },
+    logout({ commit }){
+      commit('logout')
     },
     setUser(context, username){
       context.commit('setUser', username)
