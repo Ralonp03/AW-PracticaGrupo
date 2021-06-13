@@ -1,88 +1,119 @@
 //Conexion a los endpoints del backend
-const axios = require("axios");
+const axios = require('axios');
 
-const getInfoUser = async (name) => {
-  //Funcion que obtiene los datos de un usuario
-  const response = await axios.get(`http://localhost:8081/api/users/${name}`);
-  const { points } = response.data;
-  return points;
-};
+const loginUser = async (name, password) => {
+    const params = {
+        name,
+        password
+    }
 
-const getInfoCard = async (name) => {
-  //Funcion que recopila informacion de una carta
-  const response = await axios.get(`http://localhost:8081/api/cards/${name}`);
-  return response;
-};
+    const response = await axios.post('http://localhost:8081/api/login', params)
+    return response
+}
 
-const compraCarta = async (nameUsuario, userPoints, name) => {
-  const params = {
-    nameUsuario,
-    userPoints,
-    name,
-  };
+const consultaPrueba = async (nameUsuario, userPoints, name) => {
+    const params = {
+        nameUsuario,
+        userPoints,
+        name
+    }
 
-  const response = await axios.post(
-    "http://localhost:8081/api/compras",
-    params
-  );
-  return response;
-};
+    const response = await axios.post('http://localhost:8081/api/compras', params)
+    return response
+}
 
-const deleteUnitsOfCard = async (cardName, cardUnits) => {
-  const params = {
-    cardName,
-    cardUnits,
-  };
+const deleteUnitsOfCard = async (cardName,cardUnits) => {
+    const params = {
+        cardName,
+        cardUnits,
+    }
 
-  console.log(params);
+    const response = await axios.post('http://localhost:8081/api/compras2', params)
+    return response
+}
 
-  const response = await axios.put(
-    `http://localhost:8081/api/cards/deleteCard/${cardName}`,
-    params
-  );
-  return response;
-};
+const recopilar = async (name) => {
+    const params = {
+        name
+    }
+
+    const response = await axios.post('http://localhost:8081/api/recopilar', params)
+    return response
+}
 
 const updateDatas = async (cardUnits, cardPrice, cardName) => {
-  const params = {
-    cardUnits,
-    cardPrice,
-    cardName,
-  };
+    const params = {
+        cardUnits,
+        cardPrice,
+        cardName
+    }
 
-  const response = await axios.post("http://localhost:8081/api/admin", params);
-  return response;
-};
+    const response = await axios.post('http://localhost:8081/api/admin', params)
+    return response
+}
 
-const getCard = async (name) => {
-  const params = {
-    name,
-  };
+const registerUser = async(name, password) => {
+    const params = {
+        name,
+        password
+    }
 
-  const response = await axios.post(
-    "http://localhost:8081/api/getCard",
-    params
-  );
-  return response;
-};
-const loginON = async (name) => {
-  const params = {
-    name,
-  };
 
-  const response = await axios.post(
-    "http://localhost:8081/api/loginON",
-    params
-  );
-  return response;
-};
+    const response = await axios.post('http://localhost:8081/api/partners/register', params)
+    return response
+}
+const getCard = async(name) => {
+    const params = {
+        name
+    }
 
-module.exports = {
-  getInfoUser,
-  getInfoCard,
-  updateDatas,
-  compraCarta,
-  deleteUnitsOfCard,
-  getCard,
-  loginON,
-};
+
+    const response = await axios.post('http://localhost:8081/api/getCard', params)
+    return response
+}
+const loginON = async(name) => {
+    const params = {
+        name
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/loginON', params)
+    return response
+}
+
+const comprobarEvento = async(question,answer) => {
+    const params = {
+        question,
+        answer
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/compruebaPregunta', params)
+    return response
+}
+
+const bonificacionEvento = async(nameUser,pointsUser) => {
+    const params = {
+        nameUser,
+        pointsUser
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/bonificacion', params)
+    return response
+}
+
+const updateAdivinanza = async(question,answer) => {
+    const params = {
+        question,
+        answer
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/compruebaAdivinanza', params)
+    return response
+}
+
+
+
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento, bonificacionEvento, updateAdivinanza}

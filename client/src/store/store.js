@@ -4,14 +4,21 @@ const axios = require("axios");
 
 export default createStore({
   state: {
-    //estado de la aplicacion
-    username: '',
+    //estados de la aplicacion
+    user: {
+      name: '',
+      collections: [],
+      cards: [],
+      role: "",
+      points: 0,
+    },
     auth: false,
   },
   mutations: {
     // Actualizan los estados
     setUser(state, payload) {
-      state.username = payload.name;
+      state.user.name = payload.name;
+      state.user.points = payload.points;
       state.auth = Boolean(payload);
     },
     logout(state){
@@ -39,14 +46,17 @@ export default createStore({
     logout({ commit }){
       commit('logout')
     },
-    setUser({ commit }, username){
-      commit('setUser', username)
-    },
+    setUser(context, username){
+      context.commit('setUser', username)
+    }
   },
   modules: {},
   getters: {
     getUserName: (state) => {
-      return state.username;
+      return state.user.name;
+    },
+    getUserPoints: (state) => {
+      return state.user.points;
     },
   },
   plugins: [createPersistedState()]
