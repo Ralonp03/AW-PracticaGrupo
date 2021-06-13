@@ -29,7 +29,9 @@ const deleteUnitsOfCard = async (cardName,cardUnits) => {
         cardUnits,
     }
 
-    const response = await axios.post('http://localhost:8081/api/compras2', params)
+    console.log(params)
+
+    const response = await axios.put(`http://localhost:8081/api/cards/deleteCard/${cardName}`, params)
     return response
 }
 

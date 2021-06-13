@@ -233,7 +233,6 @@ export default {
     const units = ref(0);
     const myPoints = ref(0);
     const count = ref(0);
-    const myUser = ref("");
     const store = useStore();
 
     onMounted(async () => {
@@ -264,12 +263,12 @@ export default {
         myPoints.value = myPoints.value - count.value * priceCard.value;
         if (units.value >= count.value) units.value = units.value - count.value;
 
-        const nameUsuario = myUser.value;
+        const nameUsuario = store.getters.getUserName;
         const userPoints = myPoints.value;
         const cardName = selected.value;
 
         await compraCarta(nameUsuario, userPoints, cardName);
-        await deleteUnitsOfCard(cardName, this.units);
+        await deleteUnitsOfCard(cardName, units.value);
       }
     };
 
