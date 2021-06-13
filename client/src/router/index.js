@@ -7,7 +7,7 @@ import BuyCard from "../views/BuyCard.vue";
 import Collections from "../views/Collections.vue";
 import AdminHome from "../views/AdminHome.vue";
 import MyCollections from "../views/MyCollections.vue";
-import Events from "../views/Events.vue";
+import event from "../views/Events.vue";
 const routes = [
   {
     path: "/",
@@ -51,8 +51,8 @@ const routes = [
   },
   {
     path: "/event",
-    name: "Events",
-    component: Events,
+    name: "Event",
+    component: event,
   }
 ];
 
