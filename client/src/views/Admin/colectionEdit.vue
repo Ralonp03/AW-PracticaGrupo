@@ -140,50 +140,112 @@
               alt=""
               class="card"
             />
-            <!--
             <img
               v-if="selected == 'Coche4'"
-              v-bind:src="require(`../assets/Coches/Coche4.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche4.png`)"
               alt=""
               class="card"
             />
             <img
               v-if="selected == 'Coche5'"
-              v-bind:src="require(`../assets/Coches/Coche5.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche5.png`)"
               alt=""
               class="card"
             />
             <img
               v-if="selected == 'Coche6'"
-              v-bind:src="require(`../assets/Coches/Coche6.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche6.png`)"
               alt=""
               class="card"
             />
             <img
               v-if="selected == 'Coche7'"
-              v-bind:src="require(`../assets/Coches/Coche7.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche7.png`)"
               alt=""
               class="card"
             />
             <img
               v-if="selected == 'Coche8'"
-              v-bind:src="require(`../assets/Coches/Coche8.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche8.png`)"
               alt=""
               class="card"
             />
             <img
               v-if="selected == 'Coche9'"
-              v-bind:src="require(`../assets/Coches/Coche9.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche9.png`)"
               alt=""
               class="card"
             />
             <img
               v-if="selected == 'Coche10'"
-              v-bind:src="require(`../assets/Coches/Coche10.png`)"
+              v-bind:src="require(`../../assets/Coches/Coche10.png`)"
               alt=""
               class="card" 
-            /> -->
+            />
             </div>
+            <div v-if="selected == 'Pokemon'" class="image__side bg-red-600 h-96 w-64 absolute right-40">
+              <img
+                v-if="cardSelected == 'Pokemon1'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon1.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+              v-if="cardSelected == 'Pokemon2'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon2.png`)"
+              alt=""
+              class="h-96 w-64"
+            />
+             <img
+              v-if="cardSelected == 'Pokemon3'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon3.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon4'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon4.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon5'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon5.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon6'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon6.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon7'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon7.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon8'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon8.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon9'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon9.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon10'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon10.jpg`)"
+              alt=""
+              class="card" 
+            />
+            </div>
+            
           </div>
         </div>
       </div>
