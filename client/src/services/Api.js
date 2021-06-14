@@ -5,6 +5,7 @@ const axios = require("axios");
 const getAllUsers = async() => {
   const response = await axios.get(`http://localhost:8081/api/users/allusers`);
   return response
+}
 const getInfoUser = async (name) => {
     //Funcion que obtiene los datos de un usuario
     const response = await axios.get(`http://localhost:8081/api/users/${name}`);
