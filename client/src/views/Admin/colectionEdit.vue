@@ -13,7 +13,7 @@
           class="button ml-1 border-2 border-black rounded-t-lg"
           @click="(create = false), (edit = true), (title = false)"
         >
-          EDITAR COLECCION
+          EDITAR COLECCIÓN
         </button>
       </header>
       <div v-if="title" class="h-full w-full flex justify-center items-center text-2xl underline">
@@ -41,7 +41,15 @@
         </div>
       </div>
       <div v-else-if="edit">
-        <h1>Vista editar</h1>
+        <div class="bg-white h-full w-full mx-8 my-8">
+          <label for="collectionsChoose">Selecciona una colección: </label>
+          <select name="collectionsChoose" class="border-2">
+            <option value="Coches">Car Collection</option>
+            <option value="Pokemon">Pokemon Collection</option>
+          </select>
+
+          
+        </div>
       </div>
     </div>
   </div>
@@ -70,6 +78,9 @@ export default {
 </script>
 
 <style>
+.createWindow{
+
+}
 .editWindow {
   height: 40rem;
   width: 50rem;

@@ -9,12 +9,13 @@ const loginRouter = require('./controllers/login.controller.js')
 const usersRouter = require('./controllers/users.controller')
 const cardsRouter = require('./controllers/cards.controller.js')
 const comprasRouter = require('./controllers/compras.controller.js')
+const collectionRouter = require('./controllers/collections.controller.js')
 // const adminRouter = require('./controllers/admin.js')
 
 
 // const comprasRouter = require('./controllers/buyControl.js')
 // const comprasRouter2 = require('./controllers/ComprarUnidades.js')
-// const getCardRouter = require('./controllers/GetCards.js')
+// const getCardRouter = require('re./controllers/GetCards.js')
 
 
 
@@ -36,6 +37,7 @@ app.use('/api/login', loginRouter)
 app.use('/api/users' , usersRouter)
 app.use('/api/compras', comprasRouter)
 app.use('/api/cards', cardsRouter)
+app.use('/api/collections', collectionRouter)
 
 
 // app.use('/api/admin', adminRouter)

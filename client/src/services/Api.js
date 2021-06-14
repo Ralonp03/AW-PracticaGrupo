@@ -1,6 +1,30 @@
 //Conexion a los endpoints del backend
 const axios = require("axios");
 
+//FUNCIONES PARA OBTENER TODOS LOS DATOS
+const getAllUsers = async() => {
+  const response = await axios.get(`http://localhost:8081/api/users/allusers`);
+  return response
+}
+
+const getAllCollections = async() => {
+  const response = await axios.get(`http://localhost:8081/api/collections/allcollections`);
+  return response
+}
+
+const getAllCards = async() => {
+  const response = await axios.get(`http://localhost:8081/api/cards/allcards`);
+  return response
+}
+
+// FUNCIONES PARA OBTENER INFORMACION DE UN PARÁMETRO EN CONCRETO
+const getAllCardsUser = async(name) => {
+  //Funcion que trae todas las cartas de un usuario
+  const response = await axios.get(`http://localhost:8081/api/cards/allcards/${name}`);
+  return response;
+}
+
+
 const getInfoUser = async (name) => {
   //Funcion que obtiene los datos de un usuario
   const response = await axios.get(`http://localhost:8081/api/users/${name}`);
@@ -20,11 +44,7 @@ const getInfoCardById = async (id) => {
   return response;
 };
 
-const getAllCards = async(name) => {
-  //Funcion que trae todas las cartas de un usuario
-  const response = await axios.get(`http://localhost:8081/api/cards/allcards/${name}`);
-  return response;
-}
+
 
 
 
@@ -69,10 +89,13 @@ const updateDatas = async (cardUnits, cardPrice, cardName) => {
 };
 
 module.exports = {
+  getAllUsers,
+  getAllCollections,
+  getAllCards,
+  getAllCardsUser,
   getInfoUser,
   getInfoCard,
   getInfoCardById,
-  getAllCards,
   updateDatas,
   compraCarta,
   deleteUnitsOfCard,
