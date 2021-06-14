@@ -1,6 +1,30 @@
 //Conexion a los endpoints del backend
 const axios = require("axios");
 
+//FUNCIONES PARA OBTENER TODOS LOS DATOS
+const getAllUsers = async() => {
+  const response = await axios.get(`http://localhost:8081/api/users/allusers`);
+  return response
+}
+
+const getAllCollections = async() => {
+  const response = await axios.get(`http://localhost:8081/api/collections/allcollections`);
+  return response
+}
+
+const getAllCards = async() => {
+  const response = await axios.get(`http://localhost:8081/api/cards/allcards`);
+  return response
+}
+
+// FUNCIONES PARA OBTENER INFORMACION DE UN PARÁMETRO EN CONCRETO
+const getAllCardsUser = async(name) => {
+  //Funcion que trae todas las cartas de un usuario
+  const response = await axios.get(`http://localhost:8081/api/cards/allcards/${name}`);
+  return response;
+}
+
+
 const getInfoUser = async (name) => {
   //Funcion que obtiene los datos de un usuario
   const response = await axios.get(`http://localhost:8081/api/users/${name}`);
@@ -20,11 +44,7 @@ const getInfoCardById = async (id) => {
   return response;
 };
 
-const getAllCards = async(name) => {
-  //Funcion que trae todas las cartas de un usuario
-  const response = await axios.get(`http://localhost:8081/api/cards/allcards/${name}`);
-  return response;
-}
+
 
 
 
@@ -57,23 +77,36 @@ const deleteUnitsOfCard = async (cardName, cardUnits) => {
   return response;
 };
 
-const updateDatas = async (cardUnits, cardPrice, cardName) => {
+//FUNCION PARA ACTUALIZAR LOS DATOS DE LAS CARTAS
+const updateUnitsOfCard = async (cardUnits, cardName) => {
   const params = {
     cardUnits,
+    cardName,
+  };
+
+  const response = await axios.post(`http://localhost:8081/api/admin/updateunits/${cardName}`, params);
+  return response;
+};
+const updateDatas = async (cardPrice, cardName) => {
+  const params = {
     cardPrice,
     cardName,
   };
 
-  const response = await axios.post("http://localhost:8081/api/admin", params);
+  const response = await axios.post(`http://localhost:8081/api/admin/updatecard/${cardName}`, params);
   return response;
 };
 
 module.exports = {
+  getAllUsers,
+  getAllCollections,
+  getAllCards,
+  getAllCardsUser,
   getInfoUser,
   getInfoCard,
   getInfoCardById,
-  getAllCards,
   updateDatas,
   compraCarta,
   deleteUnitsOfCard,
+  updateUnitsOfCard
 };

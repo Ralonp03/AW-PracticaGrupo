@@ -2,6 +2,15 @@ const cardsRouter = require("express").Router();
 const Card = require("../models/Card");
 const User = require("../models/User")
 
+cardsRouter.get('/allcards', async (req, res) => {
+   
+    const allCards = await Card.find({})
+    
+    const length = allCards.length
+    
+    res.send({length: length})
+})
+
 cardsRouter.get('/allcards/:name', async (req, res) => {
     const { params } = req
 
