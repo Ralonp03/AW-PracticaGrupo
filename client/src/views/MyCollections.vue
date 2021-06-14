@@ -221,17 +221,21 @@ export default {
           cartasUser.value.push(data.name);
           if (data.name.search("Coche")) {
             cartas1.value++;
-            if (cartas1.value > 0 && cartas1.value < 10) {
-              estateCollection1.value = "Incompleta";
+            if (cartas1.value == 0) {
+              estateCollection1.value = "No iniciada";
             } else if (cartas1.value == 10) {
-              estateCollection1.value = "Completada";
+              estateCollection1.value = "Finallizada";
+            } else if (cartas1.value < 10) {
+              estateCollection1.value = "Completada parcialmente";
             }
           } else {
             cartas2.value++;
-            if (cartas2.value > 0 && cartas2.value < 10) {
-              estateCollection2.value = "Incompleta";
+            if (cartas2.value == 0){
+              estateCollection2.value = "No iniciada";
             } else if (cartas2.value == 10) {
-              estateCollection2.value = "Completada";
+              estateCollection2.value = "Finallizada";
+            } else if (cartas2.value < 10) {
+              estateCollection2.value = "Completada parcialmente";
             }
           }
         }
