@@ -93,7 +93,7 @@
             <div class="selection__side flex mt-4">
               <label for="cardChoose">Elija la carta a editar: </label>
               <div v-if="selected == 'Pokemon'">
-                <select v-model="cardSelected" name="cardChoose" class="ml-8">
+                <select v-model="cardSelected" name="cardChoose" class="ml-8" @change="setUnits(cardSelected)">
                   <option>Pokemon1</option>
                   <option>Pokemon2</option>
                   <option>Pokemon3</option>
@@ -154,7 +154,9 @@
                 >
                   +
                 </button>
+                <button @click.prevent="actualizar" class="flex">ACTUALIZAR</button>
               </div>
+              
             </div>
             <div
               v-if="selected == 'Coches'"
@@ -296,7 +298,7 @@
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
-import { getInfoCard } from '../../services/Api'
+import { getInfoCard, updateUnitsOfCard } from '../../services/Api'
 export default {
   name: "CollectionsEdit",
   components: {
@@ -310,12 +312,27 @@ export default {
     const selected = ref("");
     const cardSelected = ref("");
 
+
     const setUnits = async (cardSelected) => {
       const response = await getInfoCard(cardSelected)
       const { units } = response.data
       unitsCard.value = units
-      
     }
+
+    const increment = () => {
+      unitsCard.value ++;
+    };
+    const decrement = () => {
+      unitsCard.value --;
+      if (unitsCard.value < 0) unitsCard.value = 0;
+    };
+
+    const actualizar = async () => {
+      const cardName = cardSelected.value;
+      const cardUnits = unitsCard.value;
+      await updateUnitsOfCard(cardUnits, cardName);
+    };
+
 
     return {
       create,
@@ -324,7 +341,10 @@ export default {
       title,
       selected,
       cardSelected,
-      setUnits
+      setUnits,
+      increment, 
+      decrement,
+      actualizar
     };
   },
 };
