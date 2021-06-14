@@ -177,6 +177,7 @@
               @change="recopilar()"
               class="w-full text-center border border-gray-300 rounded-full text-gray-600 h-10 bg-white hover:border-gray-400 focus:outline-none appearance-none "
             >
+              <option value="">Seleccione la carta</option>
               <option value="Coche1">Abadal</option>
               <option value="Coche2">Abarath</option>
               <option value="Coche3">Abbolt-Detroit</option>
@@ -199,7 +200,7 @@
               <option value="Pokemon10">MewTwo(Basico)</option>
             </select>
           </div>
-          <div  > 
+          <div v-if="primeraVez == true"> 
           <div class="mt-4">
             <p class="w-full text-black text-xl">
               Precio: <span class="font-bold">{{ priceCard }} </span>
@@ -268,7 +269,7 @@ export default {
     const units = ref(0);
     const myPoints = ref(0);
     const count = ref(0);
-    const primeraVez = ref("false");
+    const primeraVez = ref(false);
     const store = useStore();
 
     onMounted(async () => {
@@ -290,10 +291,13 @@ export default {
       const response = await getInfoCard(selected.value);
 
       if (response.status === 200) {
-          primeraVez.value = "true";
+        let valor = primeraVez.value;
+          primeraVez.value = true;
           if(response.data.state == "active"){
             document.getElementById(selected.value).className = "card"
+            if(valor){
             document.getElementById("botn").style.visibility  = "visible";
+            }
             priceCard.value = response.data.price;
             units.value = response.data.units;
             if(units.value == 0){

@@ -41,7 +41,7 @@ cardsRouter.put('/deleteCard/:name', async (req, res) => {
     const { body } = req
     const { cardName, cardUnits } = body
 
-    if(cardUnits === 0){
+    if(cardUnits == 0){
         const doc = await Card.findOne({ name: cardName })
         doc.units = cardUnits
         doc.name = cardName
