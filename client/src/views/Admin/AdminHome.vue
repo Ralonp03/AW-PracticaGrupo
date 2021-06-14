@@ -1,5 +1,14 @@
-<template>
-  <div class="flex">
+<template >
+  <div class="bg-yellow-100 flex">
+  <TaskbarAdmin />
+    <div class="control bg-white w-96 h-72 m-auto border-4 border-gray-600 border-opacity-25 shadow-2xl">
+      <p>USUARIOS EN ACTIVO:</p>
+      <p>COLECCIONES DISPONIBLES:</p>
+      <p>CROMOS DISPONIBLES: </p>
+      <h2></h2>
+    </div>
+  </div>
+  <!-- <div class="flex">
     <div class="container">
       <div class="cajaGlobal h-full flex justify-center items-center">
         <div
@@ -238,55 +247,57 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import { updateDatas } from '../services/Api';
-import { ref } from "vue";
-import {
-  getInfoCard,
-} from "../services/Api";
+import TaskbarAdmin from './TaskbarAdmin.vue'
+// import { updateDatas } from "../services/Api";
+// import { ref } from "vue";
+// import { getInfoCard } from "../services/Api";
 
 export default {
   name: "Gallery",
-  setup(){
-    const selected = ref("");
-    const priceCard = ref(0);
-    const units = ref(0);
-    const count = ref(0);
-    const countPrice = ref(0);
+  components: {
+    TaskbarAdmin,
+  },
+  setup() {
+    // const selected = ref("");
+    // const priceCard = ref(0);
+    // const units = ref(0);
+    // const count = ref(0);
+    // const countPrice = ref(0);
 
-    const increment = () => {
-      count.value++;
-    };
-    const decrement = () => {
-      count.value--;
-      if (count.value < 0) count.value = 0;
-    };
-    const incrementPrice = () => {
-      countPrice.value+=50;
-    };
-    const decrementPrice = () => {
-      countPrice.value-=50;
-      if (countPrice.value < 0) countPrice.value = 0;
-    };
+    // const increment = () => {
+    //   count.value++;
+    // };
+    // const decrement = () => {
+    //   count.value--;
+    //   if (count.value < 0) count.value = 0;
+    // };
+    // const incrementPrice = () => {
+    //   countPrice.value += 50;
+    // };
+    // const decrementPrice = () => {
+    //   countPrice.value -= 50;
+    //   if (countPrice.value < 0) countPrice.value = 0;
+    // };
 
-    const recopilar = async () => {
-      const response = await getInfoCard(selected.value);
-      if (response.status === 200) {
-          if(response.data.state == "active"){
-            document.getElementById("botn").style.visibility  = "visible";
-            priceCard.value = response.data.price;
-            units.value = response.data.units;
-          }else{
-            alert("Carta no disponible")
-          priceCard.value = response.data.price;
-        units.value = response.data.units;
-            document.getElementById("botn").style.visibility  = "hidden";
-          }
-      }
-    };
+    // const recopilar = async () => {
+    //   const response = await getInfoCard(selected.value);
+    //   if (response.status === 200) {
+    //     if (response.data.state == "active") {
+    //       document.getElementById("botn").style.visibility = "visible";
+    //       priceCard.value = response.data.price;
+    //       units.value = response.data.units;
+    //     } else {
+    //       alert("Carta no disponible");
+    //       priceCard.value = response.data.price;
+    //       units.value = response.data.units;
+    //       document.getElementById("botn").style.visibility = "hidden";
+    //     }
+    //   }
+    // };
 
     /*
     const price = () => {
@@ -308,28 +319,28 @@ export default {
     };
     */
 
-    const actualizar = async () => {
-        units.value=count.value;
-        priceCard.value=countPrice.value;
+  //   const actualizar = async () => {
+  //     units.value = count.value;
+  //     priceCard.value = countPrice.value;
 
-        const cardName=selected.value;
-        const cardUnits=units.value;
-        const cardPrice=priceCard.value;
-        await updateDatas(cardUnits, cardPrice, cardName)
-    };
-    return {
-      recopilar,
-      selected,
-      priceCard,
-      units,
-      increment,
-      decrement,
-      incrementPrice,
-      decrementPrice,
-      count,
-      actualizar,
-    };
-  }, 
+  //     const cardName = selected.value;
+  //     const cardUnits = units.value;
+  //     const cardPrice = priceCard.value;
+  //     await updateDatas(cardUnits, cardPrice, cardName);
+  //   };
+  //   return {
+  //     recopilar,
+  //     selected,
+  //     priceCard,
+  //     units,
+  //     increment,
+  //     decrement,
+  //     incrementPrice,
+  //     decrementPrice,
+  //     count,
+  //     actualizar,
+  //   };
+  },
 };
 </script>
 

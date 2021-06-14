@@ -5,8 +5,11 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import BuyCard from "../views/BuyCard.vue";
 import Collections from "../views/Collections.vue";
-import AdminHome from "../views/AdminHome.vue";
 import MyCollections from "../views/MyCollections.vue";
+import AdminHome from "../views/Admin/AdminHome.vue";
+import cardsEdit from "../views/Admin/cardsEdit.vue"
+import colectionEdit from "../views/Admin/colectionEdit.vue"
+
 const routes = [
   {
     path: "/",
@@ -14,7 +17,7 @@ const routes = [
     component: HomeVisitante,
   },
   {
-    path: "/adminHome",
+    path: "/dashboard",
     name: "AdminHome",
     component: AdminHome,
   },
@@ -47,6 +50,16 @@ const routes = [
     path: "/mycollections",
     name: "MyCollections",
     component: MyCollections,
+  },
+  {
+    path: "/edit/collections",
+    name: "colectionEdit",
+    component: colectionEdit,
+  },
+  {
+    path: "/edit/cards",
+    name: "cardsEdit",
+    component: cardsEdit,
   }
 ];
 

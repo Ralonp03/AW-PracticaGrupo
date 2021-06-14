@@ -121,7 +121,7 @@ export default {
       //   //Vista socio
         if(store.state.auth && response.status === 200){
           response.data.role === "socio" && router.push('/home')
-          response.data.role === "admin" && router.push('/AdminHome')
+          response.data.role === "admin" && router.push('/dashboard')
         }
     };
 
