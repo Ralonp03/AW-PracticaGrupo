@@ -210,7 +210,7 @@
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
-import { getInfoCard } from "../../services/Api";
+import { getInfoCard, updateDatas } from "../../services/Api";
 export default {
   name: "cardsEdit",
   components: {
@@ -247,9 +247,9 @@ export default {
       if (count.value < 0) count.value = 0;
     };
     const actualizar = async () => {
-      //const cardName = selected.value;
-      //const cardPrice = count.value;
-      //await updateDatas(cardPrice, cardName);
+      const cardName = selected.value;
+      const cardPrice = count.value;
+      await updateDatas(cardPrice, cardName);
     };
     return {
       recopilar,

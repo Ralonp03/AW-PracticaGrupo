@@ -84,8 +84,6 @@ const updateDatas = async (cardPrice, cardName) => {
     cardName,
   };
 
-  console.log(cardPrice,cardName)
-
   const response = await axios.post(`http://localhost:8081/api/admin/updatecard/${cardName}`, params);
   return response;
 };

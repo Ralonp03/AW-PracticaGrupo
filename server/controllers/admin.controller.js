@@ -36,14 +36,15 @@ adminRouter.post("/", async (req, res) => {
 
 adminRouter.post('/updatecard/:name', async (req, res) => {
     console.log(req)
-    // const { name, cardUnits } = req.params
+    const { body } = req
+    const { cardPrice, cardName } = body
 
-    // const cardFound = await Card.findOne({name: name})
-    // cardFound.price = cardUnits
+    const cardFound = await Card.findOne({name: cardName})
+    cardFound.price = cardPrice
 
-    // await cardFound.save()
+    await cardFound.save()
 
-    // res.send({message: "okay"})
+    res.send({message: "okay"})
     
 })
 
