@@ -5,69 +5,221 @@
       <header>
           <h2 class="w-full text-center text-xl">EDITAR CARTA</h2>
       </header>
-      <div class="editWindow h-96 w-full border-2 border-black border-opacity-10 flex items-center justify-evenly">
-        <div class="seleccion">
-          <label for="cardSelection">Selecciona la carta a editar: </label>
-          <select name="cardSelection">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
+        <div class="card h-full w-full">
+            <img
+              v-if="selected == 'Coche1'"
+              v-bind:src="require(`../../assets/Coches/Coche1.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche2'"
+              v-bind:src="require(`../../assets/Coches/Coche2.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche3'"
+              v-bind:src="require(`../../assets/Coches/Coche3.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche4'"
+              v-bind:src="require(`../../assets/Coches/Coche4.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche5'"
+              v-bind:src="require(`../../assets/Coches/Coche5.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche6'"
+              v-bind:src="require(`../../assets/Coches/Coche6.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche7'"
+              v-bind:src="require(`../../assets/Coches/Coche7.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche8'"
+              v-bind:src="require(`../../assets/Coches/Coche8.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche9'"
+              v-bind:src="require(`../../assets/Coches/Coche9.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Coche10'"
+              v-bind:src="require(`../../assets/Coches/Coche10.png`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon1'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon1.png`)"
+              alt="" 
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon2'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon2.png`)"
+              alt="" 
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon3'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon3.png`)"
+              alt="" 
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon4'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon4.png`)"
+              alt="" 
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon5'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon5.png`)"
+              alt="" 
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon6'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon6.jpg`)"
+              alt="" 
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon7'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon7.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon8'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon8.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon9'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon9.jpg`)"
+              alt=""
+              class="card"
+            />
+            <img
+              v-if="selected == 'Pokemon10'"
+              v-bind:src="require(`../../assets/Pokemons/Pokemon10.jpg`)"
+              alt=""
+              class="card"
+            />
+          </div>
+          <div class="seleccion text-center">
+            <label for="cardSelection">Selecciona la carta a editar: </label>
+            <select
+              v-model="selected"
+              @change="recopilar()"
+            >
+              <option>Coche1</option>
+              <option>Coche2</option>
+              <option>Coche3</option>
+              <option>Coche4</option>
+              <option>Coche5</option>
+              <option>Coche6</option>
+              <option>Coche7</option>
+              <option>Coche8</option>
+              <option>Coche9</option>
+              <option>Coche10</option>
+              <option>Pokemon1</option>
+              <option>Pokemon2</option>
+              <option>Pokemon3</option>
+              <option>Pokemon4</option>
+              <option>Pokemon5</option>
+              <option>Pokemon6</option>
+              <option>Pokemon7</option>
+              <option>Pokemon8</option>
+              <option>Pokemon9</option>
+              <option>Pokemon10</option>
+            </select>
+          </div>
+        <div class="text-center">
+            <button
+              @click.prevent="increment"
+              class="bg-blue-500 h-8 w-16 rounded-full font-bold text-white hover:bg-blue-600 text-xl"
+            >
+              +
+            </button>
+          <span class="text-3xl ml-4 mr-4">{{ count }}</span>
+                      <button
+              @click.prevent="decrement"
+              class="bg-blue-500 h-8 w-16 rounded-full font-bold text-white hover:bg-blue-600 text-xl"
+            >
+              -
+            </button>
         </div>
-        <div>
-          <button>+</button>
-          <span class="ml-8 mr-8 ">20</span>
-          <button> - </button>
-        </div>
-        <!-- <div class="bg-white h-full w-full my-auto">
-          <form class="form flex flex-col justify-center shadow-2xl">
-                <div  class="shadow-2xl ml-4 my-4 flex">
-                    <label for="nameCollection">Carta: </label>
-                    <select name="nameCollection"></select>
-                </div>
-                <div  class="shadow-2xl ml-4 my-4 flex">
-                    <label for="nameCollection">Número de cartas: </label>
-                    <input type="text" name="nameCollection" class="numberField border-2 border-black shadow-lg"/>
-                </div>
-                <div  class="shadow-2xl ml-4 my-4 flex">
-                    <label for="nameCollection">Nombre de la colección: </label>
-                    <input type="text" name="nameCollection" class="ml-4 border-2 border-black shadow-lg"/>
-                </div>
-                <button @click.prevent="" class=" submitBtn border-4 border-blue-600 bg-white rounded-full w-96 ">CREAR</button>
-            
-          </form>
-        </div> -->
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
-// import { ref } from "vue";
+import { ref } from "vue"
+import {
+  getInfoCard,
+} from "../../services/Api";
 export default {
   name: "cardsEdit",
   components: {
     TaskbarAdmin,
   },
-}
+  setup(){
+    const selected = ref("");
+    const priceCard = ref(0);
+    const units = ref(0);
+    const count = ref(0);
+    const recopilar = async () => {
+      const response = await getInfoCard(selected.value);
+      if (response.status === 200) {
+          if(response.data.state == "active"){
+            document.getElementById("botn").style.visibility  = "visible";
+            priceCard.value = response.data.price;
+            units.value = response.data.units;
+          }else{
+            alert("Carta no disponible")
+          priceCard.value = response.data.price;
+        units.value = response.data.units;
+            document.getElementById("botn").style.visibility  = "hidden";
+          }
+        }
+      };
+    const increment = () => {
+      count.value++;
+    };
+    const decrement = () => {
+      count.value--;
+      if (count.value < 0) count.value = 0;
+    };
+    return {
+      recopilar,
+      selected,
+            increment,
+      decrement,
+    };
+  },
+};
 </script>
 
 <style>
