@@ -176,7 +176,7 @@
             </p>
           </div>
           <h4 class="text-black dark:text-gray-100 text-justify font-semibold">
-                Incremente o decremente el número de unidades disponibles de esta carta
+                Seleccione las unidades disponibles de esta carta
           </h4>
           <div class="buttons mt-4 flex justify-center items-center w-full">
             <button
@@ -194,7 +194,7 @@
             </button>
           </div>
           <h4 class="text-black dark:text-gray-100 text-justify font-semibold">
-              Incremente o decremente el precio de la carta que desee
+              Seleccione el nuevo precio de esta carta
           </h4>
           <div class="buttons mt-4 flex justify-center items-center w-full">
             <button
@@ -242,43 +242,54 @@
 </template>
 
 <script>
-import { loginUser } from '../services/Api';
 import { updateDatas } from '../services/Api';
-import { recopilar } from '../services/Api';
+import { ref } from "vue";
+import {
+  getInfoCard,
+} from "../services/Api";
 
 export default {
   name: "Gallery",
-  methods: {
+  setup(){
+    const selected = ref("");
+    const priceCard = ref(0);
+    const units = ref(0);
+    const count = ref(0);
+    const countPrice = ref(0);
 
-    async recopilar(){
-      var name = this.selected;
-      const response = await recopilar(name)
-      if(response.status === 200){
-        this.priceCard = response.data.price;
-        this.units = response.data.units;
+    const increment = () => {
+      count.value++;
+    };
+    const decrement = () => {
+      count.value--;
+      if (count.value < 0) count.value = 0;
+    };
+    const incrementPrice = () => {
+      countPrice.value+=50;
+    };
+    const decrementPrice = () => {
+      countPrice.value-=50;
+      if (countPrice.value < 0) countPrice.value = 0;
+    };
+
+    const recopilar = async () => {
+      const response = await getInfoCard(selected.value);
+      if (response.status === 200) {
+          if(response.data.state == "active"){
+            document.getElementById("botn").style.visibility  = "visible";
+            priceCard.value = response.data.price;
+            units.value = response.data.units;
+          }else{
+            alert("Carta no disponible")
+          priceCard.value = response.data.price;
+        units.value = response.data.units;
+            document.getElementById("botn").style.visibility  = "hidden";
+          }
       }
-    },
+    };
 
-    increment() {
-      this.count = this.count + 1;
-    },
-
-    decrement() {
-      if (this.units > this.count) {
-        this.count = this.count - 1;
-      }
-    },
-
-    incrementPrice() {
-      this.countPrice = this.countPrice + 50;
-    },
-    decrementPrice() {
-      if (this.countPrice > -200) {
-        this.countPrice = this.countPrice - 50;
-      }
-    },
-    
-    price() {
+    /*
+    const price = () => {
       if (this.priceCard >= this.countPrice) {
         this.priceCard = this.priceCard + this.countPrice;
       } else {
@@ -286,63 +297,39 @@ export default {
               this.priceCard = this.priceCard + this.countPrice;
           }
       }
-    },
+    };
 
-    addOrDelete() {
+    const addOrDelete = () => {
         if((this.units + this.count) < 0){
             this.units = 0;
         } else {
             this.units = this.units + this.count;
         }
-    },
+    };
+    */
 
-    async actualizar(){
-        const cardUnits = this.units;
-        const cardPrice = this.priceCard;
-        const cardName = this.selected;
-        const response = await updateDatas(cardUnits, cardPrice, cardName)
+    const actualizar = async () => {
+        units.value=count.value;
+        priceCard.value=countPrice.value;
 
-        if(response.status === 200){
-            //Datos actualizados
-        } else {
-            //Error al actualizar los datos
-        }
-        return {
-            updateDatas,
-            cardUnits,
-            cardPrice,
-            cardName
-        }
-    },
-
-    async login(){
-      const username = "test";
-      const passwd = "1234";
-
-      const response = await loginUser(username,passwd)
-
-      //Vista socio
-      if(response.status === 200){
-        // response.data.role === "admin" && router.push('/AdminHome')
-      }
-    },
-  },
-  data: () => {
+        const cardName=selected.value;
+        const cardUnits=units.value;
+        const cardPrice=priceCard.value;
+        await updateDatas(cardUnits, cardPrice, cardName)
+    };
     return {
-        units: 5,
-        countPrice:0,
-        count:0,
-        selected:"Coche 1",
-        priceCard: 200,
-    }
-  },
-  beforeMount(){
-    this.login()
- },
- 
-
-    
-  
+      recopilar,
+      selected,
+      priceCard,
+      units,
+      increment,
+      decrement,
+      incrementPrice,
+      decrementPrice,
+      count,
+      actualizar,
+    };
+  }, 
 };
 </script>
 

@@ -251,9 +251,9 @@ export default {
       const response = await getInfoCard(selected.value);
       if (response.status === 200) {
           if(response.data.state == "active"){
-        document.getElementById("botn").style.visibility  = "visible";
-        priceCard.value = response.data.price;
-        units.value = response.data.units;
+            document.getElementById("botn").style.visibility  = "visible";
+            priceCard.value = response.data.price;
+            units.value = response.data.units;
           }else{
             alert("Carta no disponible")
          priceCard.value = response.data.price;
