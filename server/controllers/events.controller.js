@@ -1,40 +1,57 @@
 const eventsRouter = require("express").Router();
 const Event = require('../models/Event');
+const User = require('../models/User');
+
 eventsRouter.post('/compruebapregunta', async(req, res) => {
     const { question, answer} = req.body;
+
     const evento = await Event.findOne({ question: question });
     
     evento == null && console.log("Evento no encontrado")
 
-    let aux = false
-
-    evento.answer == answer ? aux = true : aux = false
-    
-    res.send({
-        state: aux,
-        pointsWin: evento.pointsWin
-    })
-    
+    if(evento.answer == answer ){
+        res.send({
+            state: "correct",
+            pointsWin: evento.pointsWin
+        })
+    }else{
+        res.send({
+            state: "incorrect",
+        })
+    }
 })
 
 
 eventsRouter.post('/comprueboUsuario', async(req, res) => {
     const { body } = req
     const { nameUser, question, typeEvent } = body
-    try{
-        const eventFound = await Event.findOne({ question:question, belongs_to: typeEvent})
-        const { users } = eventFound
-        if(users.includes(nameUser))
-            res.send({state: false})
-        else{
+    const eventFound = await Event.findOne({ question:question })
+    const { users } = eventFound
+
+    if(users.includes(nameUser)){
+        res.send({state: false})
+    }else{
+        console.log("El usuario no ha resuelto el evento")
+        try{
+            console.log(typeof nameUser)
             users.push(nameUser)
             await eventFound.save()
             res.send({pointsWin: 100,state: true })
-
+        }catch(err){
+            console.log("ERROR: ", err.message )
         }
-    }catch(e){
-        res.send({message: "Este evento no tiene usuarios"})
+        // users.push('HOLA')
+
+
     }
+    
+})
+
+
+eventsRouter.post("/bonificacion", async (req, res) =>{
+    console.log("BONIFICACION: ", req)
+
+    res.send({message: "okay"})
 })
 
 // bonificacionRouter.post("/", async (req, res) => {

@@ -9,7 +9,7 @@ const getInfoUser = async (name) => {
   };
 
 //FUNCIONES DE EVENTOS
-  const comprobarEvento = async(question,answer) => {
+  const comprobarPregunta = async(question,answer) => {
     const params = {
         question,
         answer
@@ -29,11 +29,11 @@ const comprueboUsuario = async(nameUser, question, typeEvent) => {
 }
 
 const bonificacion = async(nameUser, pointsUser) => {
-    console.log("paso1");
     const params = {
         nameUser,
         pointsUser
     }
+    console.log('PARAMS: ', params)
     const response = await axios.post('http://localhost:8081/api/events/bonificacion', params)
     return response
 }
@@ -118,11 +118,16 @@ const loginON = async(name) => {
 }
 
 
-
-
-
-
-
-
-
-module.exports = { getInfoUser, updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento, comprueboUsuario, updateAdivinanza, bonificacion}
+module.exports = { 
+    getInfoUser, 
+    updateDatas, 
+    consultaPrueba, 
+    deleteUnitsOfCard, 
+    recopilar , 
+    getCard, 
+    loginON, 
+    comprobarPregunta, 
+    comprueboUsuario,
+     updateAdivinanza, 
+     bonificacion
+}

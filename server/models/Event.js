@@ -6,12 +6,7 @@ const eventSchema = new Schema({
   question: String,
   pointsWin: Number,
   answer: String,
-  users:[
-    {
-      type:Schema.Types.ObjectId,
-      ref:'User'
-    }
-  ],
+  users:Array,
   belongs_to: String
 });
 
