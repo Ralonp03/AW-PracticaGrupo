@@ -262,7 +262,7 @@ export default {
                 "Event1"
               );
               if (userExist.status === 200) {
-                if (userExist.data.state === "false") {
+                if (userExist.data.state === false) {
                   alert(
                   "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
                   );
@@ -301,7 +301,7 @@ export default {
                 "Event2"
               );
               if (userExist.status === 200) {
-                if(userExist.data.state === "false"){
+                if(userExist.data.state === false){
                   alert(
                   "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
                   );
