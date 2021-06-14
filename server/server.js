@@ -7,14 +7,13 @@ const registerRouter = require('./controllers/register.controller')
 const loginRouter = require('./controllers/login.controller.js')
 const adminRouter = require('./controllers/admin.js')
 const comprasRouter = require('./controllers/buyControl.js')
-const comprasRouter2 = require('./controllers/ComprarUnidades.js')
-const recopilarRouter = require('./controllers/RecopilarDatos.js')
-const getCardRouter = require('./controllers/GetCards.js')
-const loginON = require('./controllers/loginON.js')
-const compruebaPregunta = require('./controllers/ControlPregunta.js')
-const bonificacionRouter = require('./controllers/bonificacion.js')
-const compruebaAdivinanza = require('./controllers/controlAdivinanza.js')
-const comprueboEvento = require('./controllers/controladorEvento.js')
+const usersRouter = require('./controllers/users.controller')
+const eventsRouter = require('./controllers/events.controller')
+////////////////////////////////////////////////////////////////////////////
+// const compruebaPregunta = require('./controllers/ControlPregunta.js')
+// const bonificacionRouter = require('./controllers/bonificacion.js')
+// const compruebaAdivinanza = require('./controllers/controlAdivinanza.js')
+// const comprueboEvento = require('./controllers/controladorEvento.js')
 
 
 const app = express();
@@ -28,19 +27,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-//Partner routes
+//Routes
 app.use('/api/register', registerRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/users' , usersRouter)
 app.use('/api/admin', adminRouter)
 app.use('/api/compras', comprasRouter)
-app.use('/api/compras2', comprasRouter2)
-app.use('/api/recopilar', recopilarRouter)
-app.use('/api/getCard', getCardRouter)
-app.use('/api/loginON', loginON)
-app.use('/api/compruebaPregunta', compruebaPregunta)
-app.use('/api/bonificacion', bonificacionRouter)
-app.use('/api/compruebaAdivinanza', compruebaAdivinanza)
-app.use('/api/comprueboUsuario', comprueboEvento)
+// app.use('/api/cards', cardsRouter)
+// app.use('/api/collections', collectionRouter)
+app.use('/api/events', eventsRouter)
+
+//////////////////////////////////////////////////////////////
+
 
 
 //Server running

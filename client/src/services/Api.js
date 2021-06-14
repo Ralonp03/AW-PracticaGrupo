@@ -1,15 +1,61 @@
 //Conexion a los endpoints del backend
 const axios = require('axios');
 
-const loginUser = async (name, password) => {
-    const params = {
-        name,
-        password
-    }
+const getInfoUser = async (name) => {
+    //Funcion que obtiene los datos de un usuario
+    const response = await axios.get(`http://localhost:8081/api/users/${name}`);
+    const { points } = response.data;
+    return points;
+  };
 
-    const response = await axios.post('http://localhost:8081/api/login', params)
+//FUNCIONES DE EVENTOS
+  const comprobarEvento = async(question,answer) => {
+    const params = {
+        question,
+        answer
+    }
+    const response = await axios.post('http://localhost:8081/api/events/compruebapregunta', params)
     return response
 }
+
+const comprueboUsuario = async(nameUser, question, typeEvent) => {
+    const params = {
+        nameUser,
+        question,
+        typeEvent
+    }
+
+    const response = await axios.post('http://localhost:8081/api/events/comprueboUsuario', params)
+    return response
+}
+
+const updateAdivinanza = async(question, answer) => {
+    console.log("paso1");
+    const params = {
+        question,
+        answer
+    }
+    const response = await axios.post('http://localhost:8081/api/compruebaAdivinanza', params)
+    return response
+}
+
+const bonificacion = async(nameUser, pointsUser) => {
+    console.log("paso1");
+    const params = {
+        nameUser,
+        pointsUser
+    }
+    const response = await axios.post('http://localhost:8081/api/bonificacion', params)
+    return response
+}
+
+
+
+
+
+
+
+
 
 const consultaPrueba = async (nameUsuario, userPoints, name) => {
     const params = {
@@ -52,16 +98,7 @@ const updateDatas = async (cardUnits, cardPrice, cardName) => {
     return response
 }
 
-const registerUser = async(name, password) => {
-    const params = {
-        name,
-        password
-    }
 
-
-    const response = await axios.post('http://localhost:8081/api/partners/register', params)
-    return response
-}
 const getCard = async(name) => {
     const params = {
         name
@@ -81,55 +118,12 @@ const loginON = async(name) => {
     return response
 }
 
-const comprobarEvento = async(question,answer) => {
-    console.log("paso1");
-    const params = {
-        question,
-        answer
-    }
-
-
-    const response = await axios.post('http://localhost:8081/api/compruebaPregunta', params)
-    return response
-}
-
-const comprueboUsuario = async(nameUser, question, typeEvent) => {
-    console.log("paso1");
-    const params = {
-        nameUser,
-        question,
-        typeEvent
-    }
-
-
-    const response = await axios.post('http://localhost:8081/api/comprueboUsuario', params)
-    return response
-}
-
-const updateAdivinanza = async(question, answer) => {
-    console.log("paso1");
-    const params = {
-        question,
-        answer
-    }
-
-
-    const response = await axios.post('http://localhost:8081/api/compruebaAdivinanza', params)
-    return response
-}
-
-const bonificacion = async(nameUser, pointsUser) => {
-    console.log("paso1");
-    const params = {
-        nameUser,
-        pointsUser
-    }
-
-
-    const response = await axios.post('http://localhost:8081/api/bonificacion', params)
-    return response
-}
 
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento, comprueboUsuario, updateAdivinanza, bonificacion}
+
+
+
+
+
+module.exports = { getInfoUser, updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento, comprueboUsuario, updateAdivinanza, bonificacion}
