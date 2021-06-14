@@ -7,9 +7,19 @@ cardsRouter.get('/allcards/:name', async (req, res) => {
 
     const { name } = params
 
-    const infoUser = await User.find({ name: name })
+    const allCards = await User.find({ name: name }, 'cards')
 
-    console.log(infoUser.name)
+    res.send(allCards)
+})
+
+cardsRouter.get("/:id", async (req, res) => {
+    const { params } = req
+    const { id } = params
+
+    const cardFound = await Card.findById(id)
+
+    res.send(cardFound)
+
 })
 
 

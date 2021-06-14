@@ -16,7 +16,8 @@
               md:tracking-tight
             "
           >
-            <span>Bienvenido a tu tablero</span> <br />
+            <h1>Bienvenido a tu tablero</h1> <br />
+
             <span
               style="font-size: 60%"
               class="
@@ -193,7 +194,7 @@ import TaskBar from "../views/TaskBar.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { onMounted } from "@vue/runtime-core";
-import { getInfoUser, getAllCards } from "../services/Api";
+import { getInfoUser, getAllCards, getInfoCardById } from "../services/Api";
 
 export default {
   name: "MyCollections",
@@ -213,28 +214,29 @@ export default {
       pointsUser.value = await getInfoUser(store.getters.getUserName);
       try {
         let allCards = await getAllCards(store.getters.getUserName);
-        console.log(allCards);
-          {/* if (responseId.status === 200) {
-            cartasUser.value.push(responseId.data.name.toString());
-            if (responseId.data.name.toString().search("Coche")) {
-              this.cartas1++;
-              if (this.cartas1 > 0 && this.cartas1 < 10) {
-                this.estateCollection1 = "Incompleta";
-              } else if (this.cartas1 == 10) {
-                this.estateCollection1 = "Completada";
-              }
-            } else {
-              this.cartas2++;
-              if (this.cartas2 > 0 && this.cartas2 < 10) {
-                this.estateCollection2 = "Incompleta";
-              } else if (this.cartas2 == 10) {
-                this.estateCollection2 = "Completada";
-              }
+        const cards = allCards.data[0].cards;
+        for (let card of cards) {
+          let cardElement = await getInfoCardById(card);
+          const { data } = cardElement;
+          cartasUser.value.push(data.name);
+          if (data.name.search("Coche")) {
+            cartas1.value++;
+            if (cartas1.value > 0 && cartas1.value < 10) {
+              estateCollection1.value = "Incompleta";
+            } else if (cartas1.value == 10) {
+              estateCollection1.value = "Completada";
             }
-          } */}
-          {/* i++; */}
-      }catch(err){
-        console.log('error: ', err)
+          } else {
+            cartas2.value++;
+            if (cartas2.value > 0 && cartas2.value < 10) {
+              estateCollection2.value = "Incompleta";
+            } else if (cartas2.value == 10) {
+              estateCollection2.value = "Completada";
+            }
+          }
+        }
+      } catch (err) {
+        console.log("error: ", err);
       }
     });
 
