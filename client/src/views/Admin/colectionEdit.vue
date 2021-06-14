@@ -120,13 +120,12 @@
                   <option>Coche10</option>
                 </select>
               </div>
-              <div class="unitsEdit">
-                <label> Incremente o reduzca las unidades: </label>
+            </div>
+            <div class="unitsEdit">
+                <br><label> Incremente o reduzca las unidades: </label> <br>
                 <button>-</button>
-                <p></p>
                 <button>+</button>
               </div>
-            </div>
             <div
               v-if="selected == 'Coches'"
               class="image__side h-96 w-64 absolute right-40"
