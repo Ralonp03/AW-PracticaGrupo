@@ -42,8 +42,9 @@ cardsRouter.put('/deleteCard/:name', async (req, res) => {
     const { cardName, cardUnits } = body
 
     if(cardUnits === 0){
-        const doc = await Card.findOneAndUpdate({ name: cardName })
+        const doc = await Card.findOne({ name: cardName })
         doc.units = cardUnits
+        doc.name = cardName
         doc.state = "inactive"
         savedDoc = await doc.save();
 

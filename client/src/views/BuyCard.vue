@@ -318,11 +318,12 @@ export default {
         myPoints.value >= priceCard.value * count.value && count.value != 0
       ) {
         myPoints.value = myPoints.value - count.value * priceCard.value;
-        if (units.value >= count.value) units.value = units.value - count.value;
+        //if (units.value >= count.value)
+        units.value = units.value - count.value;
 
-        const nameUsuario = store.getters.getUserName;
-        const userPoints = myPoints.value;
-        const cardName = selected.value;
+        let nameUsuario = store.getters.getUserName;
+        let userPoints = myPoints.value;
+        let cardName = selected.value;
         if(units.value == 0){
              document.getElementById("botn").style.visibility  = "hidden";
              document.getElementById(selected.value).className = "cardGris"
