@@ -2,13 +2,9 @@ const compruebaPregunta = require("express").Router();
 const Event = require("../models/Events");
 
 compruebaPregunta.post("/", async (req, res) => {
-    console.log("paso3");
     const { body } = req;
 
     const {question, answer} = body;
-
-    console.log(question);
-    console.log(answer);
 
     const eventFound = await Event.findOne({ question: question });
 
@@ -17,16 +13,19 @@ compruebaPregunta.post("/", async (req, res) => {
     } else {
         if(eventFound.answer === answer)
         {
-            console.log("Bien");
+            res.send({
+                question: eventFound.question,
+                answer: eventFound.answer,
+                pointsWin: eventFound.pointsWin
+            });
         }else
         {
-            console.log("mal");
+            res.send({
+                question: eventFound.question,
+                answer: eventFound.answer,
+                pointsWin: 0
+            });
         }
-        res.send({
-            question: eventFound.question,
-            answer: eventFound.answer,
-            pointsWin: eventFound.pointsWin
-        });
     }  
 
 });

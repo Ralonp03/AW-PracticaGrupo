@@ -12,6 +12,8 @@ const recopilarRouter = require('./controllers/RecopilarDatos.js')
 const getCardRouter = require('./controllers/GetCards.js')
 const loginON = require('./controllers/loginON.js')
 const compruebaPregunta = require('./controllers/ControlPregunta.js')
+const bonificacionRouter = require('./controllers/bonificacion.js')
+const compruebaAdivinanza = require('./controllers/controlAdivinanza.js')
 
 
 const app = express();
@@ -35,7 +37,8 @@ app.use('/api/recopilar', recopilarRouter)
 app.use('/api/getCard', getCardRouter)
 app.use('/api/loginON', loginON)
 app.use('/api/compruebaPregunta', compruebaPregunta)
-
+app.use('/api/bonificacion', bonificacionRouter)
+app.use('/api/compruebaAdivinanza', compruebaAdivinanza)
 
 
 //Server running

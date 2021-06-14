@@ -21,13 +21,13 @@
         >
       </li>
       <li class="w-full mt-4 hover:bg-green-300 rounded-full">
-        <router-link class="text-black block w-full" to="/home"
-          >Inicio</router-link
+        <router-link class="text-black block w-full" to="/event"
+          >Eventos</router-link
         >
       </li>
       <li class="w-full mt-4 hover:bg-green-300 rounded-full">
-        <router-link class="text-black block w-full" to="/event"
-          >Eventos</router-link
+        <router-link class="text-black block w-full" to="/home"
+          >Inicio</router-link
         >
       </li>
       
