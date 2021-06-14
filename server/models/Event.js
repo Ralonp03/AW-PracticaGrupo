@@ -6,7 +6,7 @@ const eventSchema = new Schema({
   question: String,
   pointsWin: Number,
   answer: String,
-  users:Array,
+  users: [String],
   belongs_to: String
 });
 

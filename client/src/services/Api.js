@@ -28,12 +28,11 @@ const comprueboUsuario = async(nameUser, question, typeEvent) => {
     return response
 }
 
-const bonificacion = async(nameUser, pointsUser) => {
+const bonificacionEvento = async(nameUser, pointsUser) => {
     const params = {
         nameUser,
         pointsUser
     }
-    console.log('PARAMS: ', params)
     const response = await axios.post('http://localhost:8081/api/events/bonificacion', params)
     return response
 }
@@ -43,7 +42,7 @@ const updateAdivinanza = async(question, answer) => {
         question,
         answer
     }
-    const response = await axios.post('http://localhost:8081/api/compruebaAdivinanza', params)
+    const response = await axios.post('http://localhost:8081/api/events/compruebaAdivinanza', params)
     return response
 }
 
@@ -129,5 +128,5 @@ module.exports = {
     comprobarPregunta, 
     comprueboUsuario,
      updateAdivinanza, 
-     bonificacion
+     bonificacionEvento
 }
