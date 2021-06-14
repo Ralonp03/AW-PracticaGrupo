@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const adminRouter = require("express").Router();
 const Card = require("../models/Card");
 
@@ -34,5 +33,21 @@ adminRouter.post("/", async (req, res) => {
         res.json(savedDoc);
     }
 });
+
+adminRouter.post('/updatecard/:name', async (req, res) => {
+    console.log(req)
+    // const { name, cardUnits } = req.params
+
+    // const cardFound = await Card.findOne({name: name})
+    // cardFound.price = cardUnits
+
+    // await cardFound.save()
+
+    // res.send({message: "okay"})
+    
+})
+
+
+
 
 module.exports = adminRouter;

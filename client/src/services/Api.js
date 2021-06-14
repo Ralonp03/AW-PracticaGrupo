@@ -77,14 +77,16 @@ const deleteUnitsOfCard = async (cardName, cardUnits) => {
   return response;
 };
 
-const updateDatas = async (cardUnits, cardPrice, cardName) => {
+//FUNCION PARA ACTUALIZAR LOS DATOS DE LAS CARTAS
+const updateDatas = async (cardPrice, cardName) => {
   const params = {
-    cardUnits,
     cardPrice,
     cardName,
   };
 
-  const response = await axios.post("http://localhost:8081/api/admin", params);
+  console.log(cardPrice,cardName)
+
+  const response = await axios.post(`http://localhost:8081/api/admin/updatecard/${cardName}`, params);
   return response;
 };
 
