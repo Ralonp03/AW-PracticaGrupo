@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-4 bg-blue-600 font-bold h-screen w-64 flex flex-col items-center border-r-2 border-black"
+    class="sticky top-0 p-4 bg-blue-600 font-bold h-screen w-72 flex flex-col items-center border-r-2 border-black"
   >
     <h2 class="font-serif">KioskoROC</h2>
     <img src="../assets/male.png" class="mt-4 h-16 w-16" />
@@ -27,7 +27,7 @@
       </li>
       
     </ul>
-    <button @click="logout" class="w-64 text-center bg-gray-200 absolute bottom-4 border-4 border-red-600 rounded-full">Cerrar sesión</button>
+    <button @click="logout" class="w-60 text-center bg-gray-200 absolute bottom-4 border-4 border-red-600 rounded-full">Cerrar Sesión</button>
     <router-view></router-view>
   </div>
 </template>
