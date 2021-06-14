@@ -107,7 +107,7 @@
                 </select>
               </div>
               <div v-else-if="selected == 'Coches'">
-                <select v-model="cardSelected" name="cardChoose" class="ml-8">
+                <select v-model="cardSelected" name="cardChoose" class="ml-8  " @change="setUnits(cardSelected)">
                   <option>Coche1</option>
                   <option>Coche2</option>
                   <option>Coche3</option>
@@ -121,11 +121,41 @@
                 </select>
               </div>
             </div>
-            <div class="unitsEdit">
-                <br><label> Incremente o reduzca las unidades: </label> <br>
-                <button>-</button>
-                <button>+</button>
+            <div class="unitsEdit flex mt-4">
+              <br /><label> Incremente o reduzca las unidades: </label> <br />
+              <div class="flex text-center">
+                <button
+                  @click.prevent="decrement"
+                  class="
+                    bg-blue-500
+                    ml-4
+                    h-8
+                    w-16
+                    rounded-full
+                    font-bold
+                    text-white
+                    hover:bg-blue-600
+                    text-xl
+                  "
+                >
+                  -
+                </button>
+                <span class="text-3xl ml-4 mr-4">{{ unitsCard }}</span>
+                <button
+                  @click.prevent="increment"
+                  class="
+                    bg-blue-500
+                    h-8
+                    w-16
+                    rounded-full
+                    font-bold
+                    text-whitehover:bg-blue-600 text-xl
+                  "
+                >
+                  +
+                </button>
               </div>
+            </div>
             <div
               v-if="selected == 'Coches'"
               class="image__side h-96 w-64 absolute right-40"
@@ -266,6 +296,7 @@
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
+import { getInfoCard } from '../../services/Api'
 export default {
   name: "CollectionsEdit",
   components: {
@@ -273,17 +304,27 @@ export default {
   },
   setup() {
     const create = ref(false);
+    const unitsCard = ref(0)
     const edit = ref(false);
     const title = ref(true);
     const selected = ref("");
     const cardSelected = ref("");
 
+    const setUnits = async (cardSelected) => {
+      const response = await getInfoCard(cardSelected)
+      const { units } = response.data
+      unitsCard.value = units
+      
+    }
+
     return {
       create,
+      unitsCard,
       edit,
       title,
       selected,
       cardSelected,
+      setUnits
     };
   },
 };
