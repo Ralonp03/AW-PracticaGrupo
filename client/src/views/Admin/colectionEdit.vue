@@ -324,7 +324,6 @@ export default {
     };
     const decrement = () => {
       unitsCard.value --;
-      if (unitsCard.value < 0) unitsCard.value = 0;
     };
 
     const actualizar = async () => {
