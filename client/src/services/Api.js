@@ -16,7 +16,7 @@ const getInfoCard = async (name) => {
 
 const getInfoCardById = async (id) => {
   //Funcion que recopila informacion de una carta
-  const response = await axios.get(`http://localhost:8081/api/cards/${id}`);
+  const response = await axios.get(`http://localhost:8081/api/cards/getid/${id}`);
   return response;
 };
 

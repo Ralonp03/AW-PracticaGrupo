@@ -146,6 +146,14 @@ export default {
         for (let card of cards) {
           let cardElement = await getInfoCardById(card);
           const { data } = cardElement;
+          console.log(data.name)
+          let booleano = true;
+           for (let elemento of cartasUser.value) {
+             if(elemento == data.name){
+               booleano = false;
+             }
+           }
+          if(booleano == true){
           cartasUser.value.push(data.name);
           if (data.name.search("Coche")) {
             cartas1.value++;
@@ -166,6 +174,7 @@ export default {
               estateCollection2.value = "Completada parcialmente";
             }
           }
+        }
         }
       } catch (err) {
         console.log("error: ", err);
