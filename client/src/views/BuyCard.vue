@@ -374,5 +374,4 @@ img.cardGris {
   filter: grayscale(1);
   border: 4px solid rgba(0, 128, 0, 0.452);
 }
-
 </style>
