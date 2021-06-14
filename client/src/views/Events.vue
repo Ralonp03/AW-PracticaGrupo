@@ -117,6 +117,7 @@ import { loginON } from '../services/Api';
 import { comprobarEvento } from '../services/Api';
 import { bonificacionEvento } from '../services/Api';
 import { updateAdivinanza } from '../services/Api';
+import { comprueboUsuario } from '../services/Api';
 export default {
   name: "Events",
   components: {
@@ -133,7 +134,9 @@ export default {
           }
       },
      async compruebaEvento(){
-        const question = this.selected;
+        var nameUser = this.myUser;
+        var question = this.selected; 
+        question = this.selected;
         const answer = this.selected2;
         const response = await comprobarEvento(question,answer)
 
@@ -142,12 +145,19 @@ export default {
             if(response.data.pointsWin === 0){
                 //Respuesta erronea, no se obteniene modificacion
             } else {
-                window.alert("Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras")
-                var pointsUser = this.myPoints + response.data.pointsWin;
-                var nameUser = this.myUser;
-                const response2 = await bonificacionEvento(nameUser, pointsUser);
-                if(response2.status === 200){
-                  //Bonificacion sumada
+                const response3 = await comprueboUsuario(nameUser, question, "Event1")
+                if(response3.status === 200){
+                    if(response3.data.state === "false"){
+                        window.alert("Lo sentimos usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana");
+                    } else {
+                        window.alert("Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras");
+                        var pointsUser = this.myPoints + response.data.pointsWin;
+                        nameUser = this.myUser;
+                        const response2 = await bonificacionEvento(nameUser, pointsUser);
+                        if(response2.status === 200){
+                          //Bonificacion sumada
+                        }
+                    }
                 }
             }
         } else {
@@ -157,7 +167,7 @@ export default {
             comprobarEvento, 
             question,
             answer
-        }
+        }   
     },
     async adivinanza(){
 

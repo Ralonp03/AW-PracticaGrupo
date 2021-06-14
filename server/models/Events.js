@@ -6,6 +6,7 @@ const eventSchema = new Schema({
   question: String,
   pointsWin: Number,
   answer: String,
+  users: [String]
 });
 
 //Se eliminan aquellos campos que no queremos representar

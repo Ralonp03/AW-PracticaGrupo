@@ -14,6 +14,7 @@ const loginON = require('./controllers/loginON.js')
 const compruebaPregunta = require('./controllers/ControlPregunta.js')
 const bonificacionRouter = require('./controllers/bonificacion.js')
 const compruebaAdivinanza = require('./controllers/controlAdivinanza.js')
+const comprueboEvento = require('./controllers/controladorEvento.js')
 
 
 const app = express();
@@ -39,6 +40,7 @@ app.use('/api/loginON', loginON)
 app.use('/api/compruebaPregunta', compruebaPregunta)
 app.use('/api/bonificacion', bonificacionRouter)
 app.use('/api/compruebaAdivinanza', compruebaAdivinanza)
+app.use('/api/comprueboUsuario', comprueboEvento)
 
 
 //Server running

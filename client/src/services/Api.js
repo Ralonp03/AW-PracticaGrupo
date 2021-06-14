@@ -93,6 +93,43 @@ const comprobarEvento = async(question,answer) => {
     return response
 }
 
+const comprueboUsuario = async(nameUser, question, typeEvent) => {
+    console.log("paso1");
+    const params = {
+        nameUser,
+        question,
+        typeEvent
+    }
 
 
-module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento}
+    const response = await axios.post('http://localhost:8081/api/comprueboUsuario', params)
+    return response
+}
+
+const updateAdivinanza = async(question, answer) => {
+    console.log("paso1");
+    const params = {
+        question,
+        answer
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/compruebaAdivinanza', params)
+    return response
+}
+
+const bonificacion = async(nameUser, pointsUser) => {
+    console.log("paso1");
+    const params = {
+        nameUser,
+        pointsUser
+    }
+
+
+    const response = await axios.post('http://localhost:8081/api/bonificacion', params)
+    return response
+}
+
+
+
+module.exports = { loginUser, registerUser , updateDatas, consultaPrueba, deleteUnitsOfCard, recopilar , getCard, loginON, comprobarEvento, comprueboUsuario, updateAdivinanza, bonificacion}
