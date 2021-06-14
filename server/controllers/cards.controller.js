@@ -21,7 +21,7 @@ cardsRouter.get('/allcards/:name', async (req, res) => {
     res.send(allCards)
 })
 
-cardsRouter.get("/:id", async (req, res) => {
+cardsRouter.get("/getid/:id", async (req, res) => {
     const { params } = req
     const { id } = params
 

@@ -184,7 +184,8 @@
             <option>Pokemon10</option>
           </select>
         </div>
-        <div class="mt-8 w-full">
+        <div class="mt-8 w-full text-center">
+          Precio actual: <span class="font-bold">{{ priceCard }}</span>
           <button
             id="botn"
             v-on:click.prevent="actualizar"
@@ -208,7 +209,6 @@
 
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
-import { updateDatas } from "../../services/Api";
 import { ref } from "vue";
 import { getInfoCard } from "../../services/Api";
 export default {
@@ -247,9 +247,9 @@ export default {
       if (count.value < 0) count.value = 0;
     };
     const actualizar = async () => {
-      const cardName = selected.value;
-      const cardPrice = count.value;
-      await updateDatas(cardPrice, cardName);
+      //const cardName = selected.value;
+      //const cardPrice = count.value;
+      //await updateDatas(cardPrice, cardName);
     };
     return {
       recopilar,
@@ -258,6 +258,7 @@ export default {
       decrement,
       count,
       actualizar,
+      priceCard,
     };
   },
 };
