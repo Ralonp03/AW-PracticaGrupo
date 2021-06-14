@@ -6,6 +6,13 @@ const eventSchema = new Schema({
   question: String,
   pointsWin: Number,
   answer: String,
+  users:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:'User'
+    }
+  ],
+  belongs_to: String
 });
 
 //Se eliminan aquellos campos que no queremos representar

@@ -221,9 +221,9 @@ import { ref } from "vue";
 import {
   getInfoUser,
   comprobarEvento,
-  // bonificacionEvento,
+  comprueboUsuario,
+  bonificacionEvento,
   // updateAdivinanza,
-  // comprueboUsuario,
 } from "../services/Api";
 
 export default {
@@ -244,7 +244,7 @@ export default {
     });
 
     const compruebaEvento = async () => {
-      // const nameUser = myUser.value;
+      const nameUser = store.getters.getUserName;
       const question = selected.value;
       const answer = selected2.value;
       const response = await comprobarEvento(question, answer);
@@ -252,37 +252,38 @@ export default {
         //Datos actualizados
         if (response.data.pointsWin !== 0) {
           //Respuesta correcta
-          const response3 = await comprueboUsuario(
+          const userExist = await comprueboUsuario(
             nameUser,
             question,
             "Event1"
           );
-          // if (response3.status === 200) {
-          //       if (response3.data.state === "false") {
-          //         window.alert(
-          //           "Lo sentimos usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
-          //         );
-          //       } else {
-          //         window.alert(
-          //           "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
-          //         );
-          //         var pointsUser = this.myPoints + response.data.pointsWin;
-          //         nameUser = this.myUser;
-          //         const response2 = await bonificacionEvento(nameUser, pointsUser);
-          //         if (response2.status === 200) {
-          //           //Bonificacion sumada
-          //         }
-          //       }
-          //     }
-          //   }
-        } else {
-          //Error al actualizar los datos
+          if (userExist.status === 200) {
+            if (userExist.data.state === "false") {
+              alert(
+                "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
+              );
+            } else {
+              window.alert(
+                "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
+              );
+              console.log(userExist)
+              const pointsUser = myPoints.value + userExist.data.pointsWin;
+              const pointsUserUpdated = await bonificacionEvento(nameUser, pointsUser);
+                      if (response2.status === 200) {
+              //           //Bonificacion sumada
+                      }
+              //       }
+              //     }
+            }
+          } else {
+            //Error al actualizar los datos
+          }
         }
       }
     };
 
     const adivinanza = () => {
-      const question = this.selectedAd;
+      // const question = this.selectedAd;
       //     const answer = this.checkedNames;
       //     const response = await updateAdivinanza(question, answer);
       //     if (response.status === 200) {
@@ -311,7 +312,7 @@ export default {
       myPoints,
       myUser,
       compruebaEvento,
-      adivinanza
+      adivinanza,
     };
   },
 };

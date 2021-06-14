@@ -1,9 +1,6 @@
 const eventsRouter = require("express").Router();
 const Event = require('../models/Event');
-// const User = require("../models/User");
-
 eventsRouter.post('/compruebapregunta', async(req, res) => {
-
     const { question, answer} = req.body;
     const evento = await Event.findOne({ question: question });
     
@@ -20,14 +17,47 @@ eventsRouter.post('/compruebapregunta', async(req, res) => {
     
 })
 
+
+eventsRouter.post('/comprueboUsuario', async(req, res) => {
+    const { body } = req
+    const { nameUser, question, typeEvent } = body
+    try{
+        const eventFound = await Event.findOne({ question:question, belongs_to: typeEvent})
+        const { users } = eventFound
+        if(users.includes(nameUser))
+            res.send({state: false})
+        else{
+            users.push(nameUser)
+            await eventFound.save()
+            res.send({pointsWin: 100,state: true })
+
+        }
+    }catch(e){
+        res.send({message: "Este evento no tiene usuarios"})
+    }
+})
+
+// bonificacionRouter.post("/", async (req, res) => {
+
+//     const { body } = req;
+
+//     const { nameUser, pointsUser } = body;
+
+//     const doc = await User.findOneAndUpdate(
+//         { name: nameUser },
+//         { $set: { points: pointsUser } },
+//         // If `new` isn't true, `findOneAndUpdate()` will return the
+//         // document as it was before it was updated.
+//         { new: true }
+//     );
+
+//     const savedDoc = await doc.save();
+
+//     res.json(savedDoc);
+
+// });
 module.exports = eventsRouter;
 
-
-
-// module.exports = compruebaAdivinanza;
-
-// const comprueboEvento = require("express").Router();
-// const Event = require("../models/Events");
 
 // comprueboEvento.post("/", async (req, res) => {
 //     const { body } = req;
@@ -174,27 +204,3 @@ const compruebaPregunta = require("express").Router();
 // module.exports = compruebaPregunta;
 
 const { events } = require("../models/User");
-// const bonificacionRouter = require("express").Router();
-// const User = require("../models/User");
-
-// bonificacionRouter.post("/", async (req, res) => {
-
-//     const { body } = req;
-
-//     const { nameUser, pointsUser } = body;
-
-//     const doc = await User.findOneAndUpdate(
-//         { name: nameUser },
-//         { $set: { points: pointsUser } },
-//         // If `new` isn't true, `findOneAndUpdate()` will return the
-//         // document as it was before it was updated.
-//         { new: true }
-//     );
-
-//     const savedDoc = await doc.save();
-
-//     res.json(savedDoc);
-
-// });
-
-// module.exports = bonificacionRouter;
