@@ -20,7 +20,7 @@
     <div class="w-5/6 my-10 ml-6">
       <h3 class="text-gray-300">
         Colecionar cartas nunca a sido tan facil <br />
-        <strong class="text-white">Creado, Editado & Desarollado por el Grupo 10 de A</strong>
+        <strong class="text-white">Creado, Editado & Desarollado por el Grupo 10 de AW</strong>
       </h3>
     </div>
     <div class="hidden sm:block opacity-50 z-0">
@@ -35,7 +35,7 @@
           <img class="h-40"    v-bind:src="require(`../assets/Coches/Coche3.png`)" alt="" />
           <div>
             <span>Cartas Coches</span>
-            <span class="text-xs text-blue-300 block">Colecion 2</span>
+            <span class="text-xs text-blue-300 block">Colecion 1</span>
           </div>
           <div>
             <i class="fa fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-1 group-hover:translate-x-0 block transition"></i>
@@ -46,7 +46,7 @@
           <img class="h-40 " v-bind:src="require(`../assets/Pokemons/Pokemon7.jpg`)" alt="" />
           <div>
             <span>Cartas Poekmon</span>
-            <span class="text-xs text-blue-300 block">Colecion 1</span>
+            <span class="text-xs text-blue-300 block">Colecion 2</span>
           </div>
           <div>
             <i class="fa fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-1 group-hover:translate-x-0 block transition"></i>
@@ -56,11 +56,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
   
 </div>
 </template>

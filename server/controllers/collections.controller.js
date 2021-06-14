@@ -2,13 +2,14 @@ const collectionRouter = require("express").Router();
 const User = require("../models/User");
 const Collection = require("../models/Collection");
 
-collectionRouter.get("/allcollections", async (req, res) => {
+collectionRouter.get("/allcollections/:name", async (req, res) => {
+    const { params } = req
+    const { name } = params
 
-    const collectionsFound = await Collection.find({})
+    const collectionsFound = await Collection.findById(name)
 
-    const length = collectionsFound.length
     
-    res.send({length: length})
+    res.send({price: collectionsFound.price})
 });
 
 module.exports = collectionRouter;

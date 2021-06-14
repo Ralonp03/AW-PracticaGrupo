@@ -90,8 +90,8 @@ const recopilar = async (name) => {
     return response
 }
 
-const getAllCollections = async() => {
-  const response = await axios.get(`http://localhost:8081/api/collections/allcollections`);
+const getAllCollections = async(name) => {
+  const response = await axios.get(`http://localhost:8081/api/collections/allcollections/${name}`);
   return response
 }
 
@@ -166,6 +166,22 @@ const deleteUnitsOfCard = async (cardName, cardUnits) => {
   return response;
 };
 
+
+const deleteUnitsOfCardv2 = async (cardName, cardUnits) => {
+  const params = {
+    cardName,
+    cardUnits,
+  };
+
+  console.log(params);
+
+  const response = await axios.put(
+    `http://localhost:8081/api/cards/deleteCard1Unit/${cardName}`,
+    params
+  );
+  return response;
+};
+
 //FUNCION PARA ACTUALIZAR LOS DATOS DE LAS CARTAS
 const updateUnitsOfCard = async (cardUnits, cardName) => {
   const params = {
@@ -197,5 +213,11 @@ module.exports = {
   updateDatas,
   compraCarta,
   deleteUnitsOfCard,
+<<<<<<< Updated upstream
   updateUnitsOfCard
 }
+=======
+  updateUnitsOfCard,
+  deleteUnitsOfCardv2
+};
+>>>>>>> Stashed changes
