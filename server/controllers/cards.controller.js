@@ -1,5 +1,17 @@
 const cardsRouter = require("express").Router();
 const Card = require("../models/Card");
+const User = require("../models/User")
+
+cardsRouter.get('/allcards/:name', async (req, res) => {
+    const { params } = req
+
+    const { name } = params
+
+    const infoUser = await User.find({ name: name })
+
+    console.log(infoUser.name)
+})
+
 
 cardsRouter.get("/:name", async (req, res) => {
     const { params } = req;
@@ -35,6 +47,7 @@ cardsRouter.put('/deleteCard/:name', async (req, res) => {
         res.json(savedDoc);
     }
 })
+
 
 
 module.exports = cardsRouter;

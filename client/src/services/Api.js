@@ -14,6 +14,14 @@ const getInfoCard = async (name) => {
   return response;
 };
 
+const getAllCards = async(name) => {
+  //Funcion que trae todas las cartas de un usuario
+  const response = await axios.get(`http://localhost:8081/api/cards/allcards/${name}`);
+  return response;
+}
+
+
+
 const compraCarta = async (nameUsuario, userPoints, name) => {
   const params = {
     nameUsuario,
@@ -54,35 +62,11 @@ const updateDatas = async (cardUnits, cardPrice, cardName) => {
   return response;
 };
 
-const getCard = async (name) => {
-  const params = {
-    name,
-  };
-
-  const response = await axios.post(
-    "http://localhost:8081/api/getCard",
-    params
-  );
-  return response;
-};
-const loginON = async (name) => {
-  const params = {
-    name,
-  };
-
-  const response = await axios.post(
-    "http://localhost:8081/api/loginON",
-    params
-  );
-  return response;
-};
-
 module.exports = {
   getInfoUser,
   getInfoCard,
+  getAllCards,
   updateDatas,
   compraCarta,
   deleteUnitsOfCard,
-  getCard,
-  loginON,
 };

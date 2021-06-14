@@ -189,12 +189,11 @@
 
 <script>
 import TaskBar from "../views/TaskBar.vue";
-// import { getCard } from "../services/Api";
 // import { useStore } from "vuex";
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { onMounted } from "@vue/runtime-core";
-import { getInfoUser } from "../services/Api";
+import { getInfoUser, getAllCards } from "../services/Api";
 
 export default {
   name: "MyCollections",
@@ -212,36 +211,32 @@ export default {
 
     onMounted(async () => {
       pointsUser.value = await getInfoUser(store.getters.getUserName);
+      try {
+        let allCards = await getAllCards(store.getters.getUserName);
+        console.log(allCards);
+          {/* if (responseId.status === 200) {
+            cartasUser.value.push(responseId.data.name.toString());
+            if (responseId.data.name.toString().search("Coche")) {
+              this.cartas1++;
+              if (this.cartas1 > 0 && this.cartas1 < 10) {
+                this.estateCollection1 = "Incompleta";
+              } else if (this.cartas1 == 10) {
+                this.estateCollection1 = "Completada";
+              }
+            } else {
+              this.cartas2++;
+              if (this.cartas2 > 0 && this.cartas2 < 10) {
+                this.estateCollection2 = "Incompleta";
+              } else if (this.cartas2 == 10) {
+                this.estateCollection2 = "Completada";
+              }
+            }
+          } */}
+          {/* i++; */}
+      }catch(err){
+        console.log('error: ', err)
+      }
     });
-    // let error = false;
-    // // let i = 0;
-    // while (error == false) {
-    //   try{
-    //   //     let elementoCard = response.data.cards[i]
-    //   //     let responseId = await getCard(elementoCard)
-    //   //     if(responseId.status === 200){
-    //   //         this.cartasUser.push(responseId.data.name.toString())
-    //   //         if(responseId.data.name.toString().search("Coche")){
-    //   //             this.cartas1++;
-    //   //             if(this.cartas1 > 0 && this.cartas1 < 10){
-    //   //     this.estateCollection1 = "Incompleta"
-    //   //   }else if(this.cartas1 == 10){
-    //   //     this.estateCollection1 = "Completada"
-    //   //   }
-    //   //         }else{
-    //   //             this.cartas2++;
-    //   //              if(this.cartas2 > 0 && this.cartas2 < 10){
-    //   //     this.estateCollection2 = "Incompleta"
-    //   //   }else if(this.cartas2 == 10){
-    //   //     this.estateCollection2 = "Completada"
-    //   //   }
-    //   //         }
-    //   //     }
-    //   //     i++;
-    //   }catch(e){
-    //     error = true
-    //   }
-    // }
 
     return {
       pointsUser,
