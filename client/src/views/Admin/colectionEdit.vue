@@ -93,7 +93,7 @@
             <div class="selection__side flex mt-4">
               <label for="cardChoose">Elija la carta a editar: </label>
               <div v-if="selected == 'Pokemon'">
-                <select v-model="cardSelected" name="cardChoose" class="ml-8" @change="setUnits(cardSelected)">
+                <select v-model="cardSelected" name="cardChoose" class="ml-8clas border border-gray-300" @change="setUnits(cardSelected)">
                   <option>Pokemon1</option>
                   <option>Pokemon2</option>
                   <option>Pokemon3</option>
@@ -122,7 +122,7 @@
               </div>
             </div>
             <div class="unitsEdit flex mt-4">
-              <br /><label> Incremente o reduzca las unidades: </label> <br />
+              <br /><label> Copias que desea añadir: </label> <br />
               <div class="flex text-center">
                 <button
                   @click.prevent="decrement"
@@ -154,14 +154,14 @@
                 >
                   +
                 </button>
-                <button @click.prevent="actualizar" class="flex">ACTUALIZAR</button>
               </div>
               
             </div>
-            <div
+            <button @click.prevent="actualizar" class="h-12 bg-blue-500 rounded-full font-bold text-white w-full hover:bg-blue-600 m-2">ACTUALIZAR</button>
+            <br><div
               v-if="selected == 'Coches'"
-              class="image__side h-96 w-64 absolute right-40"
-            >
+              class="h-full flex justify-center items-center"
+            ><br>
               <img
                 v-if="cardSelected == 'Coche1'"
                 v-bind:src="require(`../../assets/Coches/Coche1.png`)"
@@ -225,7 +225,7 @@
             </div>
             <div
               v-if="selected == 'Pokemon'"
-              class="image__side bg-red-600 h-96 w-64 absolute right-40"
+              class="h-full flex justify-center items-center"
             >
               <img
                 v-if="cardSelected == 'Pokemon1'"
@@ -298,7 +298,7 @@
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
-import { getInfoCard, updateUnitsOfCard } from '../../services/Api'
+import { getInfoCard, updateUnitsOfCard,deleteUnitsOfCard } from '../../services/Api'
 export default {
   name: "CollectionsEdit",
   components: {
@@ -324,11 +324,13 @@ export default {
     };
     const decrement = () => {
       unitsCard.value --;
+      if (unitsCard.value < 0) unitsCard.value = 0;
     };
 
     const actualizar = async () => {
       const cardName = cardSelected.value;
       const cardUnits = unitsCard.value;
+      await deleteUnitsOfCard(cardName, unitsCard.value);
       await updateUnitsOfCard(cardUnits, cardName);
     };
 

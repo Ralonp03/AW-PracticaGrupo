@@ -160,8 +160,8 @@
           </button>
         </div>
         <div class="seleccion text-center">
-          <label for="cardSelection">Selecciona la carta a editar: </label>
-          <select v-model="selected" @change="recopilar()">
+          <br><label for="cardSelection">Selecciona la carta a editar: </label><br>
+          <select v-model="selected" class="border border-gray-300" @change="recopilar()">
             <option>Coche1</option>
             <option>Coche2</option>
             <option>Coche3</option>
@@ -185,7 +185,7 @@
           </select>
         </div>
         <div class="mt-8 w-full text-center">
-          Precio actual: <span class="font-bold">{{ priceCard }}</span>
+          Precio actual: <span class="font-bold ">{{ priceCard }}</span>
           <button
             id="botn"
             v-on:click.prevent="actualizar"
@@ -225,18 +225,10 @@ export default {
     const recopilar = async () => {
       const response = await getInfoCard(selected.value);
       if (response.status === 200) {
-        if (response.data.state == "active") {
           document.getElementById("botn").style.visibility = "visible";
           priceCard.value = response.data.price;
           units.value = response.data.units;
           count.value = priceCard.value
-        } else {
-          alert("Carta no disponible");
-          priceCard.value = response.data.price;
-          units.value = response.data.units;
-          document.getElementById("botn").style.visibility = "hidden";
-        }
-        
       }
     };
     const increment = () => {
