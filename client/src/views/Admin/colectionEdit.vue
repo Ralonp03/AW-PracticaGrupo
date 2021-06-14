@@ -81,7 +81,7 @@
           </form>
         </div>
       </div>
-      <div v-else-if="edit" class="edit w-full">
+      <div v-else-if="edit" class="edit w-full flex flex-col">
         <div class="edit__selection bg-white h-full mx-8 my-8">
           <label for="collectionsChoose">Selecciona una colección: </label>
           <select v-model="selected" name="collectionsChoose" class="border-2">
@@ -89,7 +89,7 @@
             <option value="Pokemon">Pokemon Collection</option>
           </select>
 
-          <div v-if="selected" class="edit__collection flex">
+          <div v-if="selected" class="edit__collection">
             <div class="selection__side flex mt-4">
               <label for="cardChoose">Elija la carta a editar: </label>
               <div v-if="selected == 'Pokemon'">
@@ -120,8 +120,17 @@
                   <option>Coche10</option>
                 </select>
               </div>
+              <div class="unitsEdit">
+                <label> Incremente o reduzca las unidades: </label>
+                <button>-</button>
+                <p></p>
+                <button>+</button>
+              </div>
             </div>
-            <div v-if="selected == 'Coches'" class="image__side bg-red-600 h-96 w-64 absolute right-40">
+            <div
+              v-if="selected == 'Coches'"
+              class="image__side h-96 w-64 absolute right-40"
+            >
               <img
                 v-if="cardSelected == 'Coche1'"
                 v-bind:src="require(`../../assets/Coches/Coche1.png`)"
@@ -129,61 +138,64 @@
                 class="h-96 w-64"
               />
               <img
-              v-if="cardSelected == 'Coche2'"
-              v-bind:src="require(`../../assets/Coches/Coche2.png`)"
-              alt=""
-              class="h-96 w-64"
-            />
-             <img
-              v-if="cardSelected == 'Coche3'"
-              v-bind:src="require(`../../assets/Coches/Coche3.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche4'"
-              v-bind:src="require(`../../assets/Coches/Coche4.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche5'"
-              v-bind:src="require(`../../assets/Coches/Coche5.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche6'"
-              v-bind:src="require(`../../assets/Coches/Coche6.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche7'"
-              v-bind:src="require(`../../assets/Coches/Coche7.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche8'"
-              v-bind:src="require(`../../assets/Coches/Coche8.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche9'"
-              v-bind:src="require(`../../assets/Coches/Coche9.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Coche10'"
-              v-bind:src="require(`../../assets/Coches/Coche10.png`)"
-              alt=""
-              class="card" 
-            />
+                v-if="cardSelected == 'Coche2'"
+                v-bind:src="require(`../../assets/Coches/Coche2.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche3'"
+                v-bind:src="require(`../../assets/Coches/Coche3.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche4'"
+                v-bind:src="require(`../../assets/Coches/Coche4.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche5'"
+                v-bind:src="require(`../../assets/Coches/Coche5.png`)"
+                alt=""
+                class="card"
+              />
+              <img
+                v-if="cardSelected == 'Coche6'"
+                v-bind:src="require(`../../assets/Coches/Coche6.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche7'"
+                v-bind:src="require(`../../assets/Coches/Coche7.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche8'"
+                v-bind:src="require(`../../assets/Coches/Coche8.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche9'"
+                v-bind:src="require(`../../assets/Coches/Coche9.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Coche10'"
+                v-bind:src="require(`../../assets/Coches/Coche10.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
             </div>
-            <div v-if="selected == 'Pokemon'" class="image__side bg-red-600 h-96 w-64 absolute right-40">
+            <div
+              v-if="selected == 'Pokemon'"
+              class="image__side bg-red-600 h-96 w-64 absolute right-40"
+            >
               <img
                 v-if="cardSelected == 'Pokemon1'"
                 v-bind:src="require(`../../assets/Pokemons/Pokemon1.png`)"
@@ -191,61 +203,60 @@
                 class="h-96 w-64"
               />
               <img
-              v-if="cardSelected == 'Pokemon2'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon2.png`)"
-              alt=""
-              class="h-96 w-64"
-            />
-             <img
-              v-if="cardSelected == 'Pokemon3'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon3.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon4'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon4.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon5'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon5.png`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon6'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon6.jpg`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon7'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon7.jpg`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon8'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon8.jpg`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon9'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon9.jpg`)"
-              alt=""
-              class="card"
-            />
-            <img
-              v-if="selected == 'Pokemon10'"
-              v-bind:src="require(`../../assets/Pokemons/Pokemon10.jpg`)"
-              alt=""
-              class="card" 
-            />
+                v-if="cardSelected == 'Pokemon2'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon2.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon3'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon3.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon4'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon4.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon5'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon5.png`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon6'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon6.jpg`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon7'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon7.jpg`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon8'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon8.jpg`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon9'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon9.jpg`)"
+                alt=""
+                class="h-96 w-64"
+              />
+              <img
+                v-if="cardSelected == 'Pokemon10'"
+                v-bind:src="require(`../../assets/Pokemons/Pokemon10.jpg`)"
+                alt=""
+                class="h-96 w-64"
+              />
             </div>
-            
           </div>
         </div>
       </div>
