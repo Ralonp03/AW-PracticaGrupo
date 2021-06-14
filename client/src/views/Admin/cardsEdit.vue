@@ -3,29 +3,44 @@
     <TaskbarAdmin />
     <div class="editWindow m-auto bg-white">
       <header>
-        <button
-          class="button border-2 border-black rounded-t-lg"
-          @click="(create = true), (edit = false), (title = false)"
-        >
-          CREAR COLECCIÓN
-        </button>
-        <button
-          class="button ml-1 border-2 border-black rounded-t-lg"
-          @click="(create = false), (edit = true), (title = false)"
-        >
-          EDITAR COLECCION
-        </button>
+          <h2 class="w-full text-center text-xl">EDITAR CARTA</h2>
       </header>
-      <div v-if="title" class="h-full w-full flex justify-center items-center text-2xl underline">
-        <h1>SELECCIONE UNA OPCIÓN</h1>
-      </div>
-
-      <div v-else-if="create" class="createWindow h-full w-full border-2 border-black border-opacity-10">
-        <div class="bg-white h-full w-full my-auto">
+      <div class="editWindow h-96 w-full border-2 border-black border-opacity-10 flex items-center justify-evenly">
+        <div class="seleccion">
+          <label for="cardSelection">Selecciona la carta a editar: </label>
+          <select name="cardSelection">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </div>
+        <div>
+          <button>+</button>
+          <span class="ml-8 mr-8 ">20</span>
+          <button> - </button>
+        </div>
+        <!-- <div class="bg-white h-full w-full my-auto">
           <form class="form flex flex-col justify-center shadow-2xl">
                 <div  class="shadow-2xl ml-4 my-4 flex">
-                    <label for="nameCollection">Nombre de la colección: </label>
-                    <input type="text" name="nameCollection" class="ml-4 border-2 border-black shadow-lg"/>
+                    <label for="nameCollection">Carta: </label>
+                    <select name="nameCollection"></select>
                 </div>
                 <div  class="shadow-2xl ml-4 my-4 flex">
                     <label for="nameCollection">Número de cartas: </label>
@@ -38,10 +53,7 @@
                 <button @click.prevent="" class=" submitBtn border-4 border-blue-600 bg-white rounded-full w-96 ">CREAR</button>
             
           </form>
-        </div>
-      </div>
-      <div v-else-if="edit">
-        <h1>Vista editar</h1>
+        </div> -->
       </div>
     </div>
   </div>
