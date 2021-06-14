@@ -3,7 +3,7 @@
     <TaskbarAdmin />
     <div class="editWindow m-auto bg-white">
       <header>
-          <h2 class="w-full text-center text-xl">EDITAR CARTA</h2>
+          <h2 class="w-full text-center text-xl">Editar Precio</h2>
       </header>
         <div class="card h-full w-full">
             <img
@@ -126,8 +126,22 @@
               alt=""
               class="card"
             />
-          </div>
-          <div class="seleccion text-center">
+            <div class="text-center">
+            <button
+              @click.prevent="increment"
+              class="bg-blue-500 h-8 w-16 rounded-full font-bold text-white hover:bg-blue-600 text-xl"
+            >
+              +
+            </button>
+          <span class="text-3xl ml-4 mr-4">{{ count }}</span>
+                      <button
+              @click.prevent="decrement"
+              class="bg-blue-500 h-8 w-16 rounded-full font-bold text-white hover:bg-blue-600 text-xl"
+            >
+              -
+            </button>
+        </div>
+        <div class="seleccion text-center">
             <label for="cardSelection">Selecciona la carta a editar: </label>
             <select
               v-model="selected"
@@ -155,27 +169,22 @@
               <option>Pokemon10</option>
             </select>
           </div>
-        <div class="text-center">
-            <button
-              @click.prevent="increment"
-              class="bg-blue-500 h-8 w-16 rounded-full font-bold text-white hover:bg-blue-600 text-xl"
+                    <div class="mt-8 w-full">
+            <button id="botn"
+              v-on:click.prevent="actualizar"
+              class="h-12 bg-blue-500 rounded-full font-bold text-white w-full hover:bg-blue-600"
             >
-              +
-            </button>
-          <span class="text-3xl ml-4 mr-4">{{ count }}</span>
-                      <button
-              @click.prevent="decrement"
-              class="bg-blue-500 h-8 w-16 rounded-full font-bold text-white hover:bg-blue-600 text-xl"
-            >
-              -
+              Actualizar Precio
             </button>
         </div>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
+import { updateDatas } from '../../services/Api';
 import { ref } from "vue"
 import {
   getInfoCard,
@@ -190,6 +199,7 @@ export default {
     const priceCard = ref(0);
     const units = ref(0);
     const count = ref(0);
+
     const recopilar = async () => {
       const response = await getInfoCard(selected.value);
       if (response.status === 200) {
@@ -206,17 +216,27 @@ export default {
         }
       };
     const increment = () => {
-      count.value++;
+      count.value+=5;
     };
     const decrement = () => {
-      count.value--;
+      count.value-=5;
       if (count.value < 0) count.value = 0;
+    };
+    const actualizar = async () => {
+        units.value=count.value;
+
+        const cardName=selected.value;
+        const cardUnits=units.value;
+        const cardPrice=priceCard.value;
+        await updateDatas(cardUnits, cardPrice, cardName)
     };
     return {
       recopilar,
       selected,
-            increment,
+      increment,
       decrement,
+      count,
+      actualizar,
     };
   },
 };
