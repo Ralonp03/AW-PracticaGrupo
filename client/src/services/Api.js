@@ -6,12 +6,6 @@ const getAllUsers = async() => {
   const response = await axios.get(`http://localhost:8081/api/users/allusers`);
   return response
 }
-const getInfoUser = async (name) => {
-    //Funcion que obtiene los datos de un usuario
-    const response = await axios.get(`http://localhost:8081/api/users/${name}`);
-    const { points } = response.data;
-    return points;
-  };
 
 //FUNCIONES DE EVENTOS
   const comprobarPregunta = async(question,answer) => {
@@ -42,51 +36,11 @@ const bonificacionEvento = async(nameUser, pointsUser) => {
     return response
 }
 const updateAdivinanza = async(question, answer) => {
-    console.log("paso1");
     const params = {
         question,
-        answer
+        answer,
     }
     const response = await axios.post('http://localhost:8081/api/events/compruebaAdivinanza', params)
-    return response
-}
-
-
-
-
-
-
-
-
-
-
-const consultaPrueba = async (nameUsuario, userPoints, name) => {
-    const params = {
-        nameUsuario,
-        userPoints,
-        name
-    }
-
-    const response = await axios.post('http://localhost:8081/api/compras', params)
-    return response
-}
-
-const deleteUnitsOfCard = async (cardName,cardUnits) => {
-    const params = {
-        cardName,
-        cardUnits,
-    }
-
-    const response = await axios.post('http://localhost:8081/api/compras2', params)
-    return response
-}
-
-const recopilar = async (name) => {
-    const params = {
-        name
-    }
-
-    const response = await axios.post('http://localhost:8081/api/recopilar', params)
     return response
 }
 
@@ -98,12 +52,6 @@ const getAllCollections = async(name) => {
 const getAllCards = async() => {
   const response = await axios.get(`http://localhost:8081/api/cards/allcards`);
   return response
-}
-
-const getCard = async(name) => {
-    const params = {
-        name
-    }
 }
 
 // FUNCIONES PARA OBTENER INFORMACION DE UN PARÁMETRO EN CONCRETO
@@ -192,6 +140,7 @@ const updateUnitsOfCard = async (cardUnits, cardName) => {
   const response = await axios.post(`http://localhost:8081/api/admin/updateunits/${cardName}`, params);
   return response;
 };
+
 const updateDatas = async (cardPrice, cardName) => {
   const params = {
     cardPrice,
@@ -213,11 +162,10 @@ module.exports = {
   updateDatas,
   compraCarta,
   deleteUnitsOfCard,
-<<<<<<< Updated upstream
-  updateUnitsOfCard
-}
-=======
   updateUnitsOfCard,
+  comprobarPregunta,
+  comprueboUsuario,
+  bonificacionEvento,
+  updateAdivinanza,
   deleteUnitsOfCardv2
 };
->>>>>>> Stashed changes
