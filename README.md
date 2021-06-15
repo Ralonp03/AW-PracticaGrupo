@@ -5,6 +5,7 @@ Este repositorio contiene todo lo necesario para desplegar el proyecto en modo d
 Se divide en dos carpetas, una correspondiente a la parte del cliente y otra correspondiente a la parte del servidor.
 
 ## CLIENTE
+
 El cliente está desarrollado con el framework Vue en su versión 3.
 
 ```md
@@ -32,11 +33,13 @@ El cliente está desarrollado con el framework Vue en su versión 3.
 - App.vue : Es el punto de entrada de nuestra aplicación.
 - main.js : Este script se enlaza con el index, encontrado en la carpeta public, donde instanciando un div con id="App" es el punto de montaje de toda la aplicación SPA.
 
-### Despliegue del cliente 
+### Despliegue del cliente
+
 Para iniciar el proyecto en modo desarrollo, abrimos una consola en el editor de código de preferencia en la raíz del proyecto. Después entramos en la carpeta cliente haciendo uso de `cd client` o `cd ./client` e iniciamos el cliente con `npm run serve` . Tras ejecutar este comando, veremos que en la consola se inicia el compilado del código y al terminar nos muestra dos url. 
 Seleccionamos la primera, bien podemos hacer `ctrl + click` sobre la url o escribirla en el navegador de preferencia. La url que se ha de usar debe ser `http://localhost:8080`.
 
 ## SERVIDOR
+
 La tecnologia desarrollada para el desarrollo del servidor ha sido NodeJS haciendo uso del módulo Express.
 Para la base de datos se ha seleccionado MongoDB, una base de datos NoSQL orientada a documentos, bastante útil cuando nos manejamos con objetos JSON.
 
@@ -53,12 +56,12 @@ Dentro del servidor encontramos:
 - controllers : contiene todos los controladores para manejar los diferentes endpoints de la aplicación.
 - database : contiene el script de conexión a la base de datos. 
     Para poder establecer la conexión se plantean dos formas:
-        - En el fichero connection.js se encuentra la url de conexión al cluster de Mongo Atlas.
+    - En el fichero connection.js se encuentra la url de conexión al cluster de Mongo Atlas.
             ```md
                 mongodb+srv://${user}:${password}@cluster0.hp7pp.mongodb.net/kiosko?authSource=admin&replicaSet=atlas-alyq91-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
             ```
             Sustituir user y password por albert y practicaAW respectivamente.
-        - Creando un archivo .env con el siguiente contenido en la raiz del proyecto como indican las buenas prácticas:
+     - Creando un archivo .env con el siguiente contenido en la raiz del proyecto como indican las buenas prácticas:
             ```md
                 DB_USER=albert
                 DB_PASS=practicaAW
@@ -67,6 +70,7 @@ Dentro del servidor encontramos:
 - models : Contiene todos los modelos que forman los 'Schemas' para interctuar con las 'collections' presentes en la base de datos.
 
 ### Despliegue del servidor
+
 Para iniciar el servidor en modo desarrollo, abrimos una consola en el editor de código de preferencia en la raiz del proyecto. Despues entramos en la carpeta server haciendo uso de `cd server` o `cd ./server` e iniciamos el servidor con `npm run dev` o `npm start`. 
 Tras ejecutar este comando, veremos que en la consola aparece el puerto en que esta corriendo el servidor y si todo ha salido bien, que la conexión a la base de datos ha sido satisfactoria.
 En la terminal del servidor, se pueden visualizar todas las peticiones que se tramitan cuando un usuario navega por la aplicación.
