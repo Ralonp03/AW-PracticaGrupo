@@ -26,7 +26,7 @@
               hover:text-gray-700
             "
           >
-            Iniciar Sesion
+            Iniciar Sesión
           </button>
           <button
             @click="register"
@@ -55,9 +55,9 @@
         </div>
         <div class="w-5/6 my-10 ml-6">
           <h3 class="text-gray-300">
-            Colecionar cartas nunca a sido tan facil <br />
+            Colecionar cartas nunca ha sido tan fácil <br />
             <strong class="text-white"
-              >Creado, Editado & Desarollado por el Grupo 10 de AW</strong
+              >Creado, Editado y Desarollado por el Grupo 10 de AW</strong
             >
           </h3>
         </div>
@@ -105,7 +105,7 @@
               />
               <div>
                 <span>Cartas Coches</span>
-                <span class="text-xs text-blue-300 block">Colecion 1</span>
+                <span class="text-xs text-blue-300 block">Colección 1</span>
               </div>
               <div>
                 <i
@@ -148,8 +148,8 @@
                 alt=""
               />
               <div>
-                <span>Cartas Poekmon</span>
-                <span class="text-xs text-blue-300 block">Colecion 2</span>
+                <span>Cartas Pokemon</span>
+                <span class="text-xs text-blue-300 block">Colección 2</span>
               </div>
               <div>
                 <i
