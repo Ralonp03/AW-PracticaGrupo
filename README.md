@@ -35,7 +35,9 @@ El cliente está desarrollado con el framework Vue en su versión 3.
 
 ### Despliegue del cliente
 
-Para iniciar el proyecto en modo desarrollo, abrimos una consola en el editor de código de preferencia en la raíz del proyecto. Después entramos en la carpeta cliente haciendo uso de `cd client` o `cd ./client` e iniciamos el cliente con `npm run serve` . Tras ejecutar este comando, veremos que en la consola se inicia el compilado del código y al terminar nos muestra dos URL. 
+Para iniciar el proyecto en modo desarrollo, abrimos una consola en el editor de código de preferencia en la raíz del proyecto. El primer paso es ejecutar el comando `npm install` o `npm i` para instalar todas las dependencias.
+Después entramos en la carpeta cliente haciendo uso de `cd client` o `cd ./client` e iniciamos el cliente con `npm run serve` . 
+Tras ejecutar este comando, veremos que en la consola se inicia el compilado del código y al terminar nos muestra dos URL. 
 Seleccionamos la primera, bien podemos hacer `ctrl + click` sobre la URL o escribirla en el navegador de preferencia. 
 La URL que se ha de usar debe ser `http://localhost:8080`.
 
@@ -73,7 +75,8 @@ Dentro del servidor encontramos:
 
 ### Despliegue del servidor
 
-Para iniciar el servidor en modo desarrollo, abrimos una consola en el editor de código de preferencia en la raiz del proyecto. 
+Para iniciar el proyecto en modo desarrollo, abrimos una consola en el editor de código de preferencia en la raíz del proyecto. 
+El primer paso es ejecutar el comando `npm install` o `npm i` para instalar todas las dependencias.
 Después entramos en la carpeta server haciendo uso de `cd server` o `cd ./server` e iniciamos el servidor con `npm run dev` o `npm start`. 
 Tras ejecutar este comando, veremos que en la consola aparece el puerto en que esta corriendo el servidor y si todo ha salido bien, que la conexión a la base de datos ha sido satisfactoria.
 En la terminal del servidor, se pueden visualizar todas las peticiones que se tramitan cuando un usuario navega por la aplicación.
