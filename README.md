@@ -68,7 +68,9 @@ Dentro del servidor encontramos:
      - Creando un archivo .env con el siguiente contenido en la raiz del proyecto como indican las buenas prácticas:
             ```md
                 DB_USER=albert
+                
                 DB_PASS=practicaAW
+                
                 SECRET=practicaAW
             ```
 - models : Contiene todos los modelos que forman los 'Schemas' para interctuar con las 'collections' presentes en la base de datos.
@@ -95,7 +97,7 @@ Se disponen de 4 'collections' :
     
     - users : Contiene los diferentes objetos que representan un usuario.
     
-Si se desea visualizar graficamente el estado de la base de datos en tiempo real, durante el desarrollo de este proyecto se ha utlizado la herramienta MongoDBCompass. 
+Si se desea visualizar gráficamente el estado de la base de datos en tiempo real, durante el desarrollo de este proyecto se ha utlizado la herramienta MongoDBCompass. 
 En la ventana principal habría que escribir la misma URL que se encuentra en el archivo de conexión y hacer click en connect. 
 Al entrar en el cluster, la base de datos utilizada es la nombrada como kiosko.
 
