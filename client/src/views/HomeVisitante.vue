@@ -175,14 +175,21 @@
 
 <script>
 import { useRouter } from "vue-router";
+import { useStore }from 'vuex'
 
 export default {
   name: "HomeVisitante",
 
   setup() {
     const route = useRouter();
+    const store = useStore()
     const login = () => {
-      route.push("/login");
+      if(store.getters.getUserAuth == true){
+        store.getters.getUserRole == "socio" && route.push("/home");
+        store.getters.getUserRole == "admin" && route.push("/dashboard");
+      }
+      else
+        route.push("/login");
     };
     const register = () => {
       route.push("/register");

@@ -5,18 +5,22 @@ const axios = require("axios");
 export default createStore({
   state: {
     //estado de la aplicacion
-    username: '',
+    username: null,
     auth: false,
+    role: ''
   },
   mutations: {
     // Actualizan los estados
     setUser(state, payload) {
       state.username = payload.name;
+      state.role = payload.role
       state.auth = Boolean(payload);
     },
     logout(state){
-      state.auth = false //Persistir durante 30'
-      //Borrar token de localStorage
+     
+        state.username = null
+        state.auth = false 
+     
     }
   },
   actions: {
@@ -38,7 +42,9 @@ export default createStore({
       return response;
     },
     logout({ commit }){
-      commit('logout')
+      setTimeout(() => {
+        commit('logout')
+      }, 30000);
     },
     setUser({ commit }, username){
       commit('setUser', username)
@@ -48,6 +54,12 @@ export default createStore({
   getters: {
     getUserName: (state) => {
       return state.username;
+    },
+    getUserAuth: (state) => {
+      return state.auth;
+    },
+    getUserRole: (state) => {
+      return state.role;
     },
   },
   plugins: [createPersistedState()]
