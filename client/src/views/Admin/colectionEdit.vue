@@ -298,7 +298,7 @@
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
-import { getInfoCard, updateUnitsOfCard,deleteUnitsOfCard } from '../../services/Api'
+import { getInfoCard, updateUnitsOfCard } from '../../services/Api'
 export default {
   name: "CollectionsEdit",
   components: {
@@ -330,7 +330,6 @@ export default {
     const actualizar = async () => {
       const cardName = cardSelected.value;
       const cardUnits = unitsCard.value;
-      await deleteUnitsOfCard(cardName, unitsCard.value);
       await updateUnitsOfCard(cardUnits, cardName);
     };
 
