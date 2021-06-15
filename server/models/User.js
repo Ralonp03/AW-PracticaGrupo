@@ -7,12 +7,6 @@ const userSchema = new Schema({
   password: String,
   points: Number,
   role: String,
-  collections: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Collection",
-    },
-  ],
   cards: [
     {
       type: Schema.Types.ObjectId,
