@@ -4,12 +4,6 @@
     <div class="editWindow m-auto bg-white">
       <header>
         <button
-          class="button border-2 border-black rounded-t-lg"
-          @click="(create = true), (edit = false), (title = false)"
-        >
-          CREAR COLECCIÓN
-        </button>
-        <button
           class="button ml-1 border-2 border-black rounded-t-lg"
           @click="(create = false), (edit = true), (title = false)"
         >
