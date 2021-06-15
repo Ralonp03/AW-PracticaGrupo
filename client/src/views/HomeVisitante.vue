@@ -55,7 +55,7 @@
         </div>
         <div class="w-5/6 my-10 ml-6">
           <h3 class="text-gray-300">
-            Colecionar cartas nunca ha sido tan fácil <br />
+            Coleccionar cartas nunca ha sido tan fácil <br />
             <strong class="text-white"
               >Creado, Editado y Desarollado por el Grupo 10 de AW</strong
             >
@@ -67,7 +67,7 @@
           <div class="shadow-xl w-80 h-80 rounded-full ml-8 -mt-96"></div>
         </div>
         <div class="text-white relative">
-          <h3 class="text-uppercase font-semibold">Coleciones disponibles</h3>
+          <h3 class="text-uppercase font-semibold">Colecciones disponibles</h3>
           <div
             class="
               grid

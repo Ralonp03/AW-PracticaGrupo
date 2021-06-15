@@ -25,11 +25,11 @@ registerRouter.post('/', async (req, res) => {
         await user.save()
 
         const userToken = {
-            id : userFound._id,
-            name: userFound.name
+            id : user._id,
+            name: user.name
         }
         
-        const token = jwt.sign(userForToken, process.env.SECRET)
+        const token = jwt.sign(userToken, process.env.SECRET)
     
         res.send({
             name: user.name,
