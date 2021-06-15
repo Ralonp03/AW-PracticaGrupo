@@ -94,11 +94,17 @@ export default {
       router.push("/dashboard");
     };
 
+    const logout = () => {
+      store.dispatch("logout");
+      router.replace("/");
+    };
+
     return {
       username,
       colectionRoute,
       cardRoute,
       inicioRoute,
+      logout
     };
   },
 };
@@ -106,6 +112,6 @@ export default {
 
 <style>
 .logoutBtn:hover {
-  transform:scale(0.95)
+  transform: scale(0.95);
 }
 </style>
