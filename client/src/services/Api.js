@@ -1,11 +1,33 @@
-//Conexion a los endpoints del backend
 const axios = require("axios");
 
 //FUNCIONES PARA OBTENER TODOS LOS DATOS
+
 const getAllUsers = async() => {
   const response = await axios.get(`http://localhost:8081/api/users/allusers`);
   return response
 }
+
+const getAllCollectionsPublished = async () => {
+  const response = await axios.get(`http://localhost:8081/api/collections/allcollections/`);
+  return response
+}
+
+const getAllCards = async() => {
+  const response = await axios.get(`http://localhost:8081/api/cards/allcards`);
+  return response
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+const getAllCollections = async(name) => {
+  const response = await axios.get(`http://localhost:8081/api/collections/allcollections/${name}`);
+  return response
+}
+
 
 //FUNCIONES DE EVENTOS
   const comprobarPregunta = async(question,answer) => {
@@ -44,15 +66,9 @@ const updateAdivinanza = async(question, answer) => {
     return response
 }
 
-const getAllCollections = async(name) => {
-  const response = await axios.get(`http://localhost:8081/api/collections/allcollections/${name}`);
-  return response
-}
 
-const getAllCards = async() => {
-  const response = await axios.get(`http://localhost:8081/api/cards/allcards`);
-  return response
-}
+
+
 
 // FUNCIONES PARA OBTENER INFORMACION DE UN PARÁMETRO EN CONCRETO
 const getAllCardsUser = async(name) => {
@@ -162,5 +178,6 @@ module.exports = {
   comprueboUsuario,
   bonificacionEvento,
   updateAdivinanza,
-  deleteUnitsOfCardv2
+  deleteUnitsOfCardv2,
+  getAllCollectionsPublished
 };

@@ -12,6 +12,12 @@ collectionRouter.get("/allcollections/:name", async (req, res) => {
     res.send({price: collectionsFound.price})
 });
 
+collectionRouter.get('/allcollections', async (req, res) => {
+    const collectionsFound = await Collection.find({})
+    const length = collectionsFound.length
+    res.send({length: length})
+})
+
 module.exports = collectionRouter;
 
 

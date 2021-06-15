@@ -2,11 +2,11 @@ const usersRouter = require("express").Router();
 const User = require("../models/User");
 
 usersRouter.get('/allusers', async (req, res) => {
-    
+
     const usersActive = await User.find({})
-
+    
     const length = usersActive.length
-
+    
     res.send({length: length})
 })
 

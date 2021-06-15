@@ -25,7 +25,7 @@
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import {
   getAllUsers,
-  getAllCollections,
+  getAllCollectionsPublished,
   getAllCards,
 } from "../../services/Api";
 import { ref } from "vue";
@@ -43,16 +43,17 @@ export default {
 
     onMounted(async () => {
       const responseUser = await getAllUsers();
-      const responseCollection = await getAllCollections();
-      const responseCards = await getAllCards();
-      // const responseCards = await getAllCards()
       const userLength = responseUser.data.length;
-      const collectionsLength = responseCollection.data.length;
-      const cardsLength = responseCards.data.length;
-
       usuariosActivos.value = userLength;
+
+      const responseCollection = await getAllCollectionsPublished();
+      const collectionsLength = responseCollection.data.length;
       collectionsActivas.value = collectionsLength;
+
+      const responseCards = await getAllCards();
+      const cardsLength = responseCards.data.length;
       cardsActivas.value = cardsLength;
+
     });
 
     return {
@@ -60,84 +61,6 @@ export default {
       collectionsActivas,
       cardsActivas,
     };
-    // const selected = ref("");
-    // const priceCard = ref(0);
-    // const units = ref(0);
-    // const count = ref(0);
-    // const countPrice = ref(0);
-
-    // const increment = () => {
-    //   count.value++;
-    // };
-    // const decrement = () => {
-    //   count.value--;
-    //   if (count.value < 0) count.value = 0;
-    // };
-    // const incrementPrice = () => {
-    //   countPrice.value += 50;
-    // };
-    // const decrementPrice = () => {
-    //   countPrice.value -= 50;
-    //   if (countPrice.value < 0) countPrice.value = 0;
-    // };
-
-    // const recopilar = async () => {
-    //   const response = await getInfoCard(selected.value);
-    //   if (response.status === 200) {
-    //     if (response.data.state == "active") {
-    //       document.getElementById("botn").style.visibility = "visible";
-    //       priceCard.value = response.data.price;
-    //       units.value = response.data.units;
-    //     } else {
-    //       alert("Carta no disponible");
-    //       priceCard.value = response.data.price;
-    //       units.value = response.data.units;
-    //       document.getElementById("botn").style.visibility = "hidden";
-    //     }
-    //   }
-    // };
-
-    /*
-    const price = () => {
-      if (this.priceCard >= this.countPrice) {
-        this.priceCard = this.priceCard + this.countPrice;
-      } else {
-          if(this.countPrice > 0){
-              this.priceCard = this.priceCard + this.countPrice;
-          }
-      }
-    };
-
-    const addOrDelete = () => {
-        if((this.units + this.count) < 0){
-            this.units = 0;
-        } else {
-            this.units = this.units + this.count;
-        }
-    };
-    */
-
-    //   const actualizar = async () => {
-    //     units.value = count.value;
-    //     priceCard.value = countPrice.value;
-
-    //     const cardName = selected.value;
-    //     const cardUnits = units.value;
-    //     const cardPrice = priceCard.value;
-    //     await updateDatas(cardUnits, cardPrice, cardName);
-    //   };
-    //   return {
-    //     recopilar,
-    //     selected,
-    //     priceCard,
-    //     units,
-    //     increment,
-    //     decrement,
-    //     incrementPrice,
-    //     decrementPrice,
-    //     count,
-    //     actualizar,
-    //   };
   },
 };
 </script>

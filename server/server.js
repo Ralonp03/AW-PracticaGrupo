@@ -13,13 +13,6 @@ const collectionRouter = require('./controllers/collections.controller.js')
 const adminRouter = require('./controllers/admin.controller.js')
 const eventRouter = require('./controllers/events.controller')
 
-// const comprasRouter = require('./controllers/buyControl.js')
-// const comprasRouter2 = require('./controllers/ComprarUnidades.js')
-// const getCardRouter = require('re./controllers/GetCards.js')
-
-
-
-
 const app = express();
 
 //settings
@@ -40,13 +33,6 @@ app.use('/api/compras', comprasRouter)
 app.use('/api/cards', cardsRouter)
 app.use('/api/collections', collectionRouter)
 app.use('/api/events', eventRouter)
-
-// app.use('/api/admin', adminRouter)
-// app.use('/api/recopilar', recopilarRouter)
-// app.use('/api/getCard', getCardRouter)
-
-
-
 
 //Server running
 app.listen(app.get("port"), () => {
