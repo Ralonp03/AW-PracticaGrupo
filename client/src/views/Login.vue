@@ -172,7 +172,7 @@ export default {
 
       const response = await store.dispatch("login", data.form);
       console.log(response);
-      if (response.data.error.startsWith("Invalid")) {
+      if (response.data.error) {
         alert("Invalid user or password");
       } else {
         if (store.state.auth && response.status === 200) {
