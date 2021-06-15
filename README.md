@@ -97,7 +97,7 @@ Se disponen de 4 'collections' :
     
     - users : Contiene los diferentes objetos que representan un usuario.
     
-Si se desea visualizar graficamente el estado de la base de datos en tiempo real, durante el desarrollo de este proyecto se ha utlizado la herramienta MongoDBCompass. 
+Si se desea visualizar gráficamente el estado de la base de datos en tiempo real, durante el desarrollo de este proyecto se ha utlizado la herramienta MongoDBCompass. 
 En la ventana principal habría que escribir la misma URL que se encuentra en el archivo de conexión y hacer click en connect. 
 Al entrar en el cluster, la base de datos utilizada es la nombrada como kiosko.
 
