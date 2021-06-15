@@ -1,13 +1,13 @@
 <template>
-  <router-link to="/"></router-link>
-  <router-link to="/login"></router-link>
-  <router-view></router-view>
+  <div>
+    <router-link to="/"></router-link>
+    <router-link to="/login"></router-link>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 <style>
 

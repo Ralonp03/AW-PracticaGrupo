@@ -1,7 +1,7 @@
-<template>
-  <div class="container w-2/5 h-96 mt-56 ml-auto mr-auto flex shadow-2xl">
+<template >
+  <div class="w-2/5 h-96 mt-56 ml-auto mr-auto flex shadow-2xl">
     <div
-      class="form-section w-3/4 bg-white-500 rounded-b-lg flex flex-col justify-center content-center bg-white shadow-2xl" 
+      class="form-section w-3/4 bg-white-500 rounded-l-xl flex flex-col justify-center content-center bg-white shadow-2xl" 
     >
       <h2 class="mb-10 text-center">INICIE SESIÓN</h2>
       <form
@@ -28,7 +28,7 @@
             </svg>
           </span>
           <input
-            class="ml-auto mr-auto mb-10"
+            class="ml-auto mr-auto mb-10 border-2 border-black border-opacity-10"
             type="text"
             name="username"
             placeholder="Nombre de usuario"
@@ -57,7 +57,7 @@
             </svg>
           </span>
           <input
-            class="ml-auto mr-auto mb-10"
+            class="ml-auto mr-auto mb-10 border-2 border-black border-opacity-10"
             type="password"
             placeholder="Contraseña"
             autocomplete="false"
