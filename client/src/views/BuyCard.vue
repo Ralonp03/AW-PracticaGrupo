@@ -151,14 +151,14 @@
              <img
               id="Coleccion1"
               v-if="selected == 'Coleccion1'"
-              v-bind:src="require(`../assets/Coches/Coche1.png`)"
+              v-bind:src="require(`../assets/LogoCoches.png`)"
               alt=""
               class="card"
             />
             <img
               id="Coleccion2"
               v-if="selected == 'Coleccion2'"
-              v-bind:src="require(`../assets/Coches/Coche2.png`)"
+              v-bind:src="require(`../assets/LogoPokemon.jpg`)"
               alt=""
               class="card"
             />
@@ -327,7 +327,7 @@ export default {
           if (aux == false) {
             let response2 = await getAllCollections("60ba072aeefb548a67bf652c");
             if (response2.status == 200) {
-              alert("Collecion no disponible");
+              alert("Collecion no disponible, no hay cartas suficientes");
               priceCard.value = response2.data.price;
               document.getElementById(selected.value).className = "cardGris";
               document.getElementById("botn").style.visibility = "hidden";
@@ -368,7 +368,7 @@ export default {
             let response2 = await getAllCollections("60ba0a7aeefb548a67bf652e");
             if (response2.status == 200) {
               priceCard.value = response2.data.price;
-              alert("Collecion no disponible");
+              alert("Collecion no disponible, no hay cartas");
               document.getElementById("botn").style.visibility = "hidden";
               document.getElementById(selected.value).className = "cardGris";
             }
