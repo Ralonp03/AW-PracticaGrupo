@@ -68,7 +68,9 @@ Dentro del servidor encontramos:
      - Creando un archivo .env con el siguiente contenido en la raiz del proyecto como indican las buenas prácticas:
             ```md
                 DB_USER=albert
+                
                 DB_PASS=practicaAW
+                
                 SECRET=practicaAW
             ```
 - models : Contiene todos los modelos que forman los 'Schemas' para interctuar con las 'collections' presentes en la base de datos.
