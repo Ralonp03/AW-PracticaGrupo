@@ -1,3 +1,5 @@
+require('dotenv').config()
+const jwt = require('jsonwebtoken')
 const bcrypt = require("bcrypt");
 const loginRouter = require("express").Router();
 const User = require("../models/User");
@@ -17,11 +19,23 @@ loginRouter.post("/", async (req, res) => {
     if(!passwordCorrect){
         res.status(401).json({error: 'Invalid user or password'})
     }else{
+
+      const userToken = {
+        id : userFound._id,
+        name: userFound.name
+      }
+
+      const token = jwt.sign(userToken, process.env.SECRET)
+
+
+
+
       res.send({
           name: userFound.name,
           role: userFound.role,
           points: userFound.points,
-          cards:userFound.cards
+          cards:userFound.cards,
+          token
       })
 
     }

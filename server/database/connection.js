@@ -16,3 +16,8 @@ mongoose
     console.log("Database connection established");
   })
   .catch((err) => console.log("Database connection failed", err));
+
+process.on('uncaughtException', err => {
+  console.error(err);
+  mongoose.disconnect()
+})

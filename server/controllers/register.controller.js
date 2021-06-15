@@ -1,3 +1,5 @@
+require('dotenv').config()
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const registerRouter = require('express').Router()
 
@@ -5,11 +7,10 @@ const User = require('../models/User')
 
 registerRouter.post('/', async (req, res) => {
     const { body }  = req
-
     const { name, password } = body
     
-    //Comprobar que el usuario a registrar no exista
     const userExist = await User.findOne({ name })
+
     if(!userExist){
         const saltRounds = 10
         const passwdHash = await bcrypt.hash(password, saltRounds)
@@ -21,9 +22,22 @@ registerRouter.post('/', async (req, res) => {
             role: 'socio'
         })
     
-        const savedUser = await user.save()
+        await user.save()
+
+        const userToken = {
+            id : userFound._id,
+            name: userFound.name
+        }
+        
+        const token = jwt.sign(userForToken, process.env.SECRET)
     
-        res.json(savedUser)
+        res.send({
+            name: user.name,
+            role: user.role,
+            points: user.points,
+            cards:user.cards,
+            token 
+        })
     }else
         res.status(401).json({error: 'Usuario ya registrado'})
 })

@@ -4,7 +4,6 @@ import HomeVisitante from "../views/HomeVisitante.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import BuyCard from "../views/BuyCard.vue";
-import Collections from "../views/Collections.vue";
 import MyCollections from "../views/MyCollections.vue";
 import AdminHome from "../views/Admin/AdminHome.vue";
 import cardsEdit from "../views/Admin/cardsEdit.vue"
@@ -41,11 +40,6 @@ const routes = [
     path: "/comprar",
     name: "BuyCard",
     component: BuyCard,
-  },
-  {
-    path: "/collections",
-    name: "Collections",
-    component: Collections,
   },
   {
     path: "/mycollections",

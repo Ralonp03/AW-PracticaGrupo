@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <TaskBar :points="myPoints"/>
+    <TaskBar :points="myPoints" />
     <div class="container">
       <div class="cajaGlobal h-full flex justify-center items-center">
         <div class="flex-column">
@@ -216,8 +216,11 @@
 <script>
 import { onMounted } from "@vue/runtime-core";
 import TaskBar from "./TaskBar.vue";
-import { useStore } from "vuex";
 import { ref } from "vue";
+
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
 import {
   getInfoUser,
   comprobarPregunta,
@@ -237,10 +240,14 @@ export default {
     const myPoints = ref(0);
     const myUser = ref("");
     const checkedNames = ref(0);
-    const store = useStore();
     const selectedAd = ref("");
 
+    const router = useRouter();
+    const store = useStore();
+
     onMounted(async () => {
+      !store.state.auth && router.push("/login");
+
       const response = await getInfoUser(store.getters.getUserName);
       myPoints.value = response;
     });

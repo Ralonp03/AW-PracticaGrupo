@@ -30,6 +30,8 @@ import {
 } from "../../services/Api";
 import { ref } from "vue";
 import { onMounted } from "@vue/runtime-core";
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 export default {
   name: "Gallery",
@@ -40,8 +42,12 @@ export default {
     const usuariosActivos = ref(0);
     const collectionsActivas = ref(0);
     const cardsActivas = ref(0);
+    const store = useStore();
+    const router = useRouter()
 
     onMounted(async () => {
+      if(!store.state.auth || !(store.getters.getUserRole === 'admin'))
+        router.push('/login')
       const responseUser = await getAllUsers();
       const userLength = responseUser.data.length;
       usuariosActivos.value = userLength;

@@ -160,8 +160,13 @@
           </button>
         </div>
         <div class="seleccion text-center">
-          <br><label for="cardSelection">Selecciona la carta a editar: </label><br>
-          <select v-model="selected" class="border border-gray-300" @change="recopilar()">
+          <br /><label for="cardSelection">Selecciona la carta a editar: </label
+          ><br />
+          <select
+            v-model="selected"
+            class="border border-gray-300"
+            @change="recopilar()"
+          >
             <option>Coche1</option>
             <option>Coche2</option>
             <option>Coche3</option>
@@ -185,7 +190,7 @@
           </select>
         </div>
         <div class="mt-8 w-full text-center">
-          Precio actual: <span class="font-bold ">{{ priceCard }}</span>
+          Precio actual: <span class="font-bold">{{ priceCard }}</span>
           <button
             id="botn"
             v-on:click.prevent="actualizar"
@@ -211,6 +216,10 @@
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
 import { getInfoCard, updateDatas } from "../../services/Api";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { onMounted } from "@vue/runtime-core";
+
 export default {
   name: "cardsEdit",
   components: {
@@ -222,13 +231,21 @@ export default {
     const units = ref(0);
     const count = ref(0);
 
+    const router = useRouter();
+    const store = useStore();
+
+    onMounted(async () => {
+      if(!store.state.auth || !(store.getters.getUserRole === 'admin'))
+        router.push('/login')
+    });
+
     const recopilar = async () => {
       const response = await getInfoCard(selected.value);
       if (response.status === 200) {
-          document.getElementById("botn").style.visibility = "visible";
-          priceCard.value = response.data.price;
-          units.value = response.data.units;
-          count.value = priceCard.value
+        document.getElementById("botn").style.visibility = "visible";
+        priceCard.value = response.data.price;
+        units.value = response.data.units;
+        count.value = priceCard.value;
       }
     };
     const increment = () => {

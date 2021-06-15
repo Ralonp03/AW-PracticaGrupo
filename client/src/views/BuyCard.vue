@@ -256,6 +256,7 @@
 import { ref } from "vue";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import TaskBar from "../views/TaskBar.vue";
 import {
   getInfoUser,
@@ -279,8 +280,10 @@ export default {
     const count = ref(0);
     const primeraVez = ref(false);
     const store = useStore();
+    const router = useRouter();
 
     onMounted(async () => {
+      !store.state.auth && router.push('/login')
       myPoints.value = await getInfoUser(store.getters.getUserName);
     });
 

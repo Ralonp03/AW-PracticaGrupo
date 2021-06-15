@@ -298,6 +298,10 @@
 <script>
 import TaskbarAdmin from "./TaskbarAdmin.vue";
 import { ref } from "vue";
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { onMounted } from "@vue/runtime-core";
+
 import { getInfoCard, updateUnitsOfCard } from '../../services/Api'
 export default {
   name: "CollectionsEdit",
@@ -312,6 +316,17 @@ export default {
     const selected = ref("");
     const cardSelected = ref("");
 
+    const store = useStore()
+    const router = useRouter()
+
+     onMounted(async () => {
+      if(!store.state.auth || !(store.getters.getUserRole === 'admin'))
+        router.push('/login')
+      
+
+    })
+
+    
 
     const setUnits = async (cardSelected) => {
       const response = await getInfoCard(cardSelected)
