@@ -256,39 +256,41 @@ export default {
       const nameUser = store.getters.getUserName;
       const question = selected.value;
       const answer = selected2.value;
-      try {
-        const responsePregunta = await comprobarPregunta(question, answer);
-        if (responsePregunta.status === 200) {
-          //Datos actualizados
-          if (responsePregunta.data.state == "correct") {
-            if (responsePregunta.data.pointsWin !== 0) {
-              const userExist = await comprueboUsuario(
-                nameUser,
-                question,
-                "Event1"
-              );
-              if (userExist.status === 200) {
-                if (userExist.data.state === false) {
-                  alert(
-                    "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
-                  );
-                } else {
-                  //Comprobacion de respuesta
-                  alert(
-                    "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
-                  );
-                  const pointsUser =
-                    myPoints.value + responsePregunta.data.pointsWin;
-                  await bonificacionEvento(nameUser, pointsUser);
+      if (question !== '' && answer !== '') {
+        try {
+          const responsePregunta = await comprobarPregunta(question, answer);
+          if (responsePregunta.status === 200) {
+            //Datos actualizados
+            if (responsePregunta.data.state == "correct") {
+              if (responsePregunta.data.pointsWin !== 0) {
+                const userExist = await comprueboUsuario(
+                  nameUser,
+                  question,
+                  "Event1"
+                );
+                if (userExist.status === 200) {
+                  if (userExist.data.state === false) {
+                    alert(
+                      "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
+                    );
+                  } else {
+                    //Comprobacion de respuesta
+                    alert(
+                      "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
+                    );
+                    const pointsUser =
+                      myPoints.value + responsePregunta.data.pointsWin;
+                    await bonificacionEvento(nameUser, pointsUser);
+                  }
                 }
               }
+            } else {
+              alert("Has fallado!!");
             }
-          } else {
-            alert("Has fallado!!");
           }
+        } catch (err) {
+          console.log("ERROR: ", err.message);
         }
-      } catch (err) {
-        console.log("ERROR: ", err.message);
       }
     };
 

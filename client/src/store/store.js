@@ -42,9 +42,7 @@ export default createStore({
       return response;
     },
     logout({ commit }){
-      setTimeout(() => {
         commit('logout')
-      }, 30000);
     },
     setUser({ commit }, username){
       commit('setUser', username)
