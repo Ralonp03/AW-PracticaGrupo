@@ -2,7 +2,7 @@
   <div
     class="sticky top-0 p-4 bg-blue-600 font-bold h-screen w-72 flex flex-col items-center border-r-2 border-black"
   >
-    <h2 class="font-serif">KioskoROC</h2>
+    <h2 class="font-serif">Ventur</h2>
     <img src="../assets/male.png" class="mt-4 h-16 w-16" />
     <p class="text-center">
       {{ username }}

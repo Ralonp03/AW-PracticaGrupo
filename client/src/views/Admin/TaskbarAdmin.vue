@@ -10,7 +10,7 @@
       border-2 border-black
     "
   >
-    <h2 class="font-serif mb-4">KioskoROC</h2>
+    <h2 class="font-serif mb-4">Ventur</h2>
     <div class="logo mb-4">
       <img src="../../assets/admin.png" class="ml-4 h-24 w-24" />
     </div>
