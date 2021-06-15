@@ -13,9 +13,9 @@
         flex flex-col items-center
       "
     >
-      <p class="my-8">USUARIOS EN ACTIVO: <span>{{ usuariosActivos }}</span></p>
-      <p class="my-8">COLECCIONES DISPONIBLES: <span>{{ collectionsActivas }}</span></p>
-      <p class="my-8">CROMOS DISPONIBLES: <span>{{ cardsActivas }}</span></p>
+      <p class="my-8 font-serif">USUARIOS EN ACTIVO: <span>{{ usuariosActivos }}</span></p>
+      <p class="my-8 font-serif">COLECCIONES DISPONIBLES: <span>{{ collectionsActivas }}</span></p>
+      <p class="my-8 font-serif">CROMOS DISPONIBLES: <span>{{ cardsActivas }}</span></p>
       <h2></h2>
     </div>
   </div>
