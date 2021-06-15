@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <TaskBar />
+    <TaskBar :points="myPoints"/>
     <div class="container">
       <div class="cajaGlobal h-full flex justify-center items-center">
         <div class="flex-column">
@@ -246,7 +246,7 @@ export default {
     });
 
     const compruebaEvento = async () => {
-      // const nameUser = store.getters.getUserName;
+      const nameUser = store.getters.getUserName;
       const question = selected.value;
       const answer = selected2.value;
       try {
@@ -254,33 +254,30 @@ export default {
         if (responsePregunta.status === 200) {
           //Datos actualizados
           if (responsePregunta.data.state == "correct") {
-            console.log("Conseguido x2");
             if (responsePregunta.data.pointsWin !== 0) {
               const userExist = await comprueboUsuario(
-                store.getters.getUserName,
+                nameUser,
                 question,
                 "Event1"
               );
               if (userExist.status === 200) {
                 if (userExist.data.state === false) {
                   alert(
-                  "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
+                    "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
                   );
                 } else {
                   //Comprobacion de respuesta
                   alert(
-                  "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
+                    "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
                   );
-                  const pointsUser = myPoints.value + responsePregunta.data.pointsWin;
-                  await bonificacionEvento(store.getters.getUserName, pointsUser);
+                  const pointsUser =
+                    myPoints.value + responsePregunta.data.pointsWin;
+                  await bonificacionEvento(nameUser, pointsUser);
                 }
               }
-              
             }
           } else {
-            alert(
-              "Has fallado!!"
-            );
+            alert("Has fallado!!");
           }
         }
       } catch (err) {
@@ -288,37 +285,38 @@ export default {
       }
     };
 
-    const adivinanza = async() => {
-          const question = selectedAd.value;
-          const answer = checkedNames.value;
-          const response = await updateAdivinanza(question, answer);
-          if (response.status === 200) {
-            //Datos actualizados
-            if (response.data.state == "correct") {
-              const userExist = await comprueboUsuario(
-                store.getters.getUserName,
-                question,
-                "Event2"
+    const adivinanza = async () => {
+      const nameUser = store.getters.getUserName;
+      const question = selectedAd.value;
+      const answer = checkedNames.value;
+      const response = await updateAdivinanza(question, answer);
+      if (response.status === 200) {
+        //Datos actualizados
+        if (response.data.state == "correct") {
+          const userExist = await comprueboUsuario(
+            nameUser,
+            question,
+            "Event2"
+          );
+          if (userExist.status === 200) {
+            if (userExist.data.state === false) {
+              alert(
+                "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
               );
-              if (userExist.status === 200) {
-                if(userExist.data.state === false){
-                  alert(
-                  "Lo sentimos, usted ya esta registrado como ganador de este evento. Vuelva a intentarlo en 1 semana"
-                  );
-                } else {
-                  alert(
-                  "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
-                  );
-                  const pointsUser = myPoints.value + response.data.pointsWin;
-                  await bonificacionEvento(store.getters.getUserName, pointsUser);
-                }
-              }
             } else {
-              window.alert("Has fallado!!");
+              alert(
+                "Enhorabuena!!! Acabas de obtener 100 puntos mas para tus compras"
+              );
+              const pointsUser = myPoints.value + response.data.pointsWin;
+              await bonificacionEvento(nameUser, pointsUser);
             }
-          } else {
-            //Error al actualizar los datos
           }
+        } else {
+          window.alert("Has fallado!!");
+        }
+      } else {
+        //Error al actualizar los datos
+      }
     };
 
     return {

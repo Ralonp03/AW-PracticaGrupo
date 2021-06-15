@@ -29,7 +29,6 @@ eventsRouter.post('/comprueboUsuario', async(req, res) => {
     let aux = false;
     for(let event of eventsFound){
         if(event.users.includes(nameUser)){
-            console.log("entre")
             aux = true;
         }
     }
@@ -37,7 +36,6 @@ eventsRouter.post('/comprueboUsuario', async(req, res) => {
     if(aux === false){
         const eventFound = await Event.findOne({ question:question })
         try{
-            console.log(eventFound)
             eventFound.users.push(nameUser)
             await eventFound.save()
             res.send({state: true })
@@ -52,7 +50,6 @@ eventsRouter.post('/comprueboUsuario', async(req, res) => {
 
 
 eventsRouter.post("/bonificacion", async (req, res) =>{
-    console.log("BONIFICACION: ", req)
     const { body } = req;
 
     const { nameUser, pointsUser } = body;

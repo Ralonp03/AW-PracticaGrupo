@@ -54,7 +54,6 @@ adminRouter.post('/updateunits/:name', async (req, res) => {
 
     const cardFound = await Card.findOne({name: cardName})
 
-    console.log(cardFound)
     cardFound.units += cardUnits
 
     await cardFound.save()

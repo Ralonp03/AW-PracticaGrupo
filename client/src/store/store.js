@@ -27,6 +27,7 @@ export default createStore({
       dispatch('setUser', response.data)
       return response
     },
+    
     async login({ dispatch }, credentials) {
       const response = await axios.post(
         "http://localhost:8081/api/login",

@@ -297,7 +297,6 @@ export default {
     const recopilar = async () => {
       let valor = primeraVez.value;
       primeraVez.value = true;
-      console.log(selected.value);
 
       if (selected.value == "Coleccion1" || selected.value == "Coleccion2") {
         if (selected.value == "Coleccion1") {
@@ -373,7 +372,6 @@ export default {
           } else {
             let response2 = await getAllCollections("60ba0a7aeefb548a67bf652e");
             if (response2.status == 200) {
-              console.log("Hoa" + response2.data.price);
               priceCard.value = response2.data.price;
               units.value = 1;
               document.getElementById(selected.value).className = "card";

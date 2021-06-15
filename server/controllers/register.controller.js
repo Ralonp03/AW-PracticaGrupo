@@ -6,7 +6,6 @@ const User = require('../models/User')
 registerRouter.post('/', async (req, res) => {
     const { body }  = req
 
-    console.log(body)
     const { name, password } = body
     
     //Comprobar que el usuario a registrar no exista

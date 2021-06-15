@@ -104,9 +104,6 @@ const deleteUnitsOfCard = async (cardName, cardUnits) => {
     cardName,
     cardUnits,
   };
-
-  console.log(params);
-
   const response = await axios.put(
     `http://localhost:8081/api/cards/deleteCard/${cardName}`,
     params
@@ -120,8 +117,6 @@ const deleteUnitsOfCardv2 = async (cardName, cardUnits) => {
     cardName,
     cardUnits,
   };
-
-  console.log(params);
 
   const response = await axios.put(
     `http://localhost:8081/api/cards/deleteCard1Unit/${cardName}`,

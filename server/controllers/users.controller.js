@@ -12,8 +12,6 @@ usersRouter.get('/allusers', async (req, res) => {
 
 usersRouter.get("/:name", async (req, res) => {
 
-    console.log(req)
-
     const { params } = req;
     const { name } = params
 
