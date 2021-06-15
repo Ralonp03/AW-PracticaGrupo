@@ -151,7 +151,7 @@
               </div>
               
             </div>
-            <button @click.prevent="actualizar" class="h-12 bg-blue-500 rounded-full font-bold text-white w-full hover:bg-blue-600 m-2">ACTUALIZAR</button>
+            <button @click.prevent="actualizar" class="h-12 bg-blue-500 rounded-full font-bold text-white w-full hover:bg-blue-600 m-2 actBtn">ACTUALIZAR</button>
             <br><div
               v-if="selected == 'Coches'"
               class="h-full flex justify-center items-center"
@@ -296,7 +296,7 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { onMounted } from "@vue/runtime-core";
 
-import { getInfoCard, updateUnitsOfCard } from '../../services/Api'
+import { updateUnitsOfCard } from '../../services/Api'
 export default {
   name: "CollectionsEdit",
   components: {
@@ -322,11 +322,11 @@ export default {
 
     
 
-    const setUnits = async (cardSelected) => {
-      const response = await getInfoCard(cardSelected)
-      const { units } = response.data
-      unitsCard.value = units
-    }
+    // const setUnits = async (cardSelected) => {
+    //   const response = await getInfoCard(cardSelected)
+    //   // const { units } = response.data
+    //   unitsCard.value = 0
+    // }
 
     const increment = () => {
       unitsCard.value ++;
@@ -350,7 +350,7 @@ export default {
       title,
       selected,
       cardSelected,
-      setUnits,
+      // setUnits,
       increment, 
       decrement,
       actualizar
@@ -391,5 +391,9 @@ export default {
   width: 100%;
   height: 100%;
   background-color: red;
+}
+
+.actBtn:hover{
+  transform: scale(0.95);
 }
 </style>

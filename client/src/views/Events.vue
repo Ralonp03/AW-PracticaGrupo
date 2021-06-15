@@ -281,6 +281,7 @@ export default {
                     const pointsUser =
                       myPoints.value + responsePregunta.data.pointsWin;
                     await bonificacionEvento(nameUser, pointsUser);
+                    myPoints.value = pointsUser
                   }
                 }
               }
@@ -318,6 +319,7 @@ export default {
               );
               const pointsUser = myPoints.value + response.data.pointsWin;
               await bonificacionEvento(nameUser, pointsUser);
+              myPoints.value = pointsUser
             }
           }
         } else {

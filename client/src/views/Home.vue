@@ -7,9 +7,9 @@
       >
         <div>
           <h1
-            class="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5 "
+            class="text-4xl text-center sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5 "
           >
-            Kiosko ventur. Tu kiosko de confianza desde 2020
+            Kiosko VENTUR <br />Tu kiosko de confianza desde 2020
           </h1>
           <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
             <!-- CARD 1 -->
@@ -21,7 +21,7 @@
                 <h3 class="text-white text-lg">Colección de Coches</h3>
                 <p class="text-gray-400">
                   La carta Alpine esta aumentando de valor, seria buen momento
-                  para comprarla
+                  para comprarla.
                 </p>
               </div>
             </div>
@@ -34,7 +34,7 @@
                 <h3 class="text-white text-lg">Colección Pokemon</h3>
                 <p class="text-gray-400">
                   El charizard es la carta que mas valor tiene, ademas es
-                  preciosa, puedes adquiridla en nuestra tienda.
+                  preciosa, puedes adquirirla en nuestra tienda.
                 </p>
               </div>
             </div>
@@ -43,7 +43,7 @@
         <h1
           class="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-020 mb-5 "
         >
-          Tu felicidad es nuestro principal objetivo.
+          Tu felicidad es nuestro principal objetivo
         </h1>
       </main>
     </div>

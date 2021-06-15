@@ -327,7 +327,7 @@ export default {
           if (aux == false) {
             let response2 = await getAllCollections("60ba072aeefb548a67bf652c");
             if (response2.status == 200) {
-              alert("Collecion no disponible, no hay cartas suficientes");
+              alert("Colección no disponible, no hay cartas suficientes");
               priceCard.value = response2.data.price;
               document.getElementById(selected.value).className = "cardGris";
               document.getElementById("botn").style.visibility = "hidden";
@@ -368,7 +368,7 @@ export default {
             let response2 = await getAllCollections("60ba0a7aeefb548a67bf652e");
             if (response2.status == 200) {
               priceCard.value = response2.data.price;
-              alert("Collecion no disponible, no hay cartas");
+              alert("Colección no disponible, no hay cartas");
               document.getElementById("botn").style.visibility = "hidden";
               document.getElementById(selected.value).className = "cardGris";
             }
@@ -403,7 +403,7 @@ export default {
             priceCard.value = response.data.price;
             units.value = response.data.units;
             document.getElementById(selected.value).className = "cardGris";
-            alert("No se puede completar la accion");
+            alert("No se puede completar la acción");
             document.getElementById("botn").style.visibility = "hidden";
           }
         }
@@ -417,7 +417,6 @@ export default {
         count.value != 0
       ) {
         myPoints.value = myPoints.value - count.value * priceCard.value;
-        //if (units.value >= count.value)
         if (selected.value != "Coleccion1" || selected.value != "Coleccion2")
           units.value = units.value - count.value;
 
@@ -467,7 +466,7 @@ export default {
           await deleteUnitsOfCard(cardName, units.value);
         }
       } else {
-        alert("No se puede completar la accion");
+        alert("No se puede completar la acción");
       }
     };
 

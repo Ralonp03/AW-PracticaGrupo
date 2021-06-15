@@ -202,6 +202,7 @@
               text-white
               w-full
               hover:bg-blue-600
+              actBtn
             "
           >
             Actualizar Precio
@@ -274,4 +275,7 @@ export default {
 </script>
 
 <style>
+.actBtn:hover{
+  transform: scale(0.95);
+}
 </style>
