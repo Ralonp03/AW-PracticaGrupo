@@ -1,7 +1,17 @@
 <template >
   <div class="w-2/5 h-96 mt-56 ml-auto mr-auto flex shadow-2xl">
     <div
-      class="form-section w-3/4 bg-white-500 rounded-l-xl flex flex-col justify-center content-center bg-white shadow-2xl" 
+      class="
+        form-section
+        w-3/4
+        bg-white-500
+        rounded-l-xl
+        flex flex-col
+        justify-center
+        content-center
+        bg-white
+        shadow-2xl
+      "
     >
       <h2 class="mb-10 text-center">INICIE SESIÓN</h2>
       <form
@@ -9,11 +19,19 @@
         class="w-100 flex flex-col justify-center content-center"
       >
         <div
-          class="form__field text-center h-100  flex items-stretch ml-auto mr-auto"
+          class="
+            form__field
+            text-center
+            h-100
+            flex
+            items-stretch
+            ml-auto
+            mr-auto
+          "
         >
           <span class="flex justify-center w-full">
             <svg
-              class=" mr-4 w-6 h-6"
+              class="mr-4 w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -28,7 +46,12 @@
             </svg>
           </span>
           <input
-            class="ml-auto mr-auto mb-10 border-2 border-black border-opacity-10"
+            class="
+              ml-auto
+              mr-auto
+              mb-10
+              border-2 border-black border-opacity-10
+            "
             type="text"
             name="username"
             placeholder="Nombre de usuario"
@@ -38,7 +61,17 @@
           />
         </div>
         <div
-          class="mt -4 form__field text-center h-100  flex items-stretch ml-auto mr-auto"
+          class="
+            mt
+            -4
+            form__field
+            text-center
+            h-100
+            flex
+            items-stretch
+            ml-auto
+            mr-auto
+          "
         >
           <span class="flex justify-center w-full">
             <svg
@@ -57,7 +90,12 @@
             </svg>
           </span>
           <input
-            class="ml-auto mr-auto mb-10 border-2 border-black border-opacity-10"
+            class="
+              ml-auto
+              mr-auto
+              mb-10
+              border-2 border-black border-opacity-10
+            "
             type="password"
             placeholder="Contraseña"
             autocomplete="false"
@@ -74,7 +112,14 @@
       </form>
     </div>
     <div
-      class="register-section bg-green-400 flex flex-col justify-center content-center rounded-r-lg"
+      class="
+        register-section
+        bg-green-400
+        flex flex-col
+        justify-center
+        content-center
+        rounded-r-lg
+      "
     >
       <div class="container text-center">
         <h2 class="text-white font-bold text-3xl mb-10">Bienvenido, amigo!</h2>
@@ -82,7 +127,16 @@
           Introduzca sus datos personales y comience a coleccionar con nosotros
         </p>
         <button
-          class="h-12 w-48 bg-green-400 rounded-full text-white ml-auto mr-auto border-2 border-white-900"
+          class="
+            h-12
+            w-48
+            bg-green-400
+            rounded-full
+            text-white
+            ml-auto
+            mr-auto
+            border-2 border-white-900
+          "
           @click="register"
         >
           Registrarse
@@ -112,17 +166,21 @@ export default {
       const data = {
         form: {
           name: usernameForm.value,
-          password: passwdForm.value
+          password: passwdForm.value,
+        },
+      };
+
+      const response = await store.dispatch("login", data.form);
+      console.log(response);
+      if (response.data.error.startsWith("Invalid")) {
+        alert("Invalid user or password");
+      } else {
+        if (store.state.auth && response.status === 200) {
+          response.data.role === "socio" && router.push("/home");
+          response.data.role === "admin" && router.push("/dashboard");
         }
       }
-
-      const response = await store.dispatch("login", data.form)
-
       //   //Vista socio
-        if(store.state.auth && response.status === 200){
-          response.data.role === "socio" && router.push('/home')
-          response.data.role === "admin" && router.push('/dashboard')
-        }
     };
 
     return {

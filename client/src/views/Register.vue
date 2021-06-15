@@ -68,15 +68,22 @@ export default {
     const passwordForm = ref("")
 
     const register = async () => {
-      const data = {
-        form: {
-          name: usernameForm.value,
-          password : passwordForm.value
+      if(usernameForm.value !== " " && passwordForm.value !== ""){
+        usernameForm.value = usernameForm.value.trim()
+        passwordForm.value = passwordForm.value.trim()
+        const data = {
+          form: {
+            name: usernameForm.value,
+            password : passwordForm.value
+          }
         }
-      }
-      const response = await store.dispatch('register', data.form)
+        const response = await store.dispatch('register', data.form)
+  
+        response.status === 200 && router.push('/Home')
 
-      response.status === 200 && router.push('/Home')
+      }else{
+        alert("Introduzca un usuario o contraseña válido")
+      }
     };
 
     const singUp = () => {

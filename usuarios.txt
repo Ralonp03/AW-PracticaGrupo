@@ -1,0 +1,11 @@
+usuario administrador
+usuario: Jose
+contraseña: 1234
+
+usuario socio 1
+usuario : Alonso
+contraseña : alonso
+
+usuario socio 2
+usuario : Marcos
+contraseña : marcos
