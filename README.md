@@ -61,6 +61,7 @@ Dentro del servidor encontramos:
                 mongodb+srv://${user}:${password}@cluster0.hp7pp.mongodb.net/kiosko?authSource=admin&replicaSet=atlas-alyq91-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
             ```
             Sustituir user y password por albert y practicaAW respectivamente.
+            
      - Creando un archivo .env con el siguiente contenido en la raiz del proyecto como indican las buenas prácticas:
             ```md
                 DB_USER=albert
@@ -76,12 +77,18 @@ Tras ejecutar este comando, veremos que en la consola aparece el puerto en que e
 En la terminal del servidor, se pueden visualizar todas las peticiones que se tramitan cuando un usuario navega por la aplicación.
 
 ## Base de datos
+
 La base de datos se ha estructurado de la siguiente manera:
 Se disponen de 4 'collections' : 
+
     - cards : Contiene los diferentes objetos que representan una carta.
+    
     - collections : Contiene los diferentes objetos que representan una colección.
+    
     - events : Contiene los diferentes objetos que representan un evento.
+    
     - users : Contiene los diferentes objetos que representan un usuario.
+    
 Si se desea visualizar graficamente el estado de la base de datos en tiempo real, durante el desarrollo de este proyecto se ha utlizado la herramienta MongoDBCompass. 
 En la ventana principal habría que escribir la misma URL que se encuentra en el archivo de conexión y hacer click en connect. 
 Al entrar en el cluster, la base de datos utilizada es la nombrada como kiosko.
