@@ -1,4 +1,4 @@
-# PROYECTO : KIOSKO VENTUR 🛒
+# KIOSKO VENTUR 🛒
 
 ----------------------------------------------------------------
 Este repositorio contiene todo lo necesario para desplegar el proyecto en modo desarrollo.
